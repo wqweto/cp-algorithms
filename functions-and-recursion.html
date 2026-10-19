@@ -1,0 +1,1425 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="arrays-and-vectors.html">
+      
+      
+        <link rel="next" href="stl-basics.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Functions and Recursion - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functions-and-recursion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functions and Recursion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="functions-and-recursion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-what-actually-matters-in-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions — What Actually Matters in CP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions — What Actually Matters in CP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-global-state-idiom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The global-state idiom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-by-value-reference-and-const-reference-the-cp-relevant-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pass by value, reference, and const reference — the CP-relevant rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-by-value-rvo-makes-it-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return by value — RVO makes it free
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-the-semantic-meaning-not-the-optimization-hint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        inline — the semantic meaning, not the optimization hint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-templates-cheap-generics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function templates — cheap generics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-arguments-a-small-caution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default arguments — a small caution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursion-the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursion — the mental model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursion — the mental model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-frames-why-depth-is-limited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stack frames — why depth is limited
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-setrlimit-myth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The setrlimit myth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-recursion-to-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting recursion to iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoization-the-top-down-dp-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memoization — the top-down DP pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion-o2-what-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursion + -O2 — what changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-stdfunction-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The std::function trap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-you-will-reuse-constantly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns You Will Reuse Constantly
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns You Will Reuse Constantly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dfs-on-a-tree-with-parent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DFS on a tree, with parent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfs-on-a-general-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DFS on a general graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backtracking-with-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backtracking with pruning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-segment-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursive segment tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-union-find-with-path-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursive union-find with path compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="functions-and-recursion">Functions and Recursion<a class="headerlink" href="#functions-and-recursion" title="Permanent link">&para;</a></h1>
+<p>Functions and recursion are two names for the same idea viewed from different angles: a function is <em>how you factor a problem into reusable pieces</em>, and recursion is <em>how you let those pieces call themselves</em>. In competitive programming, this pair is unavoidable — DFS, divide-and-conquer, segment trees, backtracking, memoized DP, and union-find with path compression are all recursive by nature. Almost every non-trivial graph algorithm you will write for the rest of this course either <strong>is</strong> a recursion or <strong>was</strong> a recursion converted to an explicit stack.</p>
+<p>The subtlety is that recursion in CP is not the recursion of textbooks. In a contest you are under an 8 MB stack, a 1 s time limit, and a judge that compiles your code with <code>-O2</code> — which changes how deep you can recurse and how much the compiler inlines. This article covers the parts that actually bite: <strong>passing parameters cheaply, understanding stack frames, memoization, and converting recursion to iteration when depth matters</strong>.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="intro-to-cpp.md">Introduction to C++</a> — <code>-O2</code>, the CP template.</li>
+<li><a href="io-and-data-types.html">I/O and Data Types</a> — <code>int</code> vs <code>long long</code>, <code>size_t</code>, overflow.</li>
+<li><a href="conditionals-and-loops.html">Conditionals and Loops</a> — loop idioms.</li>
+<li><a href="arrays-and-vectors.html">Arrays and Vectors</a> — global arrays, <code>vector</code>, contiguous memory, iterator invalidation.</li>
+</ul>
+<h2 id="functions-what-actually-matters-in-cp">Functions — What Actually Matters in CP<a class="headerlink" href="#functions-what-actually-matters-in-cp" title="Permanent link">&para;</a></h2>
+<p>The syntax of <code>int f(int x) { return x + 1; }</code> is something you already know. What follows are the parts that determine whether your solution passes or TLEs, and the parts that produce silent bugs.</p>
+<h3 id="the-global-state-idiom">The global-state idiom<a class="headerlink" href="#the-global-state-idiom" title="Permanent link">&para;</a></h3>
+<p>In CP, functions almost never receive their state through parameters. Instead, state lives in <strong>global arrays</strong> declared once at file scope, and functions read/write them directly:</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200'005</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">       </span><span class="c1">// adjacency list</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">              </span><span class="c1">// BFS distances</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">          </span><span class="c1">// DFS visited flags</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is deliberately <em>not</em> the "clean" way to write software, but it is the CP way, for three reasons:</p>
+<ol>
+<li><strong>No copying.</strong> Passing a <code>vector&lt;vector&lt;int&gt;&gt;</code> by value would copy the entire graph on every call. Global access is a memory read, not a copy.</li>
+<li><strong>No stack frame bloat.</strong> Every local variable added to a recursive function's signature enlarges its stack frame, reducing the recursion depth you can afford before crashing.</li>
+<li><strong>Contest speed.</strong> You write <code>dfs(u)</code>, not <code>dfs(u, adj, dist, visited, parent, ...)</code>. Fewer characters means fewer bugs under time pressure.</li>
+</ol>
+<p>The one parameter that <em>does</em> travel through recursion is the <strong>parent</strong> — used to avoid revisiting the previous node in a tree DFS:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// p = parent of u; 0 or -1 at the root</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="pass-by-value-reference-and-const-reference-the-cp-relevant-rules">Pass by value, reference, and const reference — the CP-relevant rules<a class="headerlink" href="#pass-by-value-reference-and-const-reference-the-cp-relevant-rules" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">by_value</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w">            </span><span class="c1">// COPIES the entire vector — usually a bug</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">by_reference</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w">       </span><span class="c1">// allows modification, no copy</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">by_const_ref</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w"> </span><span class="c1">// read-only, no copy — the default for input</span>
+</code></pre></div>
+<p>Three practical rules:</p>
+<ul>
+<li><strong>Small primitives (<code>int</code>, <code>long long</code>, <code>double</code>, <code>char</code>, <code>bool</code>, small <code>pair</code>) — pass by value.</strong> Copying 8 bytes is cheaper than dereferencing a reference.</li>
+<li><strong>Containers or structs, read-only — pass by <code>const&amp;</code>.</strong> This is the single most impactful habit for performance: a <code>const vector&lt;int&gt;&amp;</code> on a <span class="arithmatex">$10^5$</span>-element vector is O(1) instead of O(n) to pass.</li>
+<li><strong>Containers or structs, mutated — pass by <code>&amp;</code>.</strong> Same idea, allowing writes.</li>
+</ul>
+<p>The performance difference is not marginal:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">sum_by_value</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// O(n) copy on every call</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">sum_by_ref</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// O(1) pass</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For a loop that calls this <span class="arithmatex">$10^5$</span> times on vectors of size <span class="arithmatex">$10^5$</span>, the first version does <span class="arithmatex">$10^{10}$</span> extra element copies — that's a TLE the compiler cannot save you from.</p>
+<h3 id="return-by-value-rvo-makes-it-free">Return by value — RVO makes it free<a class="headerlink" href="#return-by-value-rvo-makes-it-free" title="Permanent link">&para;</a></h3>
+<p>Returning a <code>vector</code> or <code>string</code> from a function <em>looks</em> expensive but usually is not. C++17 guarantees <strong>Return Value Optimization (RVO)</strong> in the common case — the return object is constructed directly in the caller's storage, with no copy and no move:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">make_range</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">iota</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w">   </span><span class="c1">// No copy — constructed in the caller's slot (C++17 guaranteed)</span>
+<span class="p">}</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_range</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div>
+<p>In CP, returning a <code>pair&lt;int, int&gt;</code>, <code>tuple</code>, or <code>vector</code> from a helper is idiomatic and free.</p>
+<h3 id="inline-the-semantic-meaning-not-the-optimization-hint"><code>inline</code> — the semantic meaning, not the optimization hint<a class="headerlink" href="#inline-the-semantic-meaning-not-the-optimization-hint" title="Permanent link">&para;</a></h3>
+<p>Most tutorials describe <code>inline</code> as "a hint to the compiler to insert the function body at the call site". That was true in 1995. <strong>In modern C++, <code>inline</code> primarily has a semantic meaning</strong>: it allows a function to be defined in a header file and included in multiple translation units without violating the One Definition Rule (ODR). The optimization hint is a legacy side effect — GCC's <code>-O2</code> decides what to inline based on cost models, largely ignoring your <code>inline</code> keyword.</p>
+<p>For CP, this means:</p>
+<ul>
+<li><strong>Don't sprinkle <code>inline</code></strong> to "make your code faster". It doesn't.</li>
+<li><strong>Use <code>inline</code> on functions defined in headers</strong> if you ever split your code into multiple files. For single-file contest submissions, this never applies.</li>
+<li><strong>Trust <code>-O2</code></strong> to inline small functions. It does, aggressively.</li>
+</ul>
+<blockquote>
+<p><strong>Pitfall.</strong> <code>-O2</code> inlines almost everything, which means <strong>your stack frames for inlineable functions disappear</strong> — useful for reducing recursion depth, but it also means your <code>static</code> variables inside inlined functions may behave unexpectedly if you rely on function identity. Don't use <code>static</code> inside recursive functions (see pitfalls below).</p>
+</blockquote>
+<h3 id="function-templates-cheap-generics">Function templates — cheap generics<a class="headerlink" href="#function-templates-cheap-generics" title="Permanent link">&para;</a></h3>
+<p>CP code often needs the same function for <code>int</code> and <code>long long</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">T</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is the standard CP idiom: <code>gcd&lt;int&gt;(12, 18)</code> and <code>gcd&lt;long long&gt;(1e18, 1e9)</code> compile to two independent, fully-inlined functions. <code>__gcd</code> from <code>&lt;algorithm&gt;</code> and <code>std::gcd</code> from <code>&lt;numeric&gt;</code> work too, but writing your own template is trivial and avoids namespace conflicts.</p>
+<h3 id="default-arguments-a-small-caution">Default arguments — a small caution<a class="headerlink" href="#default-arguments-a-small-caution" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">modpow</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'007</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Convenient, but default arguments are <strong>evaluated at the call site</strong>, not at the definition, so a default that references a global constant must be visible at every call site. In single-file CP code this is fine; in multi-file builds it can produce surprises. Also, defaults only work right-to-left, so once you add one defaulted parameter, all following parameters must also be defaulted.</p>
+<h2 id="recursion-the-mental-model">Recursion — the mental model<a class="headerlink" href="#recursion-the-mental-model" title="Permanent link">&para;</a></h2>
+<p>A recursive function is just a function that calls itself. What makes recursion powerful in CP is that the <strong>call stack acts as an implicit data structure</strong> — it remembers the path from the root to the current state without any explicit bookkeeping in your code.</p>
+<p>When you write:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>the compiler emits code that, on each call, pushes a <strong>frame</strong> onto the stack containing the current <code>u</code> and the loop iterator. When <code>dfs(v)</code> returns, <code>u</code> and the iterator are restored automatically. You get the "path from the current node to the DFS root" for free — without keeping an explicit vector of ancestors.</p>
+<p>This is why recursion is elegant for trees, DFS, and backtracking, and awkward for simple loops. The cost is that every recursive call consumes <strong>real memory</strong> on the stack, and the depth of that stack is limited.</p>
+<h3 id="stack-frames-why-depth-is-limited">Stack frames — why depth is limited<a class="headerlink" href="#stack-frames-why-depth-is-limited" title="Permanent link">&para;</a></h3>
+<p>Each recursive call pushes a stack frame onto the <strong>call stack</strong>. The frame contains:</p>
+<ul>
+<li>Return address (8 bytes on x86-64).</li>
+<li>Saved registers (variable; often 0–48 bytes).</li>
+<li>Function parameters not passed in registers.</li>
+<li>Local variables (<code>int</code>, <code>long long</code>, small arrays).</li>
+</ul>
+<p>Typical frame sizes for competitive C++ functions:</p>
+<table>
+<thead>
+<tr>
+<th>Function body</th>
+<th>Approximate frame size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty function, few <code>int</code> locals</td>
+<td>~32 bytes</td>
+</tr>
+<tr>
+<td>Function with 5–10 locals</td>
+<td>~64–128 bytes</td>
+</tr>
+<tr>
+<td>Function with a local array <code>int a[100]</code></td>
+<td>~400+ bytes</td>
+</tr>
+<tr>
+<td>Function with a local <code>vector&lt;int&gt; v</code></td>
+<td>~24 bytes (the vector itself is on heap)</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>stack limit</strong> on Linux is typically <strong>8 MB</strong> (<code>ulimit -s</code>). So:</p>
+<ul>
+<li>~32-byte frames → depth ≈ 250,000</li>
+<li>~64-byte frames → depth ≈ 130,000</li>
+<li>~128-byte frames → depth ≈ 65,000</li>
+</ul>
+<p>This is why <strong>recursion to depth <span class="arithmatex">$10^5$</span> works on most judges but not all</strong>, and why depth <span class="arithmatex">$10^6$</span> reliably segfaults.</p>
+<blockquote>
+<p><strong>The real numbers per judge.</strong></p>
+<ul>
+<li><strong>Codeforces</strong>: submissions run in a <strong>thread with a 256 MB stack</strong>, not the default 8 MB. Depth <span class="arithmatex">$10^6$</span> typically works; depth <span class="arithmatex">$10^7$</span> is risky.</li>
+<li><strong>AtCoder</strong>: 1024 MB stack by default. Very forgiving; large recursion works.</li>
+<li><strong>CSES</strong>: 512 MB; depth <span class="arithmatex">$10^6$</span> is fine.</li>
+<li><strong>Many other judges</strong> (SPOJ, some UVa mirrors, custom judges): default 8 MB. Depth beyond ~<span class="arithmatex">$10^5$</span> crashes unpredictably.</li>
+<li><strong>Local testing on Linux</strong>: <code>ulimit -s</code> is typically 8192 (8 MB). See the pitfall below.</li>
+</ul>
+</blockquote>
+<p><strong>Rule of thumb</strong>: if the problem has <span class="arithmatex">$n \le 10^5$</span> and the recursion depth is bounded by <span class="arithmatex">$n$</span> (e.g., DFS on a tree), you are safe on major judges. For <span class="arithmatex">$n \le 10^6$</span>, <strong>convert to iterative</strong> unless you know the judge gives a large stack.</p>
+<h3 id="the-setrlimit-myth">The <code>setrlimit</code> myth<a class="headerlink" href="#the-setrlimit-myth" title="Permanent link">&para;</a></h3>
+<p>Many CP tutorials (including the original version of this article) suggest:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/resource.h&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">increase_stack</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">rlim_t</span><span class="w"> </span><span class="n">kStackSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">rlimit</span><span class="w"> </span><span class="n">rl</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getrlimit</span><span class="p">(</span><span class="n">RLIMIT_STACK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rl</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rl</span><span class="p">.</span><span class="n">rlim_cur</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">kStackSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rl</span><span class="p">.</span><span class="n">rlim_cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kStackSize</span><span class="p">;</span>
+<span class="w">        </span><span class="n">setrlimit</span><span class="p">(</span><span class="n">RLIMIT_STACK</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rl</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>This does not work on modern Linux.</strong> The main thread's stack is allocated by the kernel at program startup, based on the <code>RLIMIT_STACK</code> value at <code>exec</code> time. Calling <code>setrlimit</code> after the program has started <strong>does not enlarge the already-mapped stack</strong> — it only changes the limit for threads created <em>afterwards</em>. On a judge that compiles and runs your code with the default 8 MB, this function does nothing.</p>
+<p>The reasons this code persists in tutorial-land:</p>
+<ul>
+<li>It's a copy of a copy of a hack from 20 years ago, when the situation was different.</li>
+<li>Some judges (notably Codeforces) <strong>do</strong> run submissions in a thread with a pre-set large stack size — but that is done by the <strong>judge's wrapper</strong>, not by your program calling <code>setrlimit</code>.</li>
+<li>On old Linux kernels the main stack could still grow up to the new <code>rlim_cur</code> if <code>setrlimit</code> was called early. This is no longer reliable.</li>
+</ul>
+<p><strong>The correct advice</strong>: <strong>do not rely on <code>setrlimit</code></strong>. Either (a) assume the judge gives you enough stack for the depth implied by the problem constraints, or (b) rewrite the algorithm iteratively. Do not add this function to your template.</p>
+<h3 id="converting-recursion-to-iteration">Converting recursion to iteration<a class="headerlink" href="#converting-recursion-to-iteration" title="Permanent link">&para;</a></h3>
+<p>When depth is a real risk, convert to an explicit stack. The transformation is mechanical:</p>
+<p><strong>Recursive DFS:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Iterative DFS, same behavior (pre-order):</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs_iter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">start</span><span class="p">};</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stack</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">stack</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">])</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The differences to be aware of:</p>
+<ul>
+<li><strong>Pre-order vs post-order.</strong> The iterative version processes the node <em>when popped</em>, which equals pre-order. If you need post-order (process node <em>after</em> its children), push a <code>(u, phase)</code> pair or push <code>u</code> twice — once as "to process", once as "to finish".</li>
+<li><strong>Memory.</strong> The explicit stack uses heap, not the call stack, so depth is limited only by available memory — effectively unlimited for CP.</li>
+<li><strong>Performance.</strong> Iterative DFS is typically <strong>1.5–3× faster</strong> than recursive DFS, because there is no call/return overhead and no register saves per frame. For <span class="arithmatex">$10^6$</span>-node graphs, this matters.</li>
+<li><strong>Clarity.</strong> Recursive DFS is easier to write and read for most patterns. Use iterative only when depth is a concern, or when profiling shows the recursive version is too slow.</li>
+</ul>
+<p>For <strong>BFS</strong>, there is no recursive equivalent that makes sense (BFS is inherently level-by-level), so you will always write it iteratively with a queue.</p>
+<h3 id="memoization-the-top-down-dp-pattern">Memoization — the top-down DP pattern<a class="headerlink" href="#memoization-the-top-down-dp-pattern" title="Permanent link">&para;</a></h3>
+<p>Recursion becomes a <strong>dynamic programming technique</strong> when you cache the result of each subproblem. This is called <strong>top-down DP</strong> or <strong>memoization</strong>, and it is often the fastest way to code a DP when you are not sure which states are reachable:</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100'005</span><span class="p">;</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">memo</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">          </span><span class="c1">// 0 means "not computed" — valid only if 0 isn't a possible answer</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">computed</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">           </span><span class="c1">// explicit flag — the safe way</span>
+
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">computed</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="n">computed</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The sentinel choice matters:</p>
+<ul>
+<li><strong><code>0</code> as sentinel</strong> works only if <code>0</code> is never a legitimate answer. Many CP solutions use this (e.g., counting paths where every count is ≥ 1).</li>
+<li><strong><code>-1</code> as sentinel</strong> works for non-negative answers, but not for signed sums that could be negative.</li>
+<li><strong>A separate <code>bool[]</code></strong> works universally and costs at most one array. <strong>Use it when in doubt.</strong></li>
+</ul>
+<p>For 2D or larger state spaces, use a <code>vector</code> of the right dimension:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">memo</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">));</span>
+
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">dp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memo</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">memo</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Pitfall.</strong> <code>vector&lt;vector&lt;long long&gt;&gt;</code> allocates one heap block per row — the same "row discontiguity" problem from the previous article. For DP tables accessed in nested loops, a <strong>flat vector</strong> (<code>vector&lt;long long&gt; memo((n+1)*(m+1), -1)</code> with index <code>i*(m+1)+j</code>) is faster and saves allocation overhead. For DP tables accessed by sparse recursion, the difference is marginal.</p>
+</blockquote>
+<h3 id="recursion-o2-what-changes">Recursion + <code>-O2</code> — what changes<a class="headerlink" href="#recursion-o2-what-changes" title="Permanent link">&para;</a></h3>
+<p>At <code>-O2</code>, GCC performs <strong>tail-call optimization</strong> for self-recursive functions in tail position. A tail call is a recursive call that is the <strong>last operation</strong> of the function:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Tail-recursive (TCO possible): recursive call is the last thing</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">fact_tail</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">acc</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fact_tail</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// NOT tail-recursive: multiplication happens after the recursive call returns</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>GCC at <code>-O2</code> <strong>does</strong> transform tail-recursive functions into loops, eliminating the stack growth. This makes the tail-recursive version safe for arbitrarily deep recursion — but <strong>only for self-recursion</strong>. Mutual recursion (<code>f</code> calls <code>g</code>, <code>g</code> calls <code>f</code>) and non-tail recursion are <strong>not</strong> optimized.</p>
+<p><strong>Do not rely on TCO in CP:</strong></p>
+<ol>
+<li>The transformation is not guaranteed by the C++ standard.</li>
+<li>Judges that add sanitizers or debug flags may disable it.</li>
+<li>Many functions you want to write (DFS, backtracking, merge sort) are not tail-recursive, so TCO is irrelevant.</li>
+</ol>
+<p>The practical rule: <strong>if depth is a concern, write the iterative version.</strong> Relying on TCO for correctness is a source of runtime crashes that are impossible to reproduce locally.</p>
+<h3 id="the-stdfunction-trap">The <code>std::function</code> trap<a class="headerlink" href="#the-stdfunction-trap" title="Permanent link">&para;</a></h3>
+<p>When you need a recursive lambda (e.g., a one-off DFS passed to <code>std::sort</code> or captured in another function), the instinct is:</p>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+<p>This compiles and works, but has three costs:</p>
+<ol>
+<li><strong>Heap allocation.</strong> <code>std::function</code> type-erases the lambda, which typically requires a heap allocation on construction. For a <span class="arithmatex">$10^6$</span>-node graph with one DFS, the allocation is once; for nested lambdas called millions of times, it adds up.</li>
+<li><strong>Indirection.</strong> Every call to <code>dfs(v)</code> goes through a virtual function pointer, adding ~5–10 ns overhead per call. On a <span class="arithmatex">$10^6$</span>-call DFS, that is 5–10 ms — measurable.</li>
+<li><strong>Inlining blocked.</strong> The compiler cannot inline a <code>std::function</code> call, so the body is a real function call with all the associated cost.</li>
+</ol>
+<p><strong>For one-off DFS</strong>, this is usually acceptable. <strong>For hot recursive code</strong>, use one of:</p>
+<ul>
+<li><strong>A global function</strong> (the standard CP choice).</li>
+<li><strong>A <code>struct</code> with <code>operator()</code></strong> (zero-overhead, inlinable).</li>
+<li><strong>A lambda with <code>auto</code></strong> using the <code>this</code>-trick (C++23 <code>deducing this</code>) or the explicit self-pass pattern:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">dfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">self</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">dfs</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+<p>This compiles to essentially the same code as a named function — no heap allocation, no indirection, fully inlinable.</p>
+<h2 id="patterns-you-will-reuse-constantly">Patterns You Will Reuse Constantly<a class="headerlink" href="#patterns-you-will-reuse-constantly" title="Permanent link">&para;</a></h2>
+<h3 id="dfs-on-a-tree-with-parent">DFS on a tree, with parent<a class="headerlink" href="#dfs-on-a-tree-with-parent" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>p</code> (parent) parameter replaces a <code>visited[]</code> array for trees: since trees have no cycles, avoiding the parent is sufficient to avoid revisits. This is faster and uses one fewer array than the general graph DFS.</p>
+<h3 id="dfs-on-a-general-graph">DFS on a general graph<a class="headerlink" href="#dfs-on-a-general-graph" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For general graphs (with cycles), <code>visited[]</code> is necessary. If the graph is disconnected, call <code>dfs(u)</code> for every unvisited <code>u</code>.</p>
+<h3 id="backtracking-with-pruning">Backtracking with pruning<a class="headerlink" href="#backtracking-with-pruning" title="Permanent link">&para;</a></h3>
+<p>Backtracking is a DFS over a <strong>decision tree</strong>, where each node represents a partial solution and each edge a choice. The template is:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">backtrack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">choices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_complete</span><span class="p">(</span><span class="n">state</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">record</span><span class="p">(</span><span class="n">state</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">choices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">feasible</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w">   </span><span class="c1">// pruning — the key to speed</span>
+<span class="w">        </span><span class="n">apply</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">        </span><span class="n">backtrack</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">next_choices</span><span class="p">);</span>
+<span class="w">        </span><span class="n">undo</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w">                       </span><span class="c1">// restore state — the "backtrack"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The canonical example is <strong>N-Queens</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queens</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w">       </span><span class="c1">// queens[r] = column of the queen in row r</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">solutions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">can_place</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">prev_r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">prev_r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">prev_r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">prev_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queens</span><span class="p">[</span><span class="n">prev_r</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prev_c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">                    </span><span class="c1">// same column</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">prev_c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prev_r</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// same diagonal</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">++</span><span class="n">solutions</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">can_place</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w">   </span><span class="c1">// prune — only try feasible columns</span>
+<span class="w">        </span><span class="n">queens</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">        </span><span class="n">solve</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Two observations that matter more than the template itself:</p>
+<ol>
+<li><strong>Pruning is everything.</strong> Without the <code>if (!can_place(...))</code> check, N-Queens would explore <span class="arithmatex">$n^n$</span> possibilities. With pruning, <span class="arithmatex">$n = 8$</span> explores only 92 solutions, and <span class="arithmatex">$n = 12$</span> is fast.</li>
+<li><strong><code>undo</code> is the source of bugs.</strong> Every <code>apply</code> must have a matching <code>undo</code> before the recursion returns. Missing it produces nonsense results that are painful to debug. The "push/backtrack with <code>pop_back</code>" pattern in the original subset example is the simplest case: <code>current.push_back(x)</code> must always be followed by <code>current.pop_back()</code> after the recursive call.</li>
+</ol>
+<h3 id="recursive-segment-tree">Recursive segment tree<a class="headerlink" href="#recursive-segment-tree" title="Permanent link">&para;</a></h3>
+<p>Segment trees are naturally recursive: a tree node represents a range <code>[l, r]</code>, and the children represent <code>[l, m]</code> and <code>[m+1, r]</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100'005</span><span class="p">;</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">tree</span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">tree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">];</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">build</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="n">build</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tree</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ql</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">qr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">qr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ql</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">              </span><span class="c1">// disjoint</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ql</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">qr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">tree</span><span class="p">[</span><span class="n">node</span><span class="p">];</span><span class="w">   </span><span class="c1">// fully covered</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">query</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">ql</span><span class="p">,</span><span class="w"> </span><span class="n">qr</span><span class="p">)</span>
+<span class="w">         </span><span class="o">+</span><span class="w"> </span><span class="n">query</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">ql</span><span class="p">,</span><span class="w"> </span><span class="n">qr</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The recursion depth is <span class="arithmatex">$O(\log n)$</span>, so no stack concerns — a segment tree on <span class="arithmatex">$10^6$</span> elements has depth ~20. This is one of the cases where recursion is <strong>always</strong> the right choice: the iterative version is a mess of bit manipulation and barely faster.</p>
+<h3 id="recursive-union-find-with-path-compression">Recursive union-find with path compression<a class="headerlink" href="#recursive-union-find-with-path-compression" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">MAXN</span><span class="p">],</span><span class="w"> </span><span class="n">sz</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span><span class="w">   </span><span class="c1">// path compression</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>parent[x] = find(parent[x])</code> line is the <strong>path compression</strong>: it flattens the tree by making every node point directly to its root. The resulting amortized cost is nearly <span class="arithmatex">$O(1)$</span> per query, and the recursion depth is bounded by the rank (logarithmic before compression, <span class="arithmatex">$\le \log n$</span> after). <strong>This is safe</strong> — depth never exceeds 20 for <span class="arithmatex">$n = 10^6$</span>.</p>
+<p>The iterative version is slightly faster:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]];</span><span class="w">   </span><span class="c1">// path halving</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For most CP code, the recursive version is fine — the depth bound guarantees no overflow.</p>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Typical cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function call, small body, inlined (<code>-O2</code>)</td>
+<td>0 (absorbed into caller)</td>
+</tr>
+<tr>
+<td>Function call, non-inlined</td>
+<td>~2–5 ns</td>
+</tr>
+<tr>
+<td>Recursive call, ~64-byte frame</td>
+<td>~5–10 ns + stack pointer adjustment</td>
+</tr>
+<tr>
+<td>Recursive call via <code>std::function</code></td>
+<td>~10–15 ns + heap lookup</td>
+</tr>
+<tr>
+<td>Memoized recursive DP (hit)</td>
+<td>~5 ns for the array lookup</td>
+</tr>
+<tr>
+<td>Memoized recursive DP (miss)</td>
+<td>~100 ns + the work of the subproblem</td>
+</tr>
+<tr>
+<td>Iterative DFS (vs recursive)</td>
+<td><strong>1.5–3× faster</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>When recursion is the right choice:</strong></p>
+<ul>
+<li>Depth is small or bounded by <span class="arithmatex">$O(\log n)$</span> (segment trees, DSU with path compression, divide-and-conquer on arrays).</li>
+<li>The problem is naturally recursive (DFS on trees, backtracking).</li>
+<li>You are prototyping and clarity matters more than 30% speed.</li>
+</ul>
+<p><strong>When recursion is the wrong choice:</strong></p>
+<ul>
+<li>Depth could approach <span class="arithmatex">$10^5$</span> or <span class="arithmatex">$10^6$</span> and the judge may have a small stack (SPOJ, some UVa).</li>
+<li>The recursive call is on the hot path (inner loop of a <span class="arithmatex">$10^7$</span>-iteration computation).</li>
+<li>You are writing BFS or any algorithm that is inherently iterative.</li>
+</ul>
+<p><strong>When it does not matter:</strong></p>
+<ul>
+<li>Memoized DP where the number of states is small but the transitions are cheap. The recursion depth is bounded by the state dimension, usually small.</li>
+<li>Segment trees, DSU, and other <span class="arithmatex">$O(\log n)$</span>-depth structures.</li>
+</ul>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>Checklist for when a solution with functions or recursion WAs, TLEs, or crashes:</p>
+<ol>
+<li><strong>Missing base case</strong> — infinite recursion → stack overflow (segfault, or silent crash on some judges).</li>
+<li><strong><code>int</code> overflow in recursive factorial</strong> — <code>21!</code> overflows <code>long long</code>. Compute factorials modulo a prime, or use <code>__int128</code>, or use big-int emulation.</li>
+<li><strong>Naive recursive Fibonacci</strong> — <span class="arithmatex">$O(\phi^n)$</span> calls, impractical for <span class="arithmatex">$n &gt; 40$</span>. Use iterative <span class="arithmatex">$O(n)$</span> or matrix exponentiation <span class="arithmatex">$O(\log n)$</span>.</li>
+<li><strong><code>setrlimit</code> doesn't increase the main thread stack</strong> — modern Linux ignores it after startup. Don't rely on it.</li>
+<li><strong>Default stack is 8 MB</strong> — a 100,000-deep recursion with 64-byte frames uses ~6 MB; a 1,000,000-deep recursion segfaults.</li>
+<li><strong>Passing a container by value</strong> — O(n) copy per call; use <code>const&amp;</code>.</li>
+<li><strong><code>std::function</code> for hot recursion</strong> — heap allocation + indirection; use a global function or self-pass lambda.</li>
+<li><strong>Missing <code>undo</code> in backtracking</strong> — a <code>push_back</code> without a matching <code>pop_back</code> produces garbage.</li>
+<li><strong><code>static</code> variables inside recursive functions</strong> — the static is shared across all recursion levels, not per-frame. This is almost never what you want.</li>
+<li><strong><code>vector&lt;bool&gt;</code> in a <code>visited</code> array</strong> — proxy references; use <code>vector&lt;char&gt;</code> or global <code>bool[]</code>.</li>
+<li><strong>Recursion depth in a tree chain</strong> — a path graph of <span class="arithmatex">$10^5$</span> nodes is depth <span class="arithmatex">$10^5$</span>; on judges with 8 MB stacks, this crashes. Convert to iterative DFS.</li>
+<li><strong>Modifying a container inside recursive iteration</strong> — invalidation; same as the loop pitfall from the previous article.</li>
+<li><strong>Missing parent parameter in tree DFS</strong> — you revisit the parent endlessly if the graph is a tree and you have no <code>visited[]</code> guard.</li>
+<li><strong><code>visited</code> set after the recursive call instead of before</strong> — leads to revisiting the node during recursion, producing cycles or exponential blowup.</li>
+<li><strong>Recursive segment tree on <span class="arithmatex">$n = 0$</span></strong> — <code>build(1, 0, -1)</code> recurses forever; guard with <code>if (n == 0) return;</code>.</li>
+<li><strong>Memoization with <code>-1</code> sentinel when <code>-1</code> is a valid answer</strong> — false "already computed" hits. Use a <code>bool</code> flag array.</li>
+<li><strong>Overlapping state in memoization</strong> — memoizing on the wrong key (e.g., memoizing <code>solve(i)</code> when the state is actually <code>(i, j)</code>) produces wrong answers silently.</li>
+<li><strong>Recursive <code>sort</code> comparator</strong> — the comparator must be a strict weak ordering; do not call <code>sort</code> recursively inside a comparator.</li>
+<li><strong>Tail-recursive Fibonacci</strong> — the transformation requires an accumulator; naive <code>fib(n-1) + fib(n-2)</code> is not tail-recursive and gets no TCO.</li>
+<li><strong>Assuming <code>inline</code> makes code faster</strong> — GCC's <code>-O2</code> decides; the keyword is a semantic tool, not a performance tool.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Functions in CP read state from <strong>global arrays</strong>, not parameters. Pass only the parent (tree DFS) or small indices.</li>
+<li><strong>Always pass containers by <code>const&amp;</code></strong> unless you intend to modify them. The performance difference is not marginal.</li>
+<li>Return by value is free thanks to RVO; returning a <code>vector</code> from a helper costs nothing.</li>
+<li><code>inline</code> is a semantic keyword (ODR), not a performance hint. Trust <code>-O2</code> to inline small functions.</li>
+<li>Each recursive call uses a <strong>real stack frame</strong> (~32–128 bytes) on an <strong>8 MB default stack</strong>. Depth above ~<span class="arithmatex">$10^5$</span> is risky on judges without large stacks.</li>
+<li><strong>Codeforces gives 256 MB stack; AtCoder ~1 GB; many smaller judges give the default 8 MB.</strong> Assume 8 MB unless you know otherwise.</li>
+<li><strong><code>setrlimit</code> does not enlarge the main thread stack</strong> on modern Linux. Do not rely on it. Convert to iterative when depth matters.</li>
+<li><strong>Memoization turns recursion into top-down DP.</strong> Choose the sentinel (<code>0</code>, <code>-1</code>, or explicit <code>bool[]</code>) based on the answer range.</li>
+<li>Recursion is <strong>always right</strong> for segment trees, DSU, and divide-and-conquer with <span class="arithmatex">$O(\log n)$</span> depth. It is <strong>usually right</strong> for DFS and backtracking. It is <strong>almost never right</strong> for depth <span class="arithmatex">$10^6$</span> without an explicit stack.</li>
+<li><strong>Backtracking = recursion + apply + undo.</strong> Every <code>push_back</code> must have its <code>pop_back</code>.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://cses.fi/problemset/task/1666">CSES — Building Roads</a> — connected components via DFS; test the recursive version against an iterative one on a chain input.</li>
+<li><a href="https://cses.fi/problemset/task/1674">CSES — Subordinates</a> — tree DP via recursion; small depth, ideal for learning the pattern.</li>
+<li><a href="https://cses.fi/problemset/task/1131">CSES — Tree Diameter</a> — two DFS passes; recursion depth equals the longest path — test both forms.</li>
+<li><a href="https://codeforces.com/problemset/problem/4/C">Codeforces 4C — Registration System</a> — not recursion, but good practice with <code>map</code> lookups inside loops that resemble recursion.</li>
+<li><a href="https://cses.fi/problemset/task/1624">CSES — N-Queens</a> — classic backtracking with pruning; the canonical DFS-with-undo problem.</li>
+<li><a href="https://codeforces.com/problemset/problem/1526/C1">Codeforces 1526C1 — Potions (Easy)</a> — iteratively re-derives a greedy result; a good contrast with the recursive DP formulation.</li>
+<li><a href="https://cses.fi/problemset/task/1687">CSES — Company Queries I</a> — binary lifting on trees; the classic case where an <span class="arithmatex">$O(\log n)$</span> recursive formulation is replaced with an iterative doubling table.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/functions">cppreference — Functions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/utility/functional/function">cppreference — <code>std::function</code></a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">GCC — Options that control optimization (<code>-O2</code>, <code>-finline-functions</code>)</a></li>
+<li><a href="https://stackoverflow.com/questions/2279052/increase-stack-size-in-linux-with-setrlimit">Stack Overflow — Does <code>setrlimit(RLIMIT_STACK)</code> work after program start?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tail_call">Wikipedia — Tail call</a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="stl-basics.html">STL Basics</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

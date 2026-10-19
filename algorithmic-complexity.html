@@ -1,0 +1,1549 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="stl-basics.html">
+      
+      
+        <link rel="next" href="practice-and-problems.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Algorithmic Complexity - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#algorithmic-complexity" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Algorithmic Complexity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="algorithmic-complexity.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-complexity-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Complexity Measures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asymptotic-notation-big-o-big-omega-big-theta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asymptotic Notation — Big-O, Big-Omega, Big-Theta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-time-complexities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Time Complexities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculating-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculating Complexity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calculating Complexity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-1-sequential-adds-nested-multiplies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 1 — Sequential adds, nested multiplies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-2-loops-halved-or-doubled-logarithmic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 2 — Loops halved or doubled → logarithmic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-3-loops-with-non-trivial-step-sizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 3 — Loops with non-trivial step sizes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-4-recursion-via-recurrence-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 4 — Recursion via recurrence relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-5-memory-and-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 5 — Memory and stack
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amortized-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amortized Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity-of-stl-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complexity of STL Operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-constraints-to-complexities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Constraints to Complexities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Benchmarks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space-time-tradeoffs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Space-Time Tradeoffs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="algorithmic-complexity">Algorithmic Complexity<a class="headerlink" href="#algorithmic-complexity" title="Permanent link">&para;</a></h1>
+<p>Every competitive programming problem is a negotiation between what you want to compute and what the judge will let you compute. Complexity analysis is the tool that makes that negotiation explicit: it tells you, <em>before you write a single line of code</em>, whether your planned algorithm will fit in the time and memory limit. A contestant who can look at <code>n ≤ 10^5</code> and immediately think "<span class="arithmatex">$O(n \log n)$</span> required, <span class="arithmatex">$O(n)$</span> ideal, <span class="arithmatex">$O(n \sqrt{n})$</span> borderline, <span class="arithmatex">$O(n^2)$</span> impossible" has already solved half the problem — they know which algorithmic family to reach for. A contestant who cannot will spend thirty minutes coding an <span class="arithmatex">$O(n^2)$</span> DP that TLEs on test 5.</p>
+<p>This article covers the notation, the calculation rules, the STL-specific constants that Big-O hides, and — most importantly — the <strong>practical mapping between constraints and complexities</strong> that judges actually enforce.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="intro-to-cpp.md">Introduction to C++</a> — <code>-O2</code>, the CP template.</li>
+<li><a href="io-and-data-types.html">I/O and Data Types</a> — <code>int</code> vs <code>long long</code>, the overflow traps.</li>
+<li><a href="conditionals-and-loops.html">Conditionals and Loops</a> — loop idioms, off-by-one.</li>
+<li><a href="arrays-and-vectors.html">Arrays and Vectors</a> — contiguous memory, cache behavior.</li>
+<li><a href="functions-and-recursion.html">Functions and Recursion</a> — stack frames, recursion depth.</li>
+<li><a href="stl-basics.html">STL Basics</a> — containers and their asymptotic costs.</li>
+</ul>
+<h2 id="what-complexity-measures">What Complexity Measures<a class="headerlink" href="#what-complexity-measures" title="Permanent link">&para;</a></h2>
+<p>Algorithmic complexity measures <strong>how the resource consumption of an algorithm scales with input size <span class="arithmatex">$n$</span></strong>. Two resources matter in CP:</p>
+<ul>
+<li><strong>Time complexity</strong> — the number of elementary operations (roughly: CPU instructions) as a function of <span class="arithmatex">$n$</span>.</li>
+<li><strong>Space complexity</strong> — the amount of auxiliary memory (heap, stack, arrays) as a function of <span class="arithmatex">$n$</span>, <strong>excluding the input</strong> in most contest conventions.</li>
+</ul>
+<p>Why "scaling" and not "exact count"? Because exact counts depend on the machine, the compiler, the optimizer, and dozens of microarchitectural details. Two implementations of the same algorithm can differ by 10× in wall-clock time and still be "the same complexity". What is invariant across machines is the <strong>growth rate</strong>: doubling <span class="arithmatex">$n$</span> roughly quadruples the operations of an <span class="arithmatex">$O(n^2)$</span> algorithm, regardless of whether those operations take 1 ns or 10 ns.</p>
+<p>The judge cares about <strong>absolute time</strong> (typically 1–2 seconds), but you can only reason about <strong>relative growth</strong>. The bridge between them is the empirical fact that on modern judges, an <span class="arithmatex">$O(n)$</span> algorithm with a simple body does roughly <span class="arithmatex">$10^8$</span>–<span class="arithmatex">$10^9$</span> operations per second. This constant is stable enough across judges to be a design tool (more on this in the benchmarks section).</p>
+<h2 id="asymptotic-notation-big-o-big-omega-big-theta">Asymptotic Notation — Big-O, Big-Omega, Big-Theta<a class="headerlink" href="#asymptotic-notation-big-o-big-omega-big-theta" title="Permanent link">&para;</a></h2>
+<p>Most CP tutorials only teach Big-O. That is enough for choosing algorithms, but not for understanding why some comparisons are subtler than they look. Here is the full picture, briefly.</p>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Meaning</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">$O(f(n))$</span></td>
+<td><strong>Upper bound</strong>: <span class="arithmatex">$T(n) \le c \cdot f(n)$</span> for large <span class="arithmatex">$n$</span></td>
+<td>"<span class="arithmatex">$T$</span> grows <strong>no faster</strong> than <span class="arithmatex">$f$</span>"</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$\Omega(f(n))$</span></td>
+<td><strong>Lower bound</strong>: <span class="arithmatex">$T(n) \ge c \cdot f(n)$</span> for large <span class="arithmatex">$n$</span></td>
+<td>"<span class="arithmatex">$T$</span> grows <strong>at least as fast</strong> as <span class="arithmatex">$f$</span>"</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$\Theta(f(n))$</span></td>
+<td><strong>Tight bound</strong>: both <span class="arithmatex">$O(f)$</span> and <span class="arithmatex">$\Omega(f)$</span></td>
+<td>"<span class="arithmatex">$T$</span> grows <strong>exactly like</strong> <span class="arithmatex">$f$</span>"</td>
+</tr>
+</tbody>
+</table>
+<p>In competitive programming, when someone says "this algorithm is <span class="arithmatex">$O(n \log n)$</span>", they almost always mean <span class="arithmatex">$\Theta(n \log n)$</span> — the tight bound. Big-O is used as shorthand for "the dominant term". The distinction matters in a few places:</p>
+<ul>
+<li>Saying "bubble sort is <span class="arithmatex">$O(n^2)$</span>" is <strong>true but uninformative</strong> — it's also <span class="arithmatex">$O(n^3)$</span>, <span class="arithmatex">$O(2^n)$</span>, and <span class="arithmatex">$O(n!)$</span>, because Big-O is only an upper bound. The tight statement is <span class="arithmatex">$\Theta(n^2)$</span>.</li>
+<li>Saying "<code>unordered_map</code> lookup is <span class="arithmatex">$O(1)$</span>" is <strong>misleading</strong> — the worst case is <span class="arithmatex">$O(n)$</span> when every key collides. The honest statement is <strong>average <span class="arithmatex">$O(1)$</span>, worst <span class="arithmatex">$O(n)$</span></strong>. This matters enormously in CP (see the anti-hash section).</li>
+<li>Saying "<code>vector::push_back</code> is <span class="arithmatex">$O(1)$</span>" is <strong>imprecise</strong> — the honest statement is <strong>amortized <span class="arithmatex">$O(1)$</span></strong>: a single <code>push_back</code> can cost <span class="arithmatex">$O(n)$</span> when reallocation occurs, but the average over <span class="arithmatex">$n$</span> pushes is <span class="arithmatex">$O(1)$</span>.</li>
+</ul>
+<p>For design purposes, assume everyone means the tightest bound unless stated otherwise, and always ask "worst case or average?" when the answer involves hashing.</p>
+<h2 id="common-time-complexities">Common Time Complexities<a class="headerlink" href="#common-time-complexities" title="Permanent link">&para;</a></h2>
+<p>Listed in increasing order of growth. The rightmost columns tell you <strong>when each is viable under a 1–2 second limit</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Complexity</th>
+<th>Name</th>
+<th>Typical <span class="arithmatex">$n$</span> limit</th>
+<th>Common example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">$O(1)$</span></td>
+<td>constant</td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td>array index, <code>unordered_map</code> avg lookup, <code>bitset</code> count</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>logarithmic</td>
+<td>up to <span class="arithmatex">$10^{18}$</span> (integer math)</td>
+<td>binary search, <code>set::find</code>, bit length</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(\sqrt{n})$</span></td>
+<td>square root</td>
+<td><span class="arithmatex">$10^{12}$</span>–<span class="arithmatex">$10^{14}$</span></td>
+<td>trial division, sqrt decomposition, block algorithms</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>linear</td>
+<td><span class="arithmatex">$10^7$</span>–<span class="arithmatex">$10^8$</span></td>
+<td>array scan, prefix sum, BFS/DFS</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n \log n)$</span></td>
+<td>linearithmic</td>
+<td><span class="arithmatex">$10^5$</span>–<span class="arithmatex">$10^6$</span></td>
+<td>merge sort, <code>std::sort</code>, FFT, sieve of Eratosthenes</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n \sqrt{n})$</span></td>
+<td>—</td>
+<td><span class="arithmatex">$10^4$</span>–<span class="arithmatex">$10^5$</span></td>
+<td>Mo's algorithm, sqrt-decomposition on arrays</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n^2)$</span></td>
+<td>quadratic</td>
+<td><span class="arithmatex">$10^3$</span>–<span class="arithmatex">$10^4$</span></td>
+<td>double loop, Floyd–Warshall on dense, naive DP</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n^2 \log n)$</span></td>
+<td>—</td>
+<td><span class="arithmatex">$10^3$</span></td>
+<td>Fenwick tree 2D on medium <span class="arithmatex">$n$</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n^3)$</span></td>
+<td>cubic</td>
+<td><span class="arithmatex">$10^2$</span>–<span class="arithmatex">$500$</span></td>
+<td>Floyd–Warshall, matrix multiplication (naive), triple DP</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(2^n)$</span></td>
+<td>exponential</td>
+<td><span class="arithmatex">$n \le 20$</span> (subset enumeration)</td>
+<td>brute-force subsets, naive TSP</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n \cdot 2^n)$</span></td>
+<td>—</td>
+<td><span class="arithmatex">$n \le 18$</span></td>
+<td>bitmask DP</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$O(n!)$</span></td>
+<td>factorial</td>
+<td><span class="arithmatex">$n \le 10$</span>–<span class="arithmatex">$12$</span></td>
+<td>brute-force permutations, naive TSP</td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="arithmatex">$n$</span> limits are approximations for <strong>simple</strong> operations under <code>-O2</code> in 1–2 seconds. The actual threshold depends on the operation's constant factor — see the benchmarks section below.</p>
+<h2 id="calculating-complexity">Calculating Complexity<a class="headerlink" href="#calculating-complexity" title="Permanent link">&para;</a></h2>
+<h3 id="rule-1-sequential-adds-nested-multiplies">Rule 1 — Sequential adds, nested multiplies<a class="headerlink" href="#rule-1-sequential-adds-nested-multiplies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) */</span><span class="w"> </span><span class="p">}</span><span class="w">        </span><span class="c1">// O(n)</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w">                          </span><span class="c1">// O(n log n)</span>
+<span class="c1">// Total: O(n) + O(n log n) = O(n log n) — dominated by the larger term</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">                        </span><span class="c1">// n iterations</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) */</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// × m iterations</span>
+<span class="c1">// Total: O(n · m)</span>
+</code></pre></div>
+<p>The dominant term wins. <code>O(n^2 + n log n + n) = O(n^2)</code>. <strong>Lower-order terms are always dropped.</strong></p>
+<h3 id="rule-2-loops-halved-or-doubled-logarithmic">Rule 2 — Loops halved or doubled → logarithmic<a class="headerlink" href="#rule-2-loops-halved-or-doubled-logarithmic" title="Permanent link">&para;</a></h3>
+<p>If the loop variable is <strong>divided or multiplied by a constant</strong>, the loop runs <span class="arithmatex">$O(\log n)$</span> times:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) */</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// log_2(n) iterations</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) */</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// log_3(n) iterations</span>
+</code></pre></div>
+<p>The base of the logarithm does not matter for complexity (it's a constant factor), so both are <span class="arithmatex">$O(\log n)$</span>. In practice, base 2 is what you get from binary search, and <span class="arithmatex">$n = 10^{18}$</span> requires only <strong>60 iterations</strong>.</p>
+<h3 id="rule-3-loops-with-non-trivial-step-sizes">Rule 3 — Loops with non-trivial step sizes<a class="headerlink" href="#rule-3-loops-with-non-trivial-step-sizes" title="Permanent link">&para;</a></h3>
+<p>The outer loop runs <span class="arithmatex">$O(n)$</span> times but the inner loop runs fewer times depending on the outer index — a harmonic series:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) */</span><span class="w"> </span><span class="p">}</span>
+<span class="c1">// Inner total: n/1 + n/2 + n/3 + ... + n/n = n · H(n) ≈ n · ln(n) = O(n log n)</span>
+</code></pre></div>
+<p>This pattern appears in <strong>sieve-like algorithms</strong> and <strong>divisor enumeration</strong>. Recognizing it as <span class="arithmatex">$O(n \log n)$</span> (not <span class="arithmatex">$O(n^2)$</span>) is a common step in optimizing number-theoretic code.</p>
+<p>Another common pattern — <strong>two pointers</strong> on a sorted array:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="c1">// Although it looks like O(n^2) (nested loops), j only advances: total O(n)</span>
+</code></pre></div>
+<p>The key observation: <code>j</code> never goes backwards, so the inner <code>while</code> runs at most <span class="arithmatex">$n$</span> times in total across the entire outer loop. <strong>Amortized analysis over both loops</strong> gives <span class="arithmatex">$O(n)$</span>, not <span class="arithmatex">$O(n^2)$</span>.</p>
+<h3 id="rule-4-recursion-via-recurrence-relations">Rule 4 — Recursion via recurrence relations<a class="headerlink" href="#rule-4-recursion-via-recurrence-relations" title="Permanent link">&para;</a></h3>
+<p>For a recursive algorithm, write the recurrence <span class="arithmatex">$T(n)$</span> = (work per call) + (sum of recursive call costs). Three common patterns:</p>
+<p><strong>A. Halving with constant work → <span class="arithmatex">$O(\log n)$</span></strong></p>
+<p>Binary search: <span class="arithmatex">$T(n) = T(n/2) + O(1)$</span>. Solved by unrolling: <span class="arithmatex">$T(n) = O(1) \cdot \log_2(n) = O(\log n)$</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">binary_search</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lo</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lo</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hi</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">lo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hi</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">mid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">binary_search</span><span class="p">(</span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">binary_search</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// T(n) = T(n/2) + O(1) → O(log n)</span>
+</code></pre></div>
+<p><strong>B. Two halving calls with linear work → <span class="arithmatex">$O(n \log n)$</span></strong></p>
+<p>Merge sort: <span class="arithmatex">$T(n) = 2T(n/2) + O(n)$</span>. The Master Theorem (case 2) gives <span class="arithmatex">$O(n \log n)$</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">merge_sort</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">merge_sort</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">);</span>
+<span class="w">    </span><span class="n">merge_sort</span><span class="p">(</span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
+<span class="w">    </span><span class="n">merge</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w">        </span><span class="c1">// O(r - l) = O(n)</span>
+<span class="p">}</span>
+<span class="c1">// T(n) = 2T(n/2) + O(n) → O(n log n)</span>
+</code></pre></div>
+<p><strong>C. Two calls with overlapping subproblems → exponential</strong></p>
+<p>Naive Fibonacci: <span class="arithmatex">$T(n) = T(n-1) + T(n-2) + O(1)$</span>. The recursion tree has as many leaves as Fibonacci numbers, so <span class="arithmatex">$T(n) = \Theta(\phi^n)$</span> where <span class="arithmatex">$\phi = (1 + \sqrt{5})/2 \approx 1.618$</span>. The common upper bound <span class="arithmatex">$O(2^n)$</span> is <strong>not tight</strong> — the true growth is base <span class="arithmatex">$\phi$</span>, not base 2. Both bounds are exponential, but the difference matters numerically: at <span class="arithmatex">$n = 40$</span>, <span class="arithmatex">$\phi^{40} \approx 2.3 \cdot 10^8$</span> while <span class="arithmatex">$2^{40} \approx 10^{12}$</span> — a factor of ~4000. The honest statement is <strong><span class="arithmatex">$\Theta(\phi^n)$</span></strong>, and the practical implication is that naive Fibonacci is already impractical at <span class="arithmatex">$n = 40$</span>, not <span class="arithmatex">$n = 60$</span> as <span class="arithmatex">$O(2^n)$</span> might suggest.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">   </span><span class="c1">// T(n) = T(n-1) + T(n-2) + O(1) = Θ(φ^n)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <strong>Master Theorem</strong> handles recurrences of the form <span class="arithmatex">$T(n) = a T(n/b) + f(n)$</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Condition</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">$f(n) = O(n^{\log_b a - \epsilon})$</span> for some <span class="arithmatex">$\epsilon &gt; 0$</span></td>
+<td><span class="arithmatex">$T(n) = \Theta(n^{\log_b a})$</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex">$f(n) = \Theta(n^{\log_b a})$</span></td>
+<td><span class="arithmatex">$T(n) = \Theta(n^{\log_b a} \log n)$</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="arithmatex">$f(n) = \Omega(n^{\log_b a + \epsilon})$</span> and regularity holds</td>
+<td><span class="arithmatex">$T(n) = \Theta(f(n))$</span></td>
+</tr>
+</tbody>
+</table>
+<p>For <strong>merge sort</strong>: <span class="arithmatex">$a = 2, b = 2, f(n) = n$</span>. <span class="arithmatex">$\log_2 2 = 1$</span>, <span class="arithmatex">$f(n) = \Theta(n^1)$</span> — case 2, so <span class="arithmatex">$T(n) = \Theta(n \log n)$</span>.</p>
+<p>For <strong>binary search</strong>: <span class="arithmatex">$a = 1, b = 2, f(n) = 1$</span>. <span class="arithmatex">$\log_2 1 = 0$</span>, <span class="arithmatex">$f(n) = \Theta(n^0)$</span> — case 2, so <span class="arithmatex">$T(n) = \Theta(\log n)$</span>.</p>
+<p>For <strong>naive matrix multiplication by divide-and-conquer</strong>: <span class="arithmatex">$a = 8, b = 2, f(n) = n^2$</span>. <span class="arithmatex">$\log_2 8 = 3$</span>, <span class="arithmatex">$f(n) = O(n^{3 - \epsilon})$</span> — case 1, so <span class="arithmatex">$T(n) = \Theta(n^3)$</span>. (Strassen's algorithm reduces <span class="arithmatex">$a$</span> to 7 and gets <span class="arithmatex">$O(n^{\log_2 7}) \approx O(n^{2.807})$</span>.)</p>
+<p>Master Theorem does <strong>not</strong> handle all recurrences — it misses <span class="arithmatex">$T(n) = 2T(n/2) + O(n \log n)$</span>, for instance. But it covers the vast majority of divide-and-conquer algorithms you will encounter.</p>
+<h3 id="rule-5-memory-and-stack">Rule 5 — Memory and stack<a class="headerlink" href="#rule-5-memory-and-stack" title="Permanent link">&para;</a></h3>
+<p>Space complexity follows the same rules, applied to allocations and stack depth:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// O(1) auxiliary space</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// O(n) auxiliary space — the copy is the whole point</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">double_all</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">out</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// O(h) stack space where h = tree depth</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// For a balanced tree: h = O(log n). For a skewed (path) tree: h = O(n).</span>
+</code></pre></div>
+<p>The recursion stack space is <strong>part of the total space complexity</strong>, and it is the source of the "recursion works fine on small trees but crashes on 10^5-node paths" pattern from the previous article. A <span class="arithmatex">$10^5$</span>-node recursion with a ~64-byte frame uses ~6 MB of stack, already near the typical 8 MB limit.</p>
+<h2 id="amortized-analysis">Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permanent link">&para;</a></h2>
+<p>Some operations are individually expensive but cheap on average across a sequence of operations. The canonical example is <code>vector::push_back</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p><code>push_back</code> is <span class="arithmatex">$O(1)$</span> most of the time, but when the vector is full, it allocates a new buffer of <strong>2× the current capacity</strong>, copies all existing elements, and frees the old buffer — an <span class="arithmatex">$O(n)$</span> operation at that moment. Without amortization, one might fear the total is <span class="arithmatex">$O(n^2)$</span> for <span class="arithmatex">$n$</span> pushes. It is not.</p>
+<p><strong>The argument.</strong> Let the capacities at each reallocation be <span class="arithmatex">$1, 2, 4, 8, \dots, 2^k$</span> where <span class="arithmatex">$2^k \le n &lt; 2^{k+1}$</span>. The reallocation at size <span class="arithmatex">$2^i$</span> copies <span class="arithmatex">$2^i$</span> elements. Total copying:</p>
+<div class="arithmatex">$$
+\sum_{i=0}^{k} 2^i = 2^{k+1} - 1 &lt; 2n = O(n)
+$$</div>
+<p>So the total work over <span class="arithmatex">$n$</span> <code>push_back</code>s is <span class="arithmatex">$O(n)$</span>, giving an <strong>amortized cost of <span class="arithmatex">$O(1)$</span></strong> per operation. The geometric growth factor (2×) is what makes this work. A growth factor of 1.1× (like <code>std::string</code> in some implementations) would also give amortized <span class="arithmatex">$O(1)$</span>, but with a larger constant.</p>
+<p><strong>Amortized analysis is not average-case analysis.</strong> Average-case refers to random inputs; amortized refers to a guaranteed worst-case bound across a sequence of operations, with no randomness. <code>push_back</code> is amortized <span class="arithmatex">$O(1)$</span> even on adversarial sequences — there is no input that makes <span class="arithmatex">$n$</span> <code>push_back</code>s take worse than <span class="arithmatex">$O(n)$</span> total.</p>
+<p><strong>The same argument applies to:</strong></p>
+<ul>
+<li><code>unordered_map</code> insertion (rehashing at 2× growth).</li>
+<li><code>deque::push_front</code> and <code>deque::push_back</code>.</li>
+<li><code>priority_queue::push</code> and <code>pop</code> (sift up/down).</li>
+<li>Union-find with path compression: <span class="arithmatex">$O(\alpha(n))$</span> amortized per operation, where <span class="arithmatex">$\alpha$</span> is the inverse Ackermann function, effectively constant for any <span class="arithmatex">$n$</span> you will encounter.</li>
+</ul>
+<p><strong>Amortization does not apply to:</strong></p>
+<ul>
+<li><code>vector::insert</code> at arbitrary position — the shift is <span class="arithmatex">$O(n)$</span> every time, no compensation.</li>
+<li><code>multiset::erase(value)</code> when the value appears <span class="arithmatex">$k$</span> times — <span class="arithmatex">$O(\log n + k)$</span>.</li>
+<li><code>string::substr</code> — a fresh allocation of size <span class="arithmatex">$O(\text{length})$</span> every call.</li>
+</ul>
+<h2 id="complexity-of-stl-operations">Complexity of STL Operations<a class="headerlink" href="#complexity-of-stl-operations" title="Permanent link">&para;</a></h2>
+<p>The containers and algorithms you use constantly have specific asymptotic costs that you must know by heart. Here is the reference table for the operations that matter:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Complexity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v[i]</code> access on <code>vector</code></td>
+<td><span class="arithmatex">$O(1)$</span></td>
+<td>two pointer dereferences</td>
+</tr>
+<tr>
+<td><code>v.push_back</code></td>
+<td>amortized <span class="arithmatex">$O(1)$</span></td>
+<td>2× growth</td>
+</tr>
+<tr>
+<td><code>v.pop_back</code></td>
+<td><span class="arithmatex">$O(1)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>v.insert(v.begin()+k, x)</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>shifts all elements after <span class="arithmatex">$k$</span></td>
+</tr>
+<tr>
+<td><code>v.erase(v.begin()+k)</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>shifts all elements after <span class="arithmatex">$k$</span></td>
+</tr>
+<tr>
+<td><code>v.clear()</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>destroys <span class="arithmatex">$n$</span> elements</td>
+</tr>
+<tr>
+<td><code>v.resize(k)</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>fills or destroys <span class="arithmatex">$n$</span> elements</td>
+</tr>
+<tr>
+<td><code>sort(v.begin(), v.end())</code></td>
+<td><span class="arithmatex">$O(n \log n)$</span></td>
+<td>introsort</td>
+</tr>
+<tr>
+<td><code>lower_bound(v.begin(), v.end(), x)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>requires random-access iterators</td>
+</tr>
+<tr>
+<td><code>set::find(x)</code> / <code>set::insert(x)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>red-black tree</td>
+</tr>
+<tr>
+<td><code>set::lower_bound(x)</code> (member)</td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>uses tree structure</td>
+</tr>
+<tr>
+<td><code>std::lower_bound(s.begin(), s.end(), x)</code> on a <code>set</code></td>
+<td><strong><span class="arithmatex">$O(n)$</span></strong></td>
+<td>linear scan — the classic trap</td>
+</tr>
+<tr>
+<td><code>set::erase(x)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>multiset::erase(x)</code></td>
+<td><span class="arithmatex">$O(\log n + k)$</span> where <span class="arithmatex">$k$</span> = count</td>
+<td>erases all copies</td>
+</tr>
+<tr>
+<td><code>multiset::erase(iterator)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>erases one</td>
+</tr>
+<tr>
+<td><code>map::operator[]</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td><strong>inserts if missing</strong></td>
+</tr>
+<tr>
+<td><code>map::find(x)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unordered_map::find</code> / <code>insert</code></td>
+<td>average <span class="arithmatex">$O(1)$</span>, <strong>worst <span class="arithmatex">$O(n)$</span></strong></td>
+<td>anti-hash vulnerability</td>
+</tr>
+<tr>
+<td><code>priority_queue::push</code> / <code>pop</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>sift-up / sift-down</td>
+</tr>
+<tr>
+<td><code>priority_queue::top</code></td>
+<td><span class="arithmatex">$O(1)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>queue</code>/<code>stack</code> push/pop</td>
+<td><span class="arithmatex">$O(1)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>deque</code> push_front/push_back/pop</td>
+<td><span class="arithmatex">$O(1)$</span> amortized</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nth_element</code></td>
+<td><span class="arithmatex">$O(n)$</span> average</td>
+<td>introselect</td>
+</tr>
+<tr>
+<td><code>partial_sort(first, mid, last)</code></td>
+<td><span class="arithmatex">$O(n \log k)$</span></td>
+<td><span class="arithmatex">$k$</span> = distance from first to mid</td>
+</tr>
+<tr>
+<td><code>binary_search(begin, end, x)</code></td>
+<td><span class="arithmatex">$O(\log n)$</span></td>
+<td>requires sorted</td>
+</tr>
+<tr>
+<td><code>accumulate</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unique(begin, end)</code></td>
+<td><span class="arithmatex">$O(n)$</span></td>
+<td>only collapses consecutive duplicates</td>
+</tr>
+<tr>
+<td><code>next_permutation</code></td>
+<td><span class="arithmatex">$O(n)$</span> per call</td>
+<td>total <span class="arithmatex">$n!$</span> calls to enumerate all</td>
+</tr>
+<tr>
+<td><code>s.find(t)</code> on <code>string</code></td>
+<td><span class="arithmatex">$O(\|s\| \cdot \|t\|)$</span> worst</td>
+<td>naive matching</td>
+</tr>
+</tbody>
+</table>
+<p>The two most-tested traps in this table are the <strong><code>set::lower_bound</code> trap</strong> (a <span class="arithmatex">$O(\log n)$</span> operation becomes <span class="arithmatex">$O(n)$</span> if you call the free function) and the <strong><code>multiset::erase(value)</code> trap</strong> (erases all copies, not one). Both have been the cause of TLEs and WAs on countless contest submissions.</p>
+<h2 id="mapping-constraints-to-complexities">Mapping Constraints to Complexities<a class="headerlink" href="#mapping-constraints-to-complexities" title="Permanent link">&para;</a></h2>
+<p>The judge's constraint on <span class="arithmatex">$n$</span> (usually stated in the problem as <span class="arithmatex">$1 \le n \le 10^5$</span>, etc.) is the single most useful signal about the intended complexity. Reverse-engineer it:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint on <span class="arithmatex">$n$</span></th>
+<th>Intended complexity</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">$n \le 10$</span></td>
+<td><span class="arithmatex">$O(n!)$</span>, <span class="arithmatex">$O(n^n)$</span></td>
+<td><span class="arithmatex">$10! = 3.6 \cdot 10^6$</span>, brute force fits</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 20$</span></td>
+<td><span class="arithmatex">$O(2^n)$</span>, <span class="arithmatex">$O(n \cdot 2^n)$</span></td>
+<td><span class="arithmatex">$2^{20} \approx 10^6$</span>, subset enumeration fits</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 100$</span></td>
+<td><span class="arithmatex">$O(n^3)$</span></td>
+<td><span class="arithmatex">$10^6$</span>, Floyd–Warshall territory</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 500$</span></td>
+<td><span class="arithmatex">$O(n^3)$</span> tight, <span class="arithmatex">$O(n^2 \log n)$</span> preferred</td>
+<td><span class="arithmatex">$1.25 \cdot 10^8$</span> borderline</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^3$</span></td>
+<td><span class="arithmatex">$O(n^2)$</span></td>
+<td><span class="arithmatex">$10^6$</span> comfortable</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^4$</span></td>
+<td><span class="arithmatex">$O(n^2)$</span> tight, prefer <span class="arithmatex">$O(n \log n)$</span></td>
+<td><span class="arithmatex">$10^8$</span> near the limit</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^5$</span></td>
+<td><span class="arithmatex">$O(n \log n)$</span> required</td>
+<td><span class="arithmatex">$n^2 = 10^{10}$</span> impossible</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^6$</span></td>
+<td><span class="arithmatex">$O(n \log n)$</span> tight, prefer <span class="arithmatex">$O(n)$</span></td>
+<td>need efficient I/O</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^7$</span></td>
+<td><span class="arithmatex">$O(n)$</span> with small constant</td>
+<td>tight on I/O, use custom reader</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^9$</span></td>
+<td><span class="arithmatex">$O(\log n)$</span>, <span class="arithmatex">$O(\sqrt{n})$</span></td>
+<td>cannot loop over <span class="arithmatex">$n$</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^{12}$</span></td>
+<td><span class="arithmatex">$O(\sqrt{n})$</span> or <span class="arithmatex">$O(n^{1/3})$</span></td>
+<td>number-theoretic techniques</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^{18}$</span></td>
+<td><span class="arithmatex">$O(\log n)$</span>, <span class="arithmatex">$O(\log^2 n)$</span></td>
+<td>matrix exponentiation, binary lifting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The reverse question</strong> is equally useful: given a complexity and a time limit, what is the largest <span class="arithmatex">$n$</span> you can afford? The answer depends on the constant factor, which you can approximate:</p>
+<table>
+<thead>
+<tr>
+<th>Time budget</th>
+<th><span class="arithmatex">$O(1)$</span></th>
+<th><span class="arithmatex">$O(\log n)$</span></th>
+<th><span class="arithmatex">$O(n)$</span></th>
+<th><span class="arithmatex">$O(n \log n)$</span></th>
+<th><span class="arithmatex">$O(n^2)$</span></th>
+<th><span class="arithmatex">$O(n^3)$</span></th>
+<th><span class="arithmatex">$O(2^n)$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 s (modern)</td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td><span class="arithmatex">$\sim 10^8$</span></td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^6$</span></td>
+<td><span class="arithmatex">$\sim 10^4$</span></td>
+<td><span class="arithmatex">$\sim 500$</span></td>
+<td><span class="arithmatex">$\sim 25$</span></td>
+</tr>
+<tr>
+<td>1 s (older)</td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td><span class="arithmatex">$\sim 10^7$</span></td>
+<td><span class="arithmatex">$\sim 10^6$</span></td>
+<td><span class="arithmatex">$\sim 3 \cdot 10^3$</span></td>
+<td><span class="arithmatex">$\sim 200$</span></td>
+<td><span class="arithmatex">$\sim 22$</span></td>
+</tr>
+<tr>
+<td>2 s (modern)</td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td>any <span class="arithmatex">$n$</span></td>
+<td><span class="arithmatex">$\sim 2 \cdot 10^8$</span></td>
+<td><span class="arithmatex">$\sim 10^7$</span></td>
+<td><span class="arithmatex">$\sim 1.5 \cdot 10^4$</span></td>
+<td><span class="arithmatex">$\sim 600$</span></td>
+<td><span class="arithmatex">$\sim 26$</span></td>
+</tr>
+</tbody>
+</table>
+<p>The "modern" column assumes a typical 2024-era Codeforces/AtCoder machine: ~<span class="arithmatex">$5 \cdot 10^8$</span> simple operations per second for the <span class="arithmatex">$O(n)$</span> column, and correspondingly faster for other complexities. The "older" column is a conservative assumption for judges running on weaker hardware or with heavier per-operation overhead.</p>
+<h2 id="real-world-benchmarks">Real-World Benchmarks<a class="headerlink" href="#real-world-benchmarks" title="Permanent link">&para;</a></h2>
+<p>The <span class="arithmatex">$10^8$</span> operations-per-second rule of thumb is useful but crude. Here are measured approximate throughputs on typical 2024-era judges under <code>-O2</code> with <code>&lt;bits/stdc++.h&gt;</code> and <code>sync_with_stdio(false)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Approximate rate</th>
+<th>Time for <span class="arithmatex">$n = 10^6$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code> arithmetic in a tight loop</td>
+<td><span class="arithmatex">$\sim 10^9$</span>/s</td>
+<td>1 ms</td>
+</tr>
+<tr>
+<td>Array/vector access, sequential</td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^8$</span>/s</td>
+<td>2 ms</td>
+</tr>
+<tr>
+<td><code>vector::push_back</code> (with <code>reserve</code>)</td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^8$</span>/s</td>
+<td>2 ms</td>
+</tr>
+<tr>
+<td><code>vector::push_back</code> (without <code>reserve</code>)</td>
+<td><span class="arithmatex">$\sim 10^8$</span>/s</td>
+<td>10 ms</td>
+</tr>
+<tr>
+<td><code>std::sort</code> on random <code>int</code>s</td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^7 \cdot \log_2 n$</span>/s</td>
+<td>~100 ms</td>
+</tr>
+<tr>
+<td><code>lower_bound</code> on <code>vector&lt;int&gt;</code></td>
+<td><span class="arithmatex">$\sim 2 \cdot 10^7$</span>/s</td>
+<td>50 ms</td>
+</tr>
+<tr>
+<td><code>set::insert</code></td>
+<td><span class="arithmatex">$\sim 3 \cdot 10^6$</span>/s</td>
+<td>330 ms</td>
+</tr>
+<tr>
+<td><code>unordered_map::insert</code></td>
+<td><span class="arithmatex">$\sim 10^7$</span>/s</td>
+<td>100 ms</td>
+</tr>
+<tr>
+<td><code>priority_queue::push</code> + <code>pop</code></td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^6$</span>/s</td>
+<td>200 ms</td>
+</tr>
+<tr>
+<td><code>string</code> concatenation (single char)</td>
+<td><span class="arithmatex">$\sim 10^7$</span>/s</td>
+<td>100 ms</td>
+</tr>
+<tr>
+<td><code>cout &lt;&lt; x</code> (with fast I/O)</td>
+<td><span class="arithmatex">$\sim 10^7$</span>/s</td>
+<td>100 ms</td>
+</tr>
+<tr>
+<td><code>cout &lt;&lt; x</code> (without <code>sync_with_stdio(false)</code>)</td>
+<td><span class="arithmatex">$\sim 10^6$</span>/s</td>
+<td>1 s</td>
+</tr>
+<tr>
+<td><code>cin &gt;&gt; x</code> (with fast I/O)</td>
+<td><span class="arithmatex">$\sim 5 \cdot 10^7$</span>/s</td>
+<td>20 ms</td>
+</tr>
+<tr>
+<td><code>cin &gt;&gt; x</code> (without <code>sync_with_stdio(false)</code>)</td>
+<td><span class="arithmatex">$\sim 10^6$</span>/s</td>
+<td>1 s</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>factor of 50× between <code>cin</code> with and without fast I/O</strong>, and the <strong>factor of 10× between <code>set::insert</code> and <code>unordered_map::insert</code></strong>, are the kind of gaps that Big-O hides — both pairs have "the same" asymptotic for a single operation, but the constants differ enormously. This is why the practical rules (fast I/O, sorted <code>vector</code> over <code>set</code>, custom hash for <code>unordered_map</code>) matter as much as the asymptotic analysis itself.</p>
+<h2 id="space-time-tradeoffs">Space-Time Tradeoffs<a class="headerlink" href="#space-time-tradeoffs" title="Permanent link">&para;</a></h2>
+<p>Complexity analysis applies to memory as well as time, and in CP the two are often <strong>exchangeable</strong>:</p>
+<p><strong>Precomputation for faster queries.</strong> The classic example is prefix sums:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// O(n) precompute, O(1) per query</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pref</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">range_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">l</span><span class="p">];</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// vs O(1) precompute, O(r - l) per query</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">range_sum_naive</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you have <span class="arithmatex">$q = 10^5$</span> queries, the precomputed version is <span class="arithmatex">$10^5 \cdot O(1) = 10^5$</span> operations; the naive version is <span class="arithmatex">$10^5 \cdot 10^5 = 10^{10}$</span> — a TLE by four orders of magnitude. The price is <span class="arithmatex">$O(n)$</span> extra memory, which is negligible.</p>
+<p><strong>Memoization for overlapping subproblems.</strong> Naive Fibonacci is <span class="arithmatex">$O(\phi^n)$</span>; memoized is <span class="arithmatex">$O(n)$</span> time and <span class="arithmatex">$O(n)$</span> space. The price of a hash table or array turns an exponential algorithm into a linear one — the foundational tradeoff of dynamic programming.</p>
+<p><strong>Sparse tables for range queries.</strong> For static range-min queries, a <strong>sparse table</strong> takes <span class="arithmatex">$O(n \log n)$</span> precomputation and <span class="arithmatex">$O(n \log n)$</span> memory, but answers any query in <span class="arithmatex">$O(1)$</span>. The naive approach is <span class="arithmatex">$O(n)$</span> precomputation and <span class="arithmatex">$O(r-l)$</span> per query. For <span class="arithmatex">$10^5$</span> queries on <span class="arithmatex">$10^5$</span> elements, the sparse table is 50× faster at the cost of ~5× memory.</p>
+<p><strong>Hash tables for lookup.</strong> An <code>unordered_map</code> uses roughly 2× the memory of a sorted <code>vector</code> of pairs, but gives average <span class="arithmatex">$O(1)$</span> lookup instead of <span class="arithmatex">$O(\log n)$</span>. For <span class="arithmatex">$10^7$</span> lookups, this is a factor of ~20 in time.</p>
+<p>The general principle: <strong>spend memory to save time, as long as you stay within the memory limit</strong>. Typical CP memory limits are 256 MB or 512 MB; a <span class="arithmatex">$10^6$</span>-element <code>int</code> array is 4 MB, and a <span class="arithmatex">$10^7$</span>-element array is 40 MB. Both fit comfortably. A <span class="arithmatex">$10^8$</span>-element array at 4 bytes each is 400 MB — over the limit on most judges, so <span class="arithmatex">$10^8$</span> is usually the practical ceiling for a single array.</p>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>A checklist for when complexity analysis or its application goes wrong:</p>
+<ol>
+<li><strong>Assuming <code>unordered_map</code> is <span class="arithmatex">$O(1)$</span> worst case</strong> — it is average <span class="arithmatex">$O(1)$</span>, worst <span class="arithmatex">$O(n)$</span>. Codeforces anti-hash tests exploit this; use a custom hash.</li>
+<li><strong>Calling <code>std::lower_bound</code> on a <code>set</code></strong> — it is <span class="arithmatex">$O(n)$</span>, not <span class="arithmatex">$O(\log n)$</span>. Use <code>s.lower_bound(x)</code>.</li>
+<li><strong>Forgetting <code>accumulate(..., 0)</code> accumulates in <code>int</code></strong> — use <code>0LL</code> for <code>long long</code> sums.</li>
+<li><strong>Naive Fibonacci as "<span class="arithmatex">$O(2^n)$</span>"</strong> — it is <span class="arithmatex">$\Theta(\phi^n)$</span>; a factor of ~4000 more efficient than the bound suggests at <span class="arithmatex">$n = 40$</span>.</li>
+<li><strong>Confusing <span class="arithmatex">$10^5$</span> with <code>10^5</code></strong> — the latter is <code>15</code> in C++. Use <code>100'000</code>.</li>
+<li><strong>Estimating time from operations without considering constants</strong> — 10^8 <code>set::insert</code> takes 30 s, not 0.1 s, because each insert is <span class="arithmatex">$O(\log n)$</span> with a large constant.</li>
+<li><strong>Ignoring I/O cost</strong> — <span class="arithmatex">$10^6$</span> numbers read with default <code>cin</code> take 1 s on its own; always use <code>sync_with_stdio(false)</code> and <code>cin.tie(nullptr)</code>.</li>
+<li><strong>Assuming <code>vector::erase</code> is <span class="arithmatex">$O(1)$</span></strong> — it is <span class="arithmatex">$O(n)$</span> in the middle of the vector, because subsequent elements shift.</li>
+<li><strong>Forgetting to count the recursion stack</strong> — a DFS on a <span class="arithmatex">$10^5$</span>-node path uses <span class="arithmatex">$O(n)$</span> stack, which can overflow 8 MB on some judges.</li>
+<li><strong>Assuming <span class="arithmatex">$O(n^2)$</span> is fine for <span class="arithmatex">$n = 10^4$</span></strong> — it is <span class="arithmatex">$10^8$</span>, which is borderline on 1 s limits. Prefer <span class="arithmatex">$O(n \log n)$</span> when possible.</li>
+<li><strong>Underestimating <span class="arithmatex">$O(n \log n)$</span> for <span class="arithmatex">$n = 10^6$</span></strong> — <span class="arithmatex">$10^6 \cdot 20 = 2 \cdot 10^7$</span>, fine; but with a large constant (like <code>set</code>-based operations), it becomes 10 s.</li>
+<li><strong>Confusing "amortized <span class="arithmatex">$O(1)$</span>" with "worst-case <span class="arithmatex">$O(1)$</span>"</strong> — <code>push_back</code> can be <span class="arithmatex">$O(n)$</span> for a single call; if that single call is in a hot loop with interrupts or time limits, it matters.</li>
+<li><strong>Ignoring the constant factor for small <span class="arithmatex">$n$</span></strong> — an <span class="arithmatex">$O(n^2)$</span> algorithm with tiny constant may beat <span class="arithmatex">$O(n \log n)$</span> with large constant for <span class="arithmatex">$n \le 100$</span>. Measure if in doubt.</li>
+<li><strong>Assuming <code>sort</code> is <span class="arithmatex">$O(n \log n)$</span> worst case</strong> — <code>std::sort</code> is introsort, which is <span class="arithmatex">$O(n \log n)$</span> worst case (heapsort fallback), unlike naive quicksort which is <span class="arithmatex">$O(n^2)$</span> worst case.</li>
+<li><strong>Estimating constraints from <span class="arithmatex">$n$</span> alone</strong> — <span class="arithmatex">$n \le 10^5$</span> with <span class="arithmatex">$m$</span> also up to <span class="arithmatex">$10^5$</span> edges means the algorithm must be <span class="arithmatex">$O((n + m) \log n)$</span> or better for graph problems, not just <span class="arithmatex">$O(n \log n)$</span>.</li>
+<li><strong>Ignoring the total operations across multiple test cases</strong> — <span class="arithmatex">$t$</span> test cases each with <span class="arithmatex">$n = 10^4$</span> requires the algorithm to be fast per test case; a <span class="arithmatex">$10^4 \cdot 10^4 = 10^8$</span> total is fine, but <span class="arithmatex">$10^4 \cdot 10^6 = 10^{10}$</span> is not.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Asymptotic notation is about growth, not exact counts.</strong> Big-O is an upper bound; <span class="arithmatex">$\Theta$</span> is the tight one; <span class="arithmatex">$\Omega$</span> is a lower bound. Use <span class="arithmatex">$\Theta$</span> when you mean "exactly this complexity".</li>
+<li><strong>The <span class="arithmatex">$n$</span>-limit table is the most useful tool in your kit.</strong> <span class="arithmatex">$n \le 10^5$</span> means <span class="arithmatex">$O(n \log n)$</span> is required, <span class="arithmatex">$O(n^2)$</span> is impossible. Read the constraints before choosing an algorithm.</li>
+<li><strong>Sequential adds, nested multiplies, halved/doubled loops are logarithmic.</strong> Recursion via recurrence relations; Master Theorem for divide-and-conquer.</li>
+<li><strong>Naive Fibonacci is <span class="arithmatex">$\Theta(\phi^n)$</span>, not <span class="arithmatex">$O(2^n)$</span>.</strong> The bound <span class="arithmatex">$O(2^n)$</span> is correct but not tight, and the difference matters numerically.</li>
+<li><strong>Amortized <span class="arithmatex">$O(1)$</span> is not <span class="arithmatex">$O(1)$</span>.</strong> <code>push_back</code> can be <span class="arithmatex">$O(n)$</span> on a single call, but averages <span class="arithmatex">$O(1)$</span>. Understand the difference.</li>
+<li><strong><code>unordered_map</code> is average <span class="arithmatex">$O(1)$</span>, worst <span class="arithmatex">$O(n)$</span>.</strong> Codeforces adversarial tests exploit this. Use a custom hash if you rely on hashing.</li>
+<li><strong><code>set::lower_bound</code> is <span class="arithmatex">$O(\log n)$</span>; <code>std::lower_bound</code> on a <code>set</code> is <span class="arithmatex">$O(n)$</span>.</strong> This is the most-tested STL complexity trap.</li>
+<li><strong>The <span class="arithmatex">$10^8$</span> ops/s rule is a starting point, not a law.</strong> Constants vary by 10–50× across operations. Measure, or use the benchmark table in this article.</li>
+<li><strong>Spend memory to save time, up to the memory limit.</strong> Prefix sums, sparse tables, memoization — these are the fundamental space-time tradeoffs of CP.</li>
+<li><strong>Always count the recursion stack.</strong> <span class="arithmatex">$O(n)$</span> recursion depth is <span class="arithmatex">$O(n)$</span> memory; on a 8 MB stack, that means a few <span class="arithmatex">$10^5$</span> frames maximum.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://cses.fi/problemset/task/1643">CSES — Maximum Subarray Sum</a> — Kadane's <span class="arithmatex">$O(n)$</span> vs. naive <span class="arithmatex">$O(n^2)$</span> vs. <span class="arithmatex">$O(n^3)$</span>; the problem shows why <span class="arithmatex">$n \le 10^5$</span> rules out the slower versions.</li>
+<li><a href="https://cses.fi/problemset/task/1640">CSES — Sum of Two Values</a> — two-pointer <span class="arithmatex">$O(n \log n)$</span> after sort vs. <span class="arithmatex">$O(n^2)$</span> double loop; <span class="arithmatex">$n \le 2 \cdot 10^5$</span> forces the sorted approach.</li>
+<li><a href="https://cses.fi/problemset/task/1668">CSES — Building Teams</a> — bipartite check via BFS, <span class="arithmatex">$O(n + m)$</span>; a good drill for reading the constraints as <span class="arithmatex">$O((n+m) \log n)$</span> for the full problem.</li>
+<li><a href="https://codeforces.com/problemset/problem/4/A">Codeforces 4A — Watermelon</a> — trivial <span class="arithmatex">$O(1)$</span>; the point is recognizing that no complexity analysis is needed.</li>
+<li><a href="https://cses.fi/problemset/task/1622">CSES — Creating Strings</a> — <span class="arithmatex">$n \le 8$</span> permits <span class="arithmatex">$O(n!)$</span> enumeration via <code>next_permutation</code>; the constraint is the hint.</li>
+<li><a href="https://cses.fi/problemset/task/1092">CSES — Subset Sums</a> — a problem where <span class="arithmatex">$n \le 10^5$</span> rules out <span class="arithmatex">$O(n \cdot \text{sum})$</span> subset-sum DP and forces an <span class="arithmatex">$O(1)$</span> mathematical construction; a good example of constraints reverse-engineering the intended solution.</li>
+<li><a href="https://codeforces.com/problemset/problem/1611/E1">Codeforces 1611E1 — Escape The Maze (easy version)</a> — BFS on a tree, <span class="arithmatex">$O(n)$</span>; contrast with the hard version, where a slower approach TLEs at the larger constraint.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/">CLRS, Introduction to Algorithms, Chapter 3 (Growth of functions)</a> — the definitive treatment of asymptotic notation.</li>
+<li><a href="https://cp-algorithms.com/">cp-algorithms — Complexity of an algorithm</a> — the CP-focused perspective.</li>
+<li><a href="https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)">Wikipedia — Master theorem for divide-and-conquer recurrences</a></li>
+<li><a href="https://codeforces.com/blog/entry/62393">Codeforces — On the performance of <code>unordered_map</code> (anti-hash)</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container">cppreference — Complexity guarantees of containers and algorithms</a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="practice-and-problems.html">Practice and Problems</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

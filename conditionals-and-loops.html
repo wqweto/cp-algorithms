@@ -1,0 +1,1236 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="io-and-data-types.html">
+      
+      
+        <link rel="next" href="arrays-and-vectors.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Conditionals and Loops - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conditionals-and-loops" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conditionals and Loops
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="conditionals-and-loops.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Statements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-else-if-else-making-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if / else if / else — making decisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-if-x-5-pitfall-assignment-vs-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The if (x = 5) pitfall — assignment vs comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dangling-else-a-bug-that-looks-correct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dangling else — a bug that looks correct
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ternary-operator-compact-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ternary operator ?: — compact decisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-matching-against-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switch — matching against constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-when-you-know-how-many-iterations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        for — when you know how many iterations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-based-for-when-iterating-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range-based for — when iterating a container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-when-the-count-is-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        while — when the count is unknown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-while-at-least-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        do-while — at least once
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-control-break-and-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop Control: break and continue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-you-will-reuse-constantly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns You Will Reuse Constantly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="conditionals-and-loops">Conditionals and Loops<a class="headerlink" href="#conditionals-and-loops" title="Permanent link">&para;</a></h1>
+<p>Every algorithm you will ever write in competitive programming is built from three things: <strong>decisions</strong> (which branch to take), <strong>repetition</strong> (how many times to do something), and <strong>data</strong> (what to do it on). This article is about the first two. Master them and the third — arrays, graphs, trees — becomes mechanical. Get them subtly wrong and no amount of clever algorithmic thinking will save you: a single off-by-one in a loop bound or a missing <code>break</code> turns a correct <span class="arithmatex">$O(n \log n)$</span> idea into a WA.</p>
+<p>The goal here is not just to list syntax. It is to build the reflexes you need under contest pressure: which construct to reach for, and — more importantly — which reflex will bite you when you are not paying attention.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="intro-to-cpp.md">Introduction to C++</a> — compilation, <code>-O2</code>, the CP template.</li>
+<li><a href="io-and-data-types.html">I/O and Data Types</a> — <code>int</code> vs <code>long long</code>, signed/unsigned traps, <code>size_t</code>.</li>
+</ul>
+<p>Throughout, we assume the standard template:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="conditional-statements">Conditional Statements<a class="headerlink" href="#conditional-statements" title="Permanent link">&para;</a></h2>
+<h3 id="if-else-if-else-making-decisions"><code>if</code> / <code>else if</code> / <code>else</code> — making decisions<a class="headerlink" href="#if-else-if-else-making-decisions" title="Permanent link">&para;</a></h3>
+<p>An <code>if</code> statement asks a yes/no question about the current state of the program and picks a path. In competitive programming, conditionals are the glue between the mathematical core of a solution and its many edge cases: <em>Is <span class="arithmatex">$n = 1$</span>? Is the answer negative? Did we reach the target?</em></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Positive</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Negative</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="k">else</span><span class="w">              </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Zero</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+</code></pre></div>
+<p>The key mental model is <strong>short-circuit evaluation</strong> and <strong>top-down matching</strong>. Conditions are tested in order; the first one that is <code>true</code> wins, and everything below is skipped. This is not just a control-flow detail — it is a performance tool. When a later condition is expensive (a <code>map</code> lookup, a string comparison, a geometric predicate), put the cheap ones first:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(1) early exit */</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_valid</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* O(n·m) — only checked when necessary */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>In CP, you will write <code>if</code> statements for three common roles:</p>
+<ol>
+<li><strong>Guard clauses at the top</strong> — handle degenerate input immediately so the rest of the code can assume well-formed data.</li>
+<li><strong>Classification</strong> — separate cases that need different algorithms (e.g., <span class="arithmatex">$n$</span> even vs odd, connected vs disconnected).</li>
+<li><strong>Boundary checks inside loops</strong> — <code>if (i + 1 &lt; n &amp;&amp; a[i] == a[i+1])</code> appears constantly in sliding-window and two-pointer solutions.</li>
+</ol>
+<p><strong>Best practice.</strong> Keep each condition small and named when it is not obvious. A line like <code>if (x &gt;= 0 &amp;&amp; x &lt; n &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; m &amp;&amp; !visited[x][y])</code> is fine; a line like <code>if (a * b &gt; c ^ d &amp; e)</code> is a bug you haven't found yet.</p>
+<h3 id="the-if-x-5-pitfall-assignment-vs-comparison">The <code>if (x = 5)</code> pitfall — assignment vs comparison<a class="headerlink" href="#the-if-x-5-pitfall-assignment-vs-comparison" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// assigns 5; condition is 5 (truthy); x becomes 5</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// compares</span>
+</code></pre></div>
+<p>Both lines compile. Only one does what you mean. This is the single most common typo in the history of C-family languages, and it has cost contestants countless submission penalties.</p>
+<p><strong>The defense is your compiler.</strong> Always compile with <code>-Wall -Wextra</code>. GCC emits <code>-Wparentheses</code> for this exact mistake and refuses to stay silent. If you are building a contest habit, make <code>-Wall -Wextra</code> muscle memory from day one. The alternative — the "Yoda condition" <code>if (5 == x)</code> — works but is unfashionable and hard to read; trust the compiler instead.</p>
+<h3 id="the-dangling-else-a-bug-that-looks-correct">The dangling <code>else</code> — a bug that looks correct<a class="headerlink" href="#the-dangling-else-a-bug-that-looks-correct" title="Permanent link">&para;</a></h3>
+<p>Consider:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"ab</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"not b</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">   </span><span class="c1">// which if does this belong to?</span>
+</code></pre></div>
+<p>The <code>else</code> binds to the <strong>nearest unmatched <code>if</code></strong>. Here, that is <code>if (b)</code>, not <code>if (a)</code>. So the code reads as "if <code>a</code>, then: (if <code>b</code> print 'ab', else print 'not b')" — but a human reader almost always misreads it as "(if <code>a</code> and <code>b</code> print 'ab', else print 'not b')". The two interpretations differ whenever <code>a</code> is false.</p>
+<p><strong>The fix is trivially reliable: always use braces.</strong> Not "when the body is more than one line" — always. Braces cost one keystroke and eliminate the entire class of dangling-else bugs. If you only adopt one habit from this article, adopt this one.</p>
+<h3 id="the-ternary-operator-compact-decisions">The ternary operator <code>?:</code> — compact decisions<a class="headerlink" href="#the-ternary-operator-compact-decisions" title="Permanent link">&para;</a></h3>
+<p>The ternary operator produces a value based on a condition:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</code></pre></div>
+<p>It is essential in competitive programming for compact expressions that would otherwise require a temporary variable — <code>dp[i] = (take) ? dp[i-1] + w : dp[i-1];</code>, <code>ans = (x &lt; 0) ? -x : x;</code> — but it has two real pitfalls.</p>
+<p><strong>Pitfall 1: parentheses around <code>?:</code> when streaming.</strong> The precedence of <code>&lt;&lt;</code> is <em>higher</em> than <code>?:</code>, so</p>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">"Even"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"Odd"</span><span class="p">;</span><span class="w">   </span><span class="c1">// WRONG</span>
+</code></pre></div>
+<p>is parsed as <code>(cout &lt;&lt; (a % 2 == 0)) ? "Even" : "Odd"</code>. The first part writes a <code>bool</code> to <code>cout</code> (printing <code>0</code> or <code>1</code>) and evaluates to the stream, which is truthy in most contexts — you get nonsense output that looks like a number. Correct:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">"Even"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"Odd"</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Pitfall 2: hidden type conversions.</strong> The two branches of <code>?:</code> are promoted to a <strong>common type</strong>, which is sometimes wider than expected:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w">   </span><span class="c1">// int result — can overflow before assignment</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="c1">// long long — correct</span>
+</code></pre></div>
+<p>The <code>1LL</code> is not decoration; it makes the ternary return <code>long long</code>. This bites most often in <code>dp[...] = (cond) ? 1 : MOD;</code>-style lines where <code>MOD</code> is an <code>int</code> — the <code>long long</code> assignment does not rescue the overflow that already happened on the right side.</p>
+<p><strong>Readability rule.</strong> One level of <code>?:</code> is fine. Two is hostile. Three is a bug waiting to happen — rewrite as explicit <code>if-else</code> and move on.</p>
+<h3 id="switch-matching-against-constants"><code>switch</code> — matching against constants<a class="headerlink" href="#switch-matching-against-constants" title="Permanent link">&para;</a></h3>
+<p><code>switch</code> compares an integral expression against a list of compile-time constants. Because the values are known at compile time, the compiler can emit a <strong>jump table</strong> — <span class="arithmatex">$O(1)$</span> regardless of how many <code>case</code> labels there are, versus the <span class="arithmatex">$O(k)$</span> of an <code>if-else</code> chain with <span class="arithmatex">$k$</span> branches.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">op</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">op</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Addition</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">       </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Subtraction</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Multiplication</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Invalid</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">       </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In competitive programming, <code>switch</code> shows up most often when parsing structured input: operations in a command stream (<code>'L'</code>, <code>'R'</code>, <code>'U'</code>, <code>'D'</code> for grid movement), direction codes, or query types in problems with mixed updates and reads. It is also common on <code>enum</code> values that represent a small set of states.</p>
+<p><strong>Pitfall 1: missing <code>break</code> → fall-through.</strong> Without <code>break</code>, execution continues into the next <code>case</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">do_one</span><span class="p">();</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">do_two</span><span class="p">();</span><span class="w">   </span><span class="c1">// runs for x == 1 as well!</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Occasionally fall-through is intentional — for instance, grouping several cases under one handler:</p>
+<div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="sc">'A'</span><span class="p">:</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="sc">'E'</span><span class="p">:</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="sc">'I'</span><span class="p">:</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="sc">'O'</span><span class="p">:</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="sc">'U'</span><span class="p">:</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"vowel</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+</code></pre></div>
+<p>In C++17 you can document intentional fall-through with <code>[[fallthrough]];</code> to silence compiler warnings. For everything else, add the <code>break</code>.</p>
+<p><strong>Pitfall 2: declaring variables inside a <code>case</code> without braces.</strong> <code>case</code> labels do not introduce a new scope:</p>
+<div class="highlight"><pre><span></span><code><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">   </span><span class="c1">// error: declaration crosses case label</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Wrap the body in braces — <code>case 1: { int y = 5; ... break; }</code> — and the error disappears.</p>
+<p><strong>When to prefer <code>if-else</code>.</strong> For two or three non-contiguous values, <code>if-else</code> is at least as fast and far clearer. <code>switch</code> pays off when cases are dense (<code>case 0..N</code>) or when matching an <code>enum</code>, where the compiler can warn about missing cases (<code>-Wswitch</code>).</p>
+<h2 id="loops">Loops<a class="headerlink" href="#loops" title="Permanent link">&para;</a></h2>
+<p>Loops are the heart of every algorithm. The three loop forms in C++ — <code>for</code>, <code>while</code>, and <code>do-while</code> — differ in <em>how the termination condition is expressed</em>, not in what they can compute. Choosing the wrong one rarely breaks your code, but it consistently makes it harder to reason about. Under contest pressure, that difficulty is where bugs live.</p>
+<h3 id="for-when-you-know-how-many-iterations"><code>for</code> — when you know how many iterations<a class="headerlink" href="#for-when-you-know-how-many-iterations" title="Permanent link">&para;</a></h3>
+<p>Use <code>for</code> when the iteration count is fixed or index-driven. Nearly every array and matrix traversal in competitive programming is a <code>for</code> loop, and so are most DP transitions (<code>for (int i = 1; i &lt;= n; ++i) for (int j = 0; j &lt;= W; ++j) ...</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// body</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The three parts of the header are <strong>initialization</strong> (once), <strong>condition</strong> (before each iteration), and <strong>update</strong> (after each iteration). The subtlety that matters: <code>continue</code> in a <code>for</code> loop <strong>runs the update clause</strong> before the next condition check, unlike in <code>while</code> and <code>do-while</code>. This is the reason <code>for</code> is safer with <code>continue</code>, and why the common bug "infinite loop from <code>continue</code> in <code>while</code>" cannot happen in a <code>for</code>.</p>
+<p><strong><code>++i</code> vs <code>i++</code> — the myth.</strong> You will read in many tutorials that <code>++i</code> is faster than <code>i++</code>. <strong>For <code>int</code>, this is false.</strong> With <code>-O2</code>, GCC and Clang emit identical assembly for both — the optimizer eliminates the temporary. The distinction matters only for <strong>iterator classes</strong>, where <code>i++</code> must construct a copy of the old iterator. In competitive programming you almost never iterate by raw iterator; use whichever form you prefer. Do not waste mental energy micro-optimizing the wrong thing.</p>
+<p><strong>Scope of the loop variable.</strong> The counter <code>int i</code> declared in the header is scoped to the loop. This is usually what you want — but it means this fails:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">   </span><span class="c1">// error: i not declared</span>
+</code></pre></div>
+<p>Declare the counter before the loop if you need it after.</p>
+<p><strong>The unsigned-counter infinite loop.</strong> This is one of the classic CP bugs:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// INFINITE if n == 0 or after i == 0</span>
+<span class="w">    </span><span class="c1">// when i == 0, i-- wraps to UINT_MAX, which is &gt;= 0</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Two safe rewrites:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// signed — exits at -1</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// forward direction</span>
+</code></pre></div>
+<p>The rule: <strong>use <code>int</code> (or <code>long long</code>) for loop counters in competitive programming</strong>. Reserve <code>unsigned</code> for hashing and bit manipulation. The only exception is a range-based loop over <code>.size()</code>, where <code>size_t</code> is the natural type — and even then, cast when you need to iterate backwards.</p>
+<p><strong>The signed/unsigned comparison trap.</strong> <code>v.size()</code> returns <code>size_t</code>, which is <strong>unsigned</strong>. Comparing an <code>int</code> counter to it silently converts the counter to unsigned:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* safe as long as i &gt;= 0 always */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>This is safe <em>only</em> because the loop starts at 0. If <code>i</code> ever goes negative, it wraps to a huge unsigned value and the condition becomes always true. The related expression <code>v.size() - 1</code> is a live grenade — on an empty <code>v</code>, it wraps to <code>SIZE_MAX</code>. Two robust idioms:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// explicit cast, clearly signed</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// fully unsigned domain</span>
+</code></pre></div>
+<p>Both are fine. Pick one and use it consistently.</p>
+<p><strong>Overflow in the condition.</strong> <code>for (int i = 0; i &lt;= n; ++i)</code> with <code>n == INT_MAX</code> is <strong>undefined behavior</strong> — when <code>i</code> reaches <code>INT_MAX</code>, <code>++i</code> overflows a signed <code>int</code>, and with <code>-O2</code> the compiler is allowed to assume that never happens. The loop may terminate normally, may run forever, or may do something stranger. For <code>n</code> approaching <code>INT_MAX</code>, use <code>long long</code> and a strict comparison.</p>
+<h3 id="range-based-for-when-iterating-a-container">Range-based <code>for</code> — when iterating a container<a class="headerlink" href="#range-based-for-when-iterating-a-container" title="Permanent link">&para;</a></h3>
+<p>C++11 introduced range-based <code>for</code>, which iterates the elements of any container directly:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span><span class="w">   </span><span class="c1">// copies each element</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">             </span><span class="c1">// modifies v</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span><span class="w">   </span><span class="c1">// reads without copying</span>
+</code></pre></div>
+<p>In competitive programming, this is the cleanest way to iterate over a <code>vector</code>, <code>set</code>, <code>map</code> (where <code>x</code> is a <code>pair&lt;const K, V&gt;</code>), a <code>string</code>, or the adjacency list of a graph:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// BFS/DFS neighbor iteration</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The mistake to avoid is <strong>choosing the wrong reference qualifier</strong>. This is the most common range-<code>for</code> bug:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">   </span><span class="c1">// modifies a COPY — v is unchanged</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// modifies v</span>
+</code></pre></div>
+<p>Use <code>int&amp;</code> (or <code>auto&amp;</code>) when you mean to modify. Use <code>const int&amp;</code> (or <code>const auto&amp;</code>) when you read a <strong>non-trivial type</strong> — a <code>string</code>, a <code>vector</code>, a large struct — because the default <code>for (string s : vs)</code> copies every string in the container. The performance difference in a hot loop is enormous.</p>
+<p><strong>Iterator invalidation.</strong> Do not modify the container's <em>structure</em> inside a range-based <code>for</code>. <code>push_back</code> may reallocate the underlying buffer, invalidating the implicit iterator; <code>erase</code> invalidates it outright:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">);</span><span class="w">   </span><span class="c1">// UNDEFINED BEHAVIOR</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you need to modify the container during iteration, use an explicit index (<code>for (int i = 0; i &lt; v.size(); ++i)</code>) or collect the changes first and apply them after.</p>
+<p><strong><code>vector&lt;bool&gt;</code> caveat.</strong> <code>vector&lt;bool&gt;</code> is a bit-packed specialization — its elements are proxies, not real <code>bool</code> objects. As a result, <code>for (bool&amp; b : vb)</code> <strong>does not compile</strong>, and <code>for (bool b : vb)</code> copies a proxy that may behave unexpectedly. Use <code>vector&lt;char&gt;</code> when you need a boolean array with normal semantics; use <code>bitset</code> when you actually want the bit packing.</p>
+<h3 id="while-when-the-count-is-unknown"><code>while</code> — when the count is unknown<a class="headerlink" href="#while-when-the-count-is-unknown" title="Permanent link">&para;</a></h3>
+<p>Use <code>while</code> when the loop terminates based on a <strong>runtime condition</strong>, not a precomputed count. Two extremely common CP idioms:</p>
+<p><strong>Reading input until EOF</strong> (unknown number of test cases):</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// process x</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Search until found:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</code></pre></div>
+<p><code>while</code> also appears in <strong>convergence loops</strong> — fixed-point iterations, binary search, and numerical methods where the termination condition is "the update is small enough":</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e9</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">iter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span><span class="c1">// binary search on doubles</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">lo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hi</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ok</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>(Note: in that snippet we use <code>for</code> with a <strong>fixed</strong> iteration count, which is the standard CP technique for binary search on <code>double</code> — floating-point <code>while (hi - lo &gt; 1e-9)</code> can loop forever on hard inputs.)</p>
+<p><strong>Pitfall 1: forgetting to advance.</strong> A <code>while</code> loop where the condition variable is never modified runs forever. <code>-Wall</code> does not catch this; only reading the code catches it. When you write a <code>while</code>, scan the body first and confirm: <em>does something here make the condition eventually false?</em></p>
+<p><strong>Pitfall 2: <code>continue</code> without advancing.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w">   </span><span class="c1">// BUG: i never advances — infinite loop</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The equivalent <code>for</code> version does not have this bug because <code>continue</code> still runs <code>++i</code>. If you must <code>continue</code> in a <code>while</code>, advance the variable explicitly before the <code>continue</code>.</p>
+<p><strong>Pitfall 3: <code>while (cin &gt;&gt; x)</code> is false on <em>format error</em>, not just EOF.</strong> If input contains a non-numeric token where an <code>int</code> is expected, <code>cin</code> enters a fail state and the loop exits silently — possibly in the middle of the input, not at the end. If the problem guarantees well-formed input, this is fine. Otherwise, distinguish <code>cin.eof()</code> from <code>cin.fail()</code>.</p>
+<h3 id="do-while-at-least-once"><code>do-while</code> — at least once<a class="headerlink" href="#do-while-at-least-once" title="Permanent link">&para;</a></h3>
+<p>The body executes first; the condition is checked afterwards. In competitive programming, <code>do-while</code> is <strong>rare</strong> — the "read at least one value, then repeat while not sentinel" pattern it expresses is usually clearer as a <code>while</code> with an explicit first read:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// do-while style:</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// equivalent, and usually clearer:</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The one place <code>do-while</code> has a natural home is <strong>interactive problems</strong> with a mandatory first query, or <strong>menu-style input</strong> that always presents at least one option. For standard input-processing, prefer the <code>while</code> form.</p>
+<p><strong>Pitfall: <code>continue</code> in <code>do-while</code> jumps to the condition, not the body start.</strong> This asymmetry — <code>for</code> runs the update, <code>while</code> re-checks, <code>do-while</code> re-checks — is a genuine source of bugs when you convert between loop forms. If you convert a <code>for</code> to a <code>do-while</code>, re-examine every <code>continue</code>.</p>
+<h2 id="loop-control-break-and-continue">Loop Control: <code>break</code> and <code>continue</code><a class="headerlink" href="#loop-control-break-and-continue" title="Permanent link">&para;</a></h2>
+<p><strong><code>break</code> exits the innermost loop.</strong> In a single loop, it is a clean early exit:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In <strong>nested loops</strong>, <code>break</code> exits only the innermost one. If you need to abandon both loops at once, three idioms:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Flag in the condition</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">found</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// 2. goto — cleanest for this narrow case</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">done</span><span class="p">;</span>
+<span class="nl">done</span><span class="p">:</span>
+
+<span class="c1">// 3. Extract to a function and return</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">search</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In competitive programming, the <strong>flag in the condition</strong> is the most idiomatic — it keeps everything local and makes the exit condition visible at the top of the loop. The <code>goto</code> form is legitimate for deeply nested searches; the <code>return</code> form is the cleanest when the search is already inside a helper function.</p>
+<p><strong><code>break</code> inside a <code>switch</code> inside a loop</strong> exits the <code>switch</code>, not the loop. To exit the loop from inside a <code>switch</code>, use <code>return</code> or <code>goto</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">      </span><span class="c1">// exits the switch, continues the loop</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w">   </span><span class="c1">// exits the loop (and the switch)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nl">end</span><span class="p">:</span>
+</code></pre></div>
+<p><strong><code>continue</code> skips to the next iteration.</strong> In CP it is used mostly for filtering:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w">   </span><span class="c1">// skip negative values</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And for skipping the transition in a DP where the current state is unreachable:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INF</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w">      </span><span class="c1">// state never reached — skip</span>
+<span class="w">    </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cost</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Both uses are fine. The only pattern to avoid is <code>continue</code> in a <code>while</code> loop without advancing the loop variable (covered above).</p>
+<h2 id="patterns-you-will-reuse-constantly">Patterns You Will Reuse Constantly<a class="headerlink" href="#patterns-you-will-reuse-constantly" title="Permanent link">&para;</a></h2>
+<p>The following idioms appear so often in competitive programming that they are worth memorizing.</p>
+<p><strong>Read until EOF (unknown number of test cases):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* process */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>1-based indexing</strong> — many problems are stated with indices <span class="arithmatex">$1 \le i \le n$</span>. Pick a convention and stick to it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</code></pre></div>
+<p>Mixing 1-based and 0-based indexing in the same file is one of the top three sources of off-by-one bugs. If the problem uses 1-based, convert <em>immediately</em> at input; if it uses 0-based, keep it 0-based everywhere. Do not switch conventions halfway through.</p>
+<p><strong>Early-exit search</strong> — the <code>&amp;&amp; !found</code> form is clearer than <code>if (found) break</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">found</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Reading a grid</strong> — <code>cin &gt;&gt; s</code> reads one whitespace-delimited token, so multi-line grids parse naturally:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</code></pre></div>
+<p>(If you use <code>getline</code> here, remember to flush the newline left behind by <code>cin &gt;&gt; n &gt;&gt; m</code>; see the I/O article.)</p>
+<p><strong>Iterating neighbors in a graph:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// range-based — no iterator hassle</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<p>Loops are where runtime is measured. A rough throughput table for typical contest hardware with <code>-O2</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Loop body</th>
+<th>Approximate operations per second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty (<code>for (int i = 0; i &lt; n; ++i) {}</code>)</td>
+<td><span class="arithmatex">$\sim 10^9$</span></td>
+</tr>
+<tr>
+<td>Simple integer arithmetic</td>
+<td><span class="arithmatex">$\sim 10^8 - 10^9$</span></td>
+</tr>
+<tr>
+<td>Contiguous array access</td>
+<td><span class="arithmatex">$\sim 10^8$</span></td>
+</tr>
+<tr>
+<td><code>std::map</code> / <code>std::set</code> operation</td>
+<td><span class="arithmatex">$\sim 10^6 - 10^7$</span></td>
+</tr>
+<tr>
+<td><code>std::unordered_map</code> operation</td>
+<td><span class="arithmatex">$\sim 10^6 - 10^7$</span></td>
+</tr>
+<tr>
+<td>Random memory access (cache miss)</td>
+<td><span class="arithmatex">$\sim 10^7$</span></td>
+</tr>
+</tbody>
+</table>
+<p>These numbers are approximate but useful as a sanity check: if your solution does <span class="arithmatex">$10^{10}$</span> elementary operations, it will TLE no matter how clean your loop is. If it does <span class="arithmatex">$10^7$</span> <code>map</code> operations, that is already ~1 second.</p>
+<p><strong>What <code>-O2</code> gives you automatically:</strong></p>
+<ul>
+<li><strong>Loop unrolling</strong> for simple loops with a fixed small body.</li>
+<li><strong>Vectorization</strong> (SIMD) of element-wise operations on contiguous arrays — <code>for (int i = 0; i &lt; n; ++i) c[i] = a[i] + b[i];</code> compiles to SSE/AVX.</li>
+<li><strong>Hoisting</strong> of loop-invariant expressions.</li>
+<li><strong>Dead-loop elimination</strong> for loops with no observable side effects.</li>
+</ul>
+<p><strong>What <code>-O2</code> cannot fix:</strong></p>
+<ul>
+<li><strong>The algorithm.</strong> An <span class="arithmatex">$O(n^2)$</span> solution with <span class="arithmatex">$n = 10^5$</span> is <span class="arithmatex">$10^{10}$</span> operations; no micro-optimization saves it. Get the complexity right first, <em>then</em> worry about the constants.</li>
+<li><strong>Cache-unfriendly memory access.</strong> Accessing a row-major 2D array column-by-column is <span class="arithmatex">$5$</span>–<span class="arithmatex">$10\times$</span> slower than row-by-row because every access misses the cache:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Slow: column-major traversal of a row-major array</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+
+<span class="c1">// Fast: row-major traversal (matches memory layout)</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</code></pre></div>
+<ul>
+<li><strong>Unnecessary allocations.</strong> <code>vector&lt;int&gt; v(n)</code> inside a hot loop is slow; declare it once outside and reuse. The same applies to <code>string</code>, <code>map</code>, and any container that allocates.</li>
+</ul>
+<p><strong>Guidance for contests.</strong> For <span class="arithmatex">$n \ge 10^5$</span>, aim for <span class="arithmatex">$O(n \log n)$</span> or <span class="arithmatex">$O(n)$</span>. For <span class="arithmatex">$n \ge 10^7$</span>, even <span class="arithmatex">$O(n)$</span> must be tight — avoid <code>map</code>, avoid <code>string</code> concatenation in loops, prefer arrays over containers. For <span class="arithmatex">$n \le 10^3$</span>, an <span class="arithmatex">$O(n^2)$</span> approach is fine; do not over-engineer.</p>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>A checklist to run whenever your solution WAs or TLEs and you suspect control flow:</p>
+<ol>
+<li><strong><code>if (x = 5)</code> instead of <code>if (x == 5)</code></strong> — compile with <code>-Wall -Wextra</code>; GCC catches this.</li>
+<li><strong>Dangling <code>else</code></strong> — use braces always.</li>
+<li><strong><code>cout &lt;&lt; cond ? a : b</code></strong> — wrap the ternary in parentheses when streaming.</li>
+<li><strong>Missing <code>break</code> in <code>switch</code></strong> — fall-through.</li>
+<li><strong>Variable declaration in a <code>case</code> without braces</strong> — compile error; wrap in <code>{ ... }</code>.</li>
+<li><strong><code>for (unsigned i = n - 1; i &gt;= 0; --i)</code></strong> — infinite loop; use <code>int</code> counters.</li>
+<li><strong><code>v.size() - 1</code> on an empty vector</strong> — wraps to <code>SIZE_MAX</code>.</li>
+<li><strong><code>v.size()</code> compared to <code>int</code></strong> — signed/unsigned conversion; safe only if the counter is always <span class="arithmatex">$\ge 0$</span>.</li>
+<li><strong><code>for (int x : v) x *= 2</code></strong> — modifies a copy; use <code>int&amp;</code>.</li>
+<li><strong><code>for (string s : vs)</code></strong> — copies every string; use <code>const string&amp;</code>.</li>
+<li><strong>Modifying a container inside a range-<code>for</code></strong> — iterator invalidation; use an explicit index.</li>
+<li><strong><code>for (bool&amp; b : vb)</code></strong> — <code>vector&lt;bool&gt;</code> is not a normal container; use <code>vector&lt;char&gt;</code>.</li>
+<li><strong><code>continue</code> in <code>while</code> without advancing</strong> — infinite loop.</li>
+<li><strong><code>continue</code> in <code>do-while</code></strong> — jumps to the condition; re-examine conversion from <code>for</code>.</li>
+<li><strong><code>break</code> in nested loops</strong> — exits only the innermost; use a flag, <code>goto</code>, or <code>return</code>.</li>
+<li><strong><code>break</code> in <code>switch</code> inside a loop</strong> — exits the <code>switch</code>, not the loop.</li>
+<li><strong><code>while (cin &gt;&gt; x)</code> ends on format error, not just EOF</strong> — distinguish <code>cin.eof()</code> from <code>cin.fail()</code> if input may be malformed.</li>
+<li><strong><code>i &lt;= n</code> vs <code>i &lt; n</code></strong> — the single most common source of off-by-one WA.</li>
+<li><strong>Mixing 1-based and 0-based indices in one file</strong> — pick a convention and stick to it.</li>
+<li><strong><code>for (int i = 0; i &lt;= INT_MAX; ++i)</code></strong> — signed overflow is UB under <code>-O2</code>.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Always compile with <code>-Wall -Wextra</code>. Most control-flow bugs are caught by warnings before they reach the judge.</li>
+<li>Always use braces around <code>if</code>/<code>else</code> bodies. The dangling-else class of bugs disappears at zero cost.</li>
+<li><code>++i</code> and <code>i++</code> compile to identical machine code for <code>int</code> under <code>-O2</code>. Don't optimize what doesn't matter.</li>
+<li>Use signed <code>int</code> (or <code>long long</code>) for loop counters. Unsigned counters invite wrap-around infinite loops.</li>
+<li>When iterating containers, <code>const auto&amp;</code> avoids copies for non-trivial types; <code>auto&amp;</code> modifies in place.</li>
+<li><code>break</code> exits only the innermost loop; use a flag, <code>goto</code>, or <code>return</code> to abandon nested loops.</li>
+<li><code>continue</code> in a <code>while</code> loop requires the loop variable to advance on the <code>continue</code> path; in <code>for</code>, it does not.</li>
+<li>The <strong>algorithmic complexity</strong> dominates runtime. Get <span class="arithmatex">$O(n \log n)$</span> right before worrying about loop constants.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://codeforces.com/problemset/problem/1/A">Codeforces 1A — Theatre Square</a> — off-by-one in ceiling division; watch for <code>int</code> overflow when multiplying the two dimensions.</li>
+<li><a href="https://codeforces.com/problemset/problem/158/B">Codeforces 158B — Taxi</a> — conditionals on group sizes; a good exercise in case analysis without branching everywhere.</li>
+<li><a href="https://cses.fi/problemset/task/1071">CSES — Number Spiral</a> — nested conditionals on the parity of <code>x</code> and <code>y</code>; the canonical "if-else on structure" problem.</li>
+<li><a href="https://cses.fi/problemset/task/1092">CSES — Two Sets</a> — loops with <code>break</code>/<code>continue</code>, and a parity check at the top; sum of <span class="arithmatex">$10^5$</span> elements approaches <code>int</code> limits, so use <code>long long</code>.</li>
+<li><a href="https://codeforces.com/problemset/problem/546/A">Codeforces 546A — Soldier and Bananas</a> — simple loop, arithmetic sequence; teaches you where overflow hides in "obviously small" numbers.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/statements">cppreference — Statements (<code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code>)</a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">GCC — Warning options (<code>-Wall</code>, <code>-Wextra</code>, <code>-Wimplicit-fallthrough</code>)</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/range-for">cppreference — Range-based <code>for</code> loop</a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="arrays-and-vectors.html">Arrays and Vectors</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

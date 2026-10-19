@@ -1,0 +1,1455 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="conditionals-and-loops.html">
+      
+      
+        <link rel="next" href="functions-and-recursion.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Arrays and Vectors - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arrays-and-vectors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arrays and Vectors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="arrays-and-vectors.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-as-contiguous-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrays as Contiguous Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Arrays
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Static Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaration-and-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration and initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdarray-the-modern-c-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::array — the modern C++ alternative
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack-overflow-with-large-local-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stack overflow with large local arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimensional-arrays-memory-layout-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-dimensional arrays — memory layout matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdvector-the-dynamic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::vector — the dynamic array
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="std::vector — the dynamic array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#construction-five-idioms-to-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construction — five idioms to know
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push_back-vs-emplace_back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        push_back vs emplace_back
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#size-vs-capacity-vs-reserve-vs-resize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        size vs capacity vs reserve vs resize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-vector-grows-and-why-iterators-are-invalidated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How vector grows — and why iterators are invalidated
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#element-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Element access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterating-four-idiomatic-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iterating — four idiomatic forms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stl-algorithms-on-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STL Algorithms on Ranges
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="STL Algorithms on Ranges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sorting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-the-shift-and-return-idiom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unique — the shift-and-return idiom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-lower_bound-upper_bound-binary_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary search — lower_bound, upper_bound, binary_search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iota-fill-accumulate-count-find-reverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iota, fill, accumulate, count, find, reverse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2D Structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2D Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nested-vectors-vectorvectorint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested vectors — vector&lt;vector&lt;int&gt;&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flat-vector-one-contiguous-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flat vector — one contiguous buffer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-2d-array-at-global-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed 2D array at global scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns-you-will-reuse-constantly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns You Will Reuse Constantly
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns You Will Reuse Constantly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-arrays-for-large-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global arrays for large state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-sums-o1-range-sum-queries-after-on-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prefix sums — $O(1)$ range-sum queries after $O(n)$ preprocessing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-list-for-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjacency list for graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dp-table-as-a-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DP table as a vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitset-for-boolean-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bitset for boolean arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="arrays-and-vectors">Arrays and Vectors<a class="headerlink" href="#arrays-and-vectors" title="Permanent link">&para;</a></h1>
+<p>An array is a <strong>contiguous block of memory holding elements of the same type</strong>. That one sentence is the reason arrays dominate competitive programming: contiguous memory means the CPU can prefetch, vectorize, and cache efficiently, and index arithmetic compiles to a single <code>mov</code> instruction. Almost every efficient data structure you will meet — segment trees, Fenwick trees, sparse tables, DP tables, adjacency lists, union-find — is built on top of an array. If you understand how arrays and <code>vector</code>s work at the memory level, every algorithm downstream becomes easier to reason about; if you treat them as opaque boxes, subtle bugs (overflow, invalidation, shallow copies) will follow you through the entire course.</p>
+<p>This article covers both <code>std::array</code>-style static arrays and <code>std::vector</code>, with a focus on the parts that matter in contests: <strong>initialization guarantees, stack vs heap, capacity growth, iterator invalidation, and cache behavior</strong>. Those are the areas where nearly every WA/TLE comes from.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="intro-to-cpp.md">Introduction to C++</a> — compilation, <code>-O2</code>, the CP template.</li>
+<li><a href="io-and-data-types.html">I/O and Data Types</a> — <code>int</code> vs <code>long long</code>, <code>size_t</code>, signed/unsigned traps.</li>
+<li><a href="conditionals-and-loops.html">Conditionals and Loops</a> — loop idioms, off-by-one hazards.</li>
+</ul>
+<p>Throughout we assume the CP template:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="arrays-as-contiguous-memory">Arrays as Contiguous Memory<a class="headerlink" href="#arrays-as-contiguous-memory" title="Permanent link">&para;</a></h2>
+<p>Before writing any code, internalize this mental model:</p>
+<div class="highlight"><pre><span></span><code>int a[5] = {10, 20, 30, 40, 50};
+
+Address:   0x1000  0x1004  0x1008  0x100c  0x1010
+Value:       10      20      30      40      50
+Index:        0       1       2       3       4
+</code></pre></div>
+<p>The address of <code>a[i]</code> is <code>a + i * sizeof(int)</code>. Two consequences follow:</p>
+<ol>
+<li><strong>Indexing is <span class="arithmatex">$O(1)$</span></strong> — a single multiply-add, then a memory load.</li>
+<li><strong>Accesses to nearby indices hit the same cache line</strong> (typically 64 bytes = 16 <code>int</code>s). Iterating left to right is much faster than iterating in a scattered order, and vastly faster than traversing a linked structure.</li>
+</ol>
+<p>These two facts are why the array is the workhorse of competitive programming. A <code>std::map</code> has the same <span class="arithmatex">$O(\log n)$</span> asymptotic as binary search on a sorted array, but the array's constant factor is typically <strong>10–50× smaller</strong> because it never leaves a cache line.</p>
+<h2 id="static-arrays">Static Arrays<a class="headerlink" href="#static-arrays" title="Permanent link">&para;</a></h2>
+<p>A static array's size is known at compile time. In CP, "static" usually means two things: <strong>declared at global scope</strong> (fast zero-initialization, plentiful memory) or <strong>declared locally with a compile-time constant size</strong>.</p>
+<h3 id="declaration-and-initialization">Declaration and initialization<a class="headerlink" href="#declaration-and-initialization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w">                 </span><span class="c1">// Uninitialized (if local) — contains garbage</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">fixed</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">partial</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w">    </span><span class="c1">// {1, 2, 0, 0, 0} — the rest are zero</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">zeros</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w">          </span><span class="c1">// {0, 0, 0, 0, 0} — the canonical way</span>
+</code></pre></div>
+<p>The pitfall hiding in the first line is <strong>initialization guarantees differ by storage duration</strong>:</p>
+<ul>
+<li><strong>Global or <code>static</code> arrays</strong> are zero-initialized by the OS. <code>int cnt[100];</code> at file scope starts as all zeros.</li>
+<li><strong>Local arrays</strong> are <strong>not</strong> initialized. <code>int cnt[100];</code> inside <code>main</code> contains whatever was on the stack — often zeros in practice, but <strong>undefined behavior</strong> to read. Under <code>-O2</code>, the compiler may assume uninitialized values are <em>never read</em>, and eliminate code that would have "read" them.</li>
+</ul>
+<p>This is why competitive programming templates almost universally use <strong>global arrays</strong> for large state: they are guaranteed zero-initialized, allocated in the static data segment (not the 8 MB stack), and accessible from any function without passing pointers.</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200'005</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">     </span><span class="c1">// global — zero-initialized, 200005 * 4 bytes = ~800 KB, no stack cost</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">   </span><span class="c1">// global — fits the entire DP without heap allocations</span>
+</code></pre></div>
+<h3 id="stdarray-the-modern-c-alternative"><code>std::array</code> — the modern C++ alternative<a class="headerlink" href="#stdarray-the-modern-c-alternative" title="Permanent link">&para;</a></h3>
+<p>Since C++11, <code>std::array&lt;T, N&gt;</code> is the standard-library type for fixed-size arrays. It is stack-allocated, size is part of the type, and it supports <code>.size()</code>, iterators, and STL algorithms:</p>
+<div class="highlight"><pre><span></span><code><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w">          </span><span class="c1">// 5, always — no pointer decay</span>
+<span class="n">a</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">         </span><span class="c1">// reset all elements</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></div>
+<p>In CP, <code>std::array</code> is useful when you need <strong>STL compatibility without heap allocation</strong> — e.g., as a key type in <code>map</code>, or as the return value of a function that would otherwise decay to a pointer. For pure CP use, though, plain C arrays declared globally remain the most common choice.</p>
+<h3 id="stack-overflow-with-large-local-arrays">Stack overflow with large local arrays<a class="headerlink" href="#stack-overflow-with-large-local-arrays" title="Permanent link">&para;</a></h3>
+<p>The <strong>stack is typically 8 MB</strong> (Linux default). A local <code>int a[1'000'000];</code> is 4 MB — dangerously close to the limit once you add the call chain. A local <code>int a[10'000'000];</code> is 40 MB and <strong>will crash</strong> with a segmentation fault or, worse, produce garbage under <code>-O2</code> because the runtime did not catch the overflow.</p>
+<p>The fix is simple and habitual: <strong>declare any array larger than ~100 KB at global scope</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// BAD: 4 MB on the stack — dangerous</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="mi">1'000'000</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// GOOD: 4 MB in the static data segment — safe, zero-initialized</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span><span class="w">   </span><span class="c1">// global</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you <em>must</em> have a local array whose size is enormous, use <code>vector&lt;int&gt;</code> instead — it allocates on the heap. If you genuinely need a stack array for performance, increase the stack size locally with <code>ulimit -s unlimited</code> (this affects <em>your</em> machine, not the judge — never rely on it in the final submission).</p>
+<h3 id="multi-dimensional-arrays-memory-layout-matters">Multi-dimensional arrays — memory layout matters<a class="headerlink" href="#multi-dimensional-arrays-memory-layout-matters" title="Permanent link">&para;</a></h3>
+<p>A 2D array <code>int mat[R][C]</code> is <em>not</em> an array of arrays in the general sense; it is one contiguous block of <code>R * C</code> ints, stored <strong>row-major</strong>:</p>
+<div class="highlight"><pre><span></span><code>int mat[2][3] = {{1,2,3}, {4,5,6}};
+
+Address:  0x1000 0x1004 0x1008 0x100c 0x1010 0x1014
+Value:      1      2      3      4      5      6
+Logical:  [0][0] [0][1] [0][2] [1][0] [1][1] [1][2]
+</code></pre></div>
+<p>The address of <code>mat[i][j]</code> is <code>base + (i * C + j) * sizeof(int)</code>. Two consequences:</p>
+<ol>
+<li><strong>Iterating row by row matches memory order</strong> — the cache happily prefetches the entire next row.</li>
+<li><strong>Iterating column by column jumps <code>C * sizeof(int)</code> bytes at each step</strong> — every access is a potential cache miss. For a <span class="arithmatex">$1000 \times 1000$</span> array, column-major traversal can be <strong>5–10× slower</strong> than row-major:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// FAST — row-major traversal matches memory layout</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+
+<span class="c1">// SLOW — column-major traversal, cache-hostile</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</code></pre></div>
+<blockquote>
+<p><strong>How big can a 2D array be?</strong> With a 256 MB limit, you can fit <span class="arithmatex">$\lfloor 256 \cdot 10^6 / 4 \rfloor = 64 \cdot 10^6$</span> ints. That is a <span class="arithmatex">$8000 \times 8000$</span> grid, not <span class="arithmatex">$10^3 \times 10^3$</span> as some tutorials incorrectly state. The practical limit depends on the memory limit and element size, not on any "row × column" threshold. Compute <code>R * C * sizeof(T)</code> and compare it to the limit before assuming a matrix "won't fit".</p>
+</blockquote>
+<h2 id="stdvector-the-dynamic-array"><code>std::vector</code> — the dynamic array<a class="headerlink" href="#stdvector-the-dynamic-array" title="Permanent link">&para;</a></h2>
+<p><code>std::vector&lt;T&gt;</code> is a heap-allocated, dynamically-sized, contiguous array. For competitive programming, it is the default choice for anything whose size is read at runtime. Its overhead over a raw array is one pointer (<code>data()</code>), one size counter, and one capacity counter — <strong>24 bytes on 64-bit</strong>, allocated on the heap.</p>
+<h3 id="construction-five-idioms-to-know">Construction — five idioms to know<a class="headerlink" href="#construction-five-idioms-to-know" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span><span class="w">                  </span><span class="c1">// empty, capacity 0</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v2</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">               </span><span class="c1">// five 0s</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v3</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">           </span><span class="c1">// {10, 10, 10, 10, 10}</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w">   </span><span class="c1">// list initialization</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v5</span><span class="p">(</span><span class="n">v4</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v4</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"> </span><span class="c1">// copy of v4</span>
+</code></pre></div>
+<p>All five are common in CP, but the second one has a trap:</p>
+<blockquote>
+<p><strong><code>vector&lt;int&gt; v(-1)</code> is a bomb.</strong> The constructor's parameter is <code>size_t</code> (unsigned). <code>-1</code> is converted to <code>SIZE_MAX ≈ 1.8 · 10^{19}</code>, the vector tries to allocate that many <code>int</code>s, and you get <code>std::bad_alloc</code> or a hard crash. If a variable that should be non-negative becomes negative, the bug manifests as a memory error rather than a logical wrong answer — much harder to debug. <strong>Compile with <code>-Wall -Wextra</code></strong>; GCC warns about the sign conversion for literals.</p>
+</blockquote>
+<h3 id="push_back-vs-emplace_back"><code>push_back</code> vs <code>emplace_back</code><a class="headerlink" href="#push_back-vs-emplace_back" title="Permanent link">&para;</a></h3>
+<p>Both append an element in amortized <span class="arithmatex">$O(1)$</span>. The distinction only matters for non-trivial types:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">vp</span><span class="p">;</span>
+<span class="n">vp</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">});</span><span class="w">           </span><span class="c1">// constructs a temporary pair, then moves it</span>
+<span class="n">vp</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">          </span><span class="c1">// constructs the pair in place — one fewer move</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vs</span><span class="p">;</span>
+<span class="n">vs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span><span class="w">          </span><span class="c1">// temporary, then move — usually optimized away</span>
+<span class="n">vs</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="sc">'a'</span><span class="p">);</span><span class="w">       </span><span class="c1">// constructs "aaaaaaaaaa" in place — no temporary</span>
+</code></pre></div>
+<p>For <code>int</code>, <code>long long</code>, <code>double</code>, and small structs, the difference is negligible and <code>push_back</code> is clearer. For containers of containers, <code>emplace_back</code> can save measurable time. In DP-heavy code where you build arrays of pairs millions of times, <code>emplace_back</code> is the right habit.</p>
+<h3 id="size-vs-capacity-vs-reserve-vs-resize"><code>size</code> vs <code>capacity</code> vs <code>reserve</code> vs <code>resize</code><a class="headerlink" href="#size-vs-capacity-vs-reserve-vs-resize" title="Permanent link">&para;</a></h3>
+<p>This is the most important conceptual difference in <code>vector</code>. Understanding it eliminates both TLEs and memory bugs:</p>
+<ul>
+<li><strong><code>size()</code></strong> — number of elements currently in the vector.</li>
+<li><strong><code>capacity()</code></strong> — number of elements the current allocation can hold <em>without reallocating</em>. <code>capacity() &gt;= size()</code> always.</li>
+<li><strong><code>reserve(n)</code></strong> — ensures <code>capacity() &gt;= n</code>. Does <strong>not</strong> change <code>size()</code>. If called before a series of <code>push_back</code>, it eliminates all reallocations.</li>
+<li><strong><code>resize(n)</code></strong> — changes <code>size()</code> to exactly <code>n</code>. If <code>n &gt; size()</code>, new elements are value-initialized (<code>0</code> for <code>int</code>, <code>""</code> for <code>string</code>); if <code>n &lt; size()</code>, elements are destroyed.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="n">v</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">1'000'000</span><span class="p">);</span><span class="w">       </span><span class="c1">// capacity is now &gt;= 1e6, size is still 0</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1'000'000</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">   </span><span class="c1">// zero reallocations</span>
+
+<span class="n">v</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">500'000</span><span class="p">);</span><span class="w">          </span><span class="c1">// size is now 500k — half the elements destroyed</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The <code>10^5</code> bug (seriously).</strong> In C++, <code>10^5</code> is <strong>bitwise XOR</strong>, not exponentiation. <code>10 ^ 5</code> equals <code>15</code>, not <code>100000</code>. So a line like</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">v</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">10</span><span class="o">^</span><span class="mi">5</span><span class="p">);</span><span class="w">                         </span><span class="c1">// reserves 15 elements — useless!</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="o">^</span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// loops 15 times, not 100000!</span>
+</code></pre></div>
+<p>silently loops the wrong number of times and reserves the wrong amount of memory. This is a real, common WA pattern in CP code. Always write <code>100000</code>, <code>100'000</code>, or <code>1e5</code> (which is a <code>double</code> and converts to <code>int</code> cleanly — <code>int(1e5) == 100000</code>, but be aware that <code>1e9</code> as a <code>double</code> is exact while <code>1e10</code> is not).</p>
+<h3 id="how-vector-grows-and-why-iterators-are-invalidated">How <code>vector</code> grows — and why iterators are invalidated<a class="headerlink" href="#how-vector-grows-and-why-iterators-are-invalidated" title="Permanent link">&para;</a></h3>
+<p>When <code>push_back</code> needs space and <code>size == capacity</code>, the vector allocates a new buffer of typically <strong>2× the current capacity</strong>, moves all elements, and frees the old buffer. This is amortized <span class="arithmatex">$O(1)$</span> because the geometric growth spreads the reallocation cost across all insertions.</p>
+<p>The consequence is <strong>iterator invalidation</strong>:</p>
+<blockquote>
+<p><strong>After any <code>push_back</code> that triggers reallocation, all iterators, pointers, and references into the vector are invalidated.</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w">          </span><span class="c1">// may reallocate — p is now dangling</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w">              </span><span class="c1">// UNDEFINED BEHAVIOR</span>
+</code></pre></div>
+<p>The classic bug pattern is modifying a vector inside a range-<code>for</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">);</span><span class="w">   </span><span class="c1">// UB — invalidates the implicit iterator</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you need to append while iterating, use an explicit index and process the appended elements in a second pass, or collect the additions in a separate vector first:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">to_add</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">to_add</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">);</span>
+<span class="n">v</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">to_add</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">to_add</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></div>
+<p><code>reserve()</code> before a loop with <code>push_back</code> avoids all reallocations and the invalidation problem entirely:</p>
+<div class="highlight"><pre><span></span><code><span class="n">v</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">compute</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+</code></pre></div>
+<h3 id="element-access">Element access<a class="headerlink" href="#element-access" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">};</span>
+
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">            </span><span class="c1">// no bounds check — O(1), the workhorse in CP</span>
+<span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">         </span><span class="c1">// bounds check — throws std::out_of_range, ~2x slower</span>
+<span class="n">v</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w">       </span><span class="c1">// v[0]</span>
+<span class="n">v</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="w">        </span><span class="c1">// v[size()-1]</span>
+<span class="n">v</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w">        </span><span class="c1">// raw pointer — useful for C API interop and scanf</span>
+</code></pre></div>
+<p>For competitive programming, prefer <code>v[i]</code> — the bounds check in <code>.at()</code> is a real cost in hot loops, and correctness is guaranteed by your algorithm. Use <code>.at()</code> only while <strong>debugging</strong> an out-of-bounds bug: compile with <code>-D_GLIBCXX_DEBUG</code> and every <code>v[i]</code> out-of-bounds becomes a runtime error, catching the bug immediately.</p>
+<blockquote>
+<p><strong>Empty-vector traps.</strong> <code>v.back()</code> and <code>v.pop_back()</code> on an empty vector are undefined behavior. <code>v[v.size() - 1]</code> wraps to <code>v[SIZE_MAX]</code> and crashes. Always guard with <code>if (!v.empty())</code> before back/pop.</p>
+</blockquote>
+<h3 id="iterating-four-idiomatic-forms">Iterating — four idiomatic forms<a class="headerlink" href="#iterating-four-idiomatic-forms" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+
+<span class="c1">// 1. Index — needed when you also want the position</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+
+<span class="c1">// 2. Range-based — cleanest for read-only iteration</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+
+<span class="c1">// 3. Iterator — needed for STL algorithms that return iterators</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+
+<span class="c1">// 4. Reverse iterator — for backward passes</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">rbegin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Prefer the range-based form</strong> for anything read-only, with <code>const auto&amp;</code> for non-trivial element types. For write access, use <code>auto&amp;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">               </span><span class="c1">// modifies v — cheap, int is a primitive</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">vs</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w">  </span><span class="c1">// no copies</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">vs</span><span class="p">)</span><span class="w">        </span><span class="cm">/* BUG */</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// copies every string</span>
+</code></pre></div>
+<p>The signed/unsigned trap resurfaces with <code>.size()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">         </span><span class="c1">// warns with -Wsign-compare; safe only if i &gt;= 0</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">    </span><span class="c1">// explicit cast — recommended</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w">      </span><span class="c1">// fully unsigned — also fine</span>
+</code></pre></div>
+<h2 id="stl-algorithms-on-ranges">STL Algorithms on Ranges<a class="headerlink" href="#stl-algorithms-on-ranges" title="Permanent link">&para;</a></h2>
+<p><code>&lt;algorithm&gt;</code> and <code>&lt;numeric&gt;</code> provide operations that operate on any iterator range — <code>vector</code>, <code>std::array</code>, C arrays, <code>string</code>, <code>deque</code>. These are implemented by experts and are usually faster than hand-rolled equivalents because the compiler can vectorize them.</p>
+<h3 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w">                            </span><span class="c1">// ascending, O(n log n)</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">());</span><span class="w">            </span><span class="c1">// descending</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// custom order</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">                      </span><span class="c1">// sort by last digit</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The comparator must define a strict weak ordering.</strong> <code>return a &lt;= b;</code> is a bug — it says <code>a</code> comes before itself, which <code>sort</code> does not expect, and the standard says the behavior is undefined. It usually looks fine on small inputs and crashes or loops on large ones. <strong>Always use <code>&lt;</code>, never <code>&lt;=</code>.</strong></p>
+</blockquote>
+<p>For pairs and tuples, <code>sort</code> uses lexicographic order by default — <code>pair&lt;int, int&gt;</code> sorts by first, then by second. This is why the <code>pair</code> type is so convenient for sorting events, coordinates, or anything with a natural tiebreak.</p>
+<h3 id="unique-the-shift-and-return-idiom"><code>unique</code> — the shift-and-return idiom<a class="headerlink" href="#unique-the-shift-and-return-idiom" title="Permanent link">&para;</a></h3>
+<p><code>unique(begin, end)</code> does <strong>not</strong> remove elements. It <strong>shifts the first of each run of equal elements to the front</strong>, and returns an iterator past the last unique element. To actually remove duplicates:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w">                              </span><span class="c1">// sort first — required</span>
+<span class="n">v</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w">          </span><span class="c1">// then erase tail</span>
+</code></pre></div>
+<p>If you call <code>unique</code> without sorting, only <em>consecutive</em> duplicates are collapsed — which is almost never what you want.</p>
+<h3 id="binary-search-lower_bound-upper_bound-binary_search">Binary search — <code>lower_bound</code>, <code>upper_bound</code>, <code>binary_search</code><a class="headerlink" href="#binary-search-lower_bound-upper_bound-binary_search" title="Permanent link">&para;</a></h3>
+<p>These require the range to be <strong>sorted</strong> (by the same comparator). They return <strong>iterators</strong>, not indices:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binary_search</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+
+<span class="c1">// First position where v[i] &gt;= 5</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="c1">// First position where v[i] &gt; 5</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="c1">// Count of elements equal to 5</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hi</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lo</span><span class="p">;</span>
+</code></pre></div>
+<p>The <code>- v.begin()</code> conversion to index is the idiomatic way to use these in CP. <code>lower_bound</code> on an unsorted range is <em>undefined behavior</em> — not just "wrong result", actually UB, because the algorithm uses the comparator's transitivity assumption to narrow the search.</p>
+<h3 id="iota-fill-accumulate-count-find-reverse"><code>iota</code>, <code>fill</code>, <code>accumulate</code>, <code>count</code>, <code>find</code>, <code>reverse</code><a class="headerlink" href="#iota-fill-accumulate-count-find-reverse" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;numeric&gt;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="n">iota</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">           </span><span class="c1">// v = {0, 1, 2, ..., n-1}</span>
+<span class="n">fill</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span><span class="w">          </span><span class="c1">// set all elements</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accumulate</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">);</span><span class="w"> </span><span class="c1">// 0LL forces long long accumulation</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+<span class="n">reverse</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</code></pre></div>
+<blockquote>
+<p><strong><code>accumulate(v.begin(), v.end(), 0)</code> on an <code>int</code> vector accumulates in <code>int</code></strong> — the result overflows at <span class="arithmatex">$2^{31}$</span>, silently. Use <code>0LL</code> to force 64-bit accumulation. This is one of the most common silent-WA patterns in contest code.</p>
+</blockquote>
+<h2 id="2d-structures">2D Structures<a class="headerlink" href="#2d-structures" title="Permanent link">&para;</a></h2>
+<p>Two idioms for 2D data, with different tradeoffs.</p>
+<h3 id="nested-vectors-vectorvectorint">Nested vectors — <code>vector&lt;vector&lt;int&gt;&gt;</code><a class="headerlink" href="#nested-vectors-vectorvectorint" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">));</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</code></pre></div>
+<p>Clear, natural syntax, <code>grid[i][j]</code> works as expected. The downside is that each inner vector is a <strong>separate heap allocation</strong>, so rows are not contiguous with each other. For <span class="arithmatex">$n = 10^5$</span> rows of size 1, this is 100,000 separate allocations — a measurable constant-factor cost. For moderate <span class="arithmatex">$n, m$</span>, it is fine; the clarity usually wins.</p>
+<h3 id="flat-vector-one-contiguous-buffer">Flat vector — one contiguous buffer<a class="headerlink" href="#flat-vector-one-contiguous-buffer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">m</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span>
+<span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">grid</span><span class="p">[</span><span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)];</span>
+</code></pre></div>
+<p>One allocation, perfect cache locality, and <code>.data()</code> gives you a raw pointer if needed. The downside is the explicit index arithmetic — a source of subtle bugs (<code>i * m + j</code> vs <code>i * n + j</code>) if you are not careful. <strong>Use flat vectors for large grids</strong> (<span class="arithmatex">$n \cdot m \ge 10^6$</span>) or when you will do row-wise passes; use nested for readability otherwise.</p>
+<h3 id="fixed-2d-array-at-global-scope">Fixed 2D array at global scope<a class="headerlink" href="#fixed-2d-array-at-global-scope" title="Permanent link">&para;</a></h3>
+<p>For matrices with compile-time dimensions, the simplest option is often the best:</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'005</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">MAXN</span><span class="p">][</span><span class="n">MAXN</span><span class="p">];</span><span class="w">   </span><span class="c1">// global — zero-initialized, one allocation</span>
+</code></pre></div>
+<p>This is a single contiguous block of <code>MAXN * MAXN * 4</code> bytes — for <code>MAXN = 1005</code>, about 4 MB. Fits comfortably under any memory limit and is fast enough that grid DP, BFS on grids, and prefix-sum matrices rarely need more.</p>
+<h2 id="patterns-you-will-reuse-constantly">Patterns You Will Reuse Constantly<a class="headerlink" href="#patterns-you-will-reuse-constantly" title="Permanent link">&para;</a></h2>
+<h3 id="global-arrays-for-large-state">Global arrays for large state<a class="headerlink" href="#global-arrays-for-large-state" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAXN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200'005</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">visited</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+</code></pre></div>
+<p>Global = zero-initialized, no stack limit, no allocation overhead. The default choice for anything above ~10^4 elements.</p>
+<h3 id="prefix-sums-o1-range-sum-queries-after-on-preprocessing">Prefix sums — <span class="arithmatex">$O(1)$</span> range-sum queries after <span class="arithmatex">$O(n)$</span> preprocessing<a class="headerlink" href="#prefix-sums-o1-range-sum-queries-after-on-preprocessing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pref</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="c1">// sum of a[l..r] inclusive:</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pref</span><span class="p">[</span><span class="n">l</span><span class="p">];</span>
+</code></pre></div>
+<p>Use <code>long long</code> for the prefix array — the running sum of <span class="arithmatex">$10^5$</span> values near <span class="arithmatex">$10^9$</span> overflows <code>int</code>.</p>
+<h3 id="adjacency-list-for-graphs">Adjacency list for graphs<a class="headerlink" href="#adjacency-list-for-graphs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">u</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span><span class="w">   </span><span class="c1">// omit for directed graphs</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is <em>the</em> standard graph representation in CP: <span class="arithmatex">$O(V + E)$</span> memory and <span class="arithmatex">$O(\text{deg}(u))$</span> neighbor iteration. Most graph algorithms are written against it directly.</p>
+<h3 id="dp-table-as-a-vector">DP table as a vector<a class="headerlink" href="#dp-table-as-a-vector" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dp</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">INF</span><span class="p">);</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cost</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span>
+</code></pre></div>
+<p>For DP with only previous-row dependency, a <strong>rolling array</strong> saves memory:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prev</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">curr</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">curr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="w">    </span><span class="n">swap</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">curr</span><span class="p">);</span><span class="w">   </span><span class="c1">// O(1) — no copying</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="bitset-for-boolean-arrays"><code>bitset</code> for boolean arrays<a class="headerlink" href="#bitset-for-boolean-arrays" title="Permanent link">&para;</a></h3>
+<p><code>vector&lt;bool&gt;</code> is a bit-packed specialization with proxy references — <code>bool&amp;</code> does not work, <code>&amp;v[i]</code> does not compile, and non-adjacent elements share bytes. For a dense boolean array, use <code>std::bitset</code> instead:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">200'005</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">;</span><span class="w">    </span><span class="c1">// 25 KB, all zeros</span>
+<span class="n">visited</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">visited</span><span class="p">.</span><span class="n">count</span><span class="p">();</span><span class="w">            </span><span class="c1">// number of set bits</span>
+<span class="n">visited</span><span class="p">.</span><span class="n">flip</span><span class="p">();</span><span class="w">             </span><span class="c1">// complement</span>
+</code></pre></div>
+<p><code>bitset</code> operations (<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>) run on entire words in parallel — a <code>bitset&lt;10^6&gt;</code> shift is ~15,000× faster than a loop. This is the foundation of many "small boolean state" optimizations in DP and reachability.</p>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<p>Rough throughput of array- and vector-based operations on typical judge hardware with <code>-O2</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Operations per second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v[i]</code> (sequential, cached)</td>
+<td><span class="arithmatex">$\sim 10^9$</span></td>
+</tr>
+<tr>
+<td><code>push_back</code> with <code>reserve</code></td>
+<td><span class="arithmatex">$\sim 10^8 - 10^9$</span></td>
+</tr>
+<tr>
+<td><code>push_back</code> without <code>reserve</code></td>
+<td><span class="arithmatex">$\sim 10^7 - 10^8$</span> (reallocation dominates)</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><span class="arithmatex">$\sim 10^7 \cdot \log n$</span> comparisons</td>
+</tr>
+<tr>
+<td><code>lower_bound</code> (random access)</td>
+<td><span class="arithmatex">$\sim 10^7$</span> per second</td>
+</tr>
+<tr>
+<td><code>std::map</code> operation</td>
+<td><span class="arithmatex">$\sim 10^6 - 10^7$</span></td>
+</tr>
+<tr>
+<td><code>unordered_map</code> operation</td>
+<td><span class="arithmatex">$\sim 10^6 - 10^7$</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key guidance:</strong></p>
+<ul>
+<li><strong><code>reserve</code> when the final size is known.</strong> For a vector of <span class="arithmatex">$10^6$</span> elements, <code>reserve</code> before the <code>push_back</code> loop can save 20 reallocations and 2× total memory churn.</li>
+<li><strong>Contiguous beats tree-shaped.</strong> Sorting a vector and binary-searching it is often 10× faster than using <code>std::map</code> or <code>std::set</code> for the same logical queries, because the vector never leaves cache. <strong>Reach for <code>map</code> only when you need ordered insertion/deletion interleaved with queries.</strong></li>
+<li><strong>Small integer keys can use arrays as hash maps.</strong> A <code>vector&lt;int&gt; cnt(MAXV)</code> indexed by value is <span class="arithmatex">$O(1)$</span> with a tiny constant — beats <code>unordered_map</code> unless <code>MAXV</code> is large and sparse. This is the "direct-address table" trick and is everywhere in CP.</li>
+<li><strong>Flat 2D arrays beat nested vectors for large grids.</strong> For <span class="arithmatex">$1000 \times 1000$</span>, the difference is typically 2–3×.</li>
+<li><strong>Iterate in memory order.</strong> Row-major for row-major arrays; forward for forward-access containers. The cache loves this.</li>
+</ul>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>A checklist to run whenever your array- or vector-based solution WAs or TLEs:</p>
+<ol>
+<li><strong><code>10^5</code> instead of <code>100000</code></strong> — <code>^</code> is XOR, not power. <code>10^5 == 15</code>, not <code>100000</code>. Write <code>100'000</code> or <code>1e5</code>.</li>
+<li><strong>Local arrays are uninitialized</strong> — global arrays are zero, local ones are garbage. Declare large state at global scope.</li>
+<li><strong>Stack overflow from large local arrays</strong> — a local <code>int a[10^6]</code> is 4 MB; the stack is typically 8 MB. Move it to global.</li>
+<li><strong><code>vector&lt;int&gt; v(-1)</code></strong> — constructor parameter is <code>size_t</code>, <code>-1</code> becomes <code>SIZE_MAX</code>, crash.</li>
+<li><strong><code>v.back()</code> or <code>v.pop_back()</code> on an empty vector</strong> — UB; guard with <code>!v.empty()</code>.</li>
+<li><strong><code>v.size() - 1</code> on an empty vector</strong> — wraps to <code>SIZE_MAX</code>; guard.</li>
+<li><strong>Iterators invalidated by <code>push_back</code></strong> — reference/pointer/iterator into the vector is dangling after a reallocation. Use <code>reserve</code> or index-based access.</li>
+<li><strong>Modifying a container inside a range-<code>for</code></strong> — the same invalidation, hidden.</li>
+<li><strong><code>accumulate(v.begin(), v.end(), 0)</code> on an <code>int</code> vector</strong> — accumulates in <code>int</code>, overflows silently. Use <code>0LL</code>.</li>
+<li><strong><code>unique</code> without <code>sort</code></strong> — only removes <em>consecutive</em> duplicates.</li>
+<li><strong><code>unique</code> without <code>erase</code></strong> — only shifts elements; the container still has <code>n</code> elements.</li>
+<li><strong><code>lower_bound</code> on an unsorted range</strong> — UB, not just a wrong result.</li>
+<li><strong>Comparator <code>return a &lt;= b</code></strong> — not a strict weak ordering; UB. Use <code>&lt;</code>.</li>
+<li><strong><code>v.at()</code> in a hot loop</strong> — bounds check costs 1.5–2×; use <code>v[i]</code> unless debugging.</li>
+<li><strong>Passing a vector by value</strong> — copies the entire buffer. Use <code>const vector&lt;int&gt;&amp;</code>.</li>
+<li><strong><code>vector&lt;bool&gt;</code> misuse</strong> — proxy references, <code>bool&amp;</code> does not compile, <code>&amp;v[i]</code> invalid. Use <code>bitset</code> or <code>vector&lt;char&gt;</code>.</li>
+<li><strong>Column-major traversal of a row-major 2D array</strong> — 5–10× slowdown from cache misses.</li>
+<li><strong><code>i * m + j</code> vs <code>i * n + j</code></strong> in flat-vector indexing — a silent way to read wrong cells.</li>
+<li><strong>Signed/unsigned comparison with <code>.size()</code></strong> — safe only if the counter is always <span class="arithmatex">$\ge 0$</span>; use <code>(int)v.size()</code> when in doubt.</li>
+<li><strong><code>sort</code> on a range of size 0</strong> — fine (no-op), but <code>v.front()</code> on an empty vector is UB; guard.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>An array is contiguous memory; indexing is <span class="arithmatex">$O(1)$</span> address arithmetic, and sequential access exploits the cache. Every fast data structure in CP rests on this.</li>
+<li><strong>Global arrays are zero-initialized and escape the 8 MB stack.</strong> Default to global for anything larger than ~<span class="arithmatex">$10^4$</span> elements.</li>
+<li><code>vector</code> is the default container for runtime-sized data. Use <code>reserve</code> to eliminate reallocations; <code>resize</code> changes size, <code>reserve</code> changes capacity.</li>
+<li><strong><code>push_back</code> may invalidate all iterators into the vector.</strong> Guard with <code>reserve</code>, or use index-based access.</li>
+<li>The comparator in <code>sort</code> must be strict (<code>&lt;</code>, not <code>&lt;=</code>). The result of violating this is undefined behavior.</li>
+<li><code>accumulate</code> accumulates in the initial value's type — use <code>0LL</code> for <code>long long</code> results.</li>
+<li>2D: nested <code>vector&lt;vector&lt;int&gt;&gt;</code> for clarity, flat <code>vector&lt;int&gt;</code> for large grids. Row-major traversal matches memory layout.</li>
+<li>Reach for <strong>arrays and <code>bitset</code> before <code>map</code></strong> whenever possible — contiguous memory is orders of magnitude faster than tree-shaped containers.</li>
+<li>Write <code>100'000</code>, not <code>10^5</code>. The XOR bug is silent and lethal.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://cses.fi/problemset/task/1622">CSES — Missing Number</a> — sum-based solution; watch <code>long long</code> accumulation over <span class="arithmatex">$10^6$</span> elements near <span class="arithmatex">$10^6$</span>.</li>
+<li><a href="https://cses.fi/problemset/task/1069">CSES — Repetitions</a> — sequential scan; the canonical exercise in memory-order iteration.</li>
+<li><a href="https://codeforces.com/problemset/problem/474/B">Codeforces 474B — Worms</a> — prefix sums + <code>lower_bound</code>; classic conversion from iterator to index.</li>
+<li><a href="https://cses.fi/problemset/task/2162">CSES — Josephus Problem I</a> — array-based simulation, then the <span class="arithmatex">$O(n \log n)$</span> optimization; good intuition for where arrays stop being enough.</li>
+<li><a href="https://cses.fi/problemset/task/1667">CSES — Message Route</a> — BFS on an adjacency list; the <code>vector&lt;vector&lt;int&gt;&gt;</code> graph representation in action.</li>
+<li><a href="https://codeforces.com/problemset/problem/1213/D1">Codeforces 1213D1 — Equalizing by Division (easy)</a> — array-based counting; introduces the "small key → direct array" trick.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">cppreference — <code>std::vector</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/array">cppreference — <code>std::array</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm">cppreference — <code>&lt;algorithm&gt;</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/numeric">cppreference — <code>&lt;numeric&gt;</code> (<code>iota</code>, <code>accumulate</code>)</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/utility/bitset">cppreference — <code>std::bitset</code></a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="functions-and-recursion.html">Functions and Recursion</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

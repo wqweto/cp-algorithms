@@ -1,0 +1,1846 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="algorithmic-complexity.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Practice and Problems - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practice-and-problems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practice and Problems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practice-and-problems.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-two-modes-of-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Two Modes of Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Two Modes of Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topic-focused-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-focused practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contest-mode-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contest-mode practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-you-need-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why you need both
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-phases-mastery-criteria-not-timeboxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Four Phases: Mastery Criteria, Not Timeboxes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Phases: Mastery Criteria, Not Timeboxes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-arrays-sorting-and-searching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — Arrays, Sorting, and Searching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-stl-and-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 — STL and Data Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-basic-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4 — Basic Algorithms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-move-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to move on
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-pick-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Pick Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Pick Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraint-based-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint-based selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-based-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-based selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rating-based-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rating-based selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do not do this
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-upsolve-loop-the-highest-roi-habit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Upsolve Loop — the Highest-ROI Habit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Upsolve Loop — the Highest-ROI Habit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-four-step-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four-step loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-look-at-the-editorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to look at the editorial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stress-testing-the-debugging-method-that-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stress Testing — the Debugging Method That Actually Works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stress Testing — the Debugging Method That Actually Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-four-component-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four-component model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-stress-testing-helps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When stress testing helps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-stress-testing-doesnt-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When stress testing doesn't help
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-contests-and-contest-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Virtual Contests and Contest Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Contests and Contest Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contest-day-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contest-day strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speed-drills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speed drills
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rating-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rating Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rating Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-platform-mapping-approximate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-platform mapping (approximate)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#judges-compared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Judges Compared
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes-that-cost-rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes That Cost Rating
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-learning-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Learning Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfalls Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems-one-per-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems (one per technique)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="practice-and-problems">Practice and Problems<a class="headerlink" href="#practice-and-problems" title="Permanent link">&para;</a></h1>
+<p>Every other article in this course teaches a technique. This one teaches <strong>how to learn the techniques</strong> — the meta-skill that determines whether you spend six months going in circles or six months building a rating that reflects your actual ability. Competitive programming is unusual in that the raw material (problems, editorials, judges) is completely free and unlimited, yet most people who start never reach their potential. The reason is almost never intelligence. It is that they practice the wrong way: they solve problems without reflecting, look at editorials too early, avoid the discomfort of contest mode, and never target their specific weaknesses. This article is about avoiding those failure modes.</p>
+<p>The roadmap below is not a schedule — it is a set of <strong>mastery criteria</strong> with concrete problem lists and debugging techniques behind each. Move through the phases as fast as you can honestly demonstrate the criteria, not on a calendar.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The other articles in this course through <a href="algorithmic-complexity.html">Algorithmic Complexity</a> — you cannot practice what you have not learned.</li>
+<li>A working C++ environment with <code>g++</code>, <code>-O2</code>, and the CP template.</li>
+<li>Accounts on <a href="https://codeforces.com/">Codeforces</a> and <a href="https://cses.fi/problemset/">CSES</a>.</li>
+</ul>
+<h2 id="the-two-modes-of-practice">The Two Modes of Practice<a class="headerlink" href="#the-two-modes-of-practice" title="Permanent link">&para;</a></h2>
+<p>Almost all effective practice falls into one of two categories, and confusing them is the most common reason for stalled progress.</p>
+<h3 id="topic-focused-practice">Topic-focused practice<a class="headerlink" href="#topic-focused-practice" title="Permanent link">&para;</a></h3>
+<p>You pick <strong>one technique</strong> (prefix sums, binary search on the answer, monotonic stack) and solve 5–10 problems where it is the intended solution. The goal is <strong>depth</strong>: by the end, you should be able to implement the technique from memory in 5 minutes, recognize when it applies, and know its standard variations.</p>
+<p>Where this practice lives:</p>
+<ul>
+<li><strong>CSES Problem Set</strong> — the gold standard for topic-focused practice. Each section (Sorting and Searching, Dynamic Programming, Graph Algorithms) contains 20–30 problems sorted roughly by difficulty, all solvable with the section's technique. If you only use one resource, use this.</li>
+<li><strong>USACO Guide</strong> — organized by topic with a difficulty rating per problem (Very Easy / Easy / Normal / Hard / Very Hard) that is more calibrated than raw problem ratings.</li>
+<li><strong>Codeforces EDU</strong> — structured courses on specific techniques, with a mix of theory and practice.</li>
+<li><strong>CP-Algorithms</strong> — this site; each algorithm article has a "Practice Problems" section at the bottom.</li>
+</ul>
+<p><strong>The signature of good topic-focused practice:</strong> you can feel the technique becoming reflexive. When you read a problem and think "this smells like prefix sums" before consciously reasoning, the technique has moved from working memory to long-term memory. That is the goal.</p>
+<h3 id="contest-mode-practice">Contest-mode practice<a class="headerlink" href="#contest-mode-practice" title="Permanent link">&para;</a></h3>
+<p>You sit down for <strong>90 minutes to 2 hours</strong>, read 5–8 mixed problems of unknown technique, and try to solve as many as you can under time pressure. The goal is <strong>speed and judgment</strong>: reading comprehension, problem classification, code implementation under stress, and — most importantly — knowing when to abandon a problem.</p>
+<p>Where this practice lives:</p>
+<ul>
+<li><strong>Codeforces contests</strong> — Div. 3 and Div. 4 weekly, Div. 2 twice a month, Div. 1 monthly. Rated and unrated.</li>
+<li><strong>AtCoder Beginner Contests (ABC)</strong> — every Saturday, well-designed problems with an accessible difficulty curve.</li>
+<li><strong>Virtual contests</strong> — Codeforces lets you replay any past contest as if it were live, with the original 2-hour timer. This is the single most underrated practice technique in CP.</li>
+</ul>
+<p><strong>The signature of good contest-mode practice:</strong> your rating rises (or at least your solve rate on problems at or below your level rises). The feedback is immediate and honest. You cannot fake it.</p>
+<h3 id="why-you-need-both">Why you need both<a class="headerlink" href="#why-you-need-both" title="Permanent link">&para;</a></h3>
+<p>Topic-focused practice without contests produces a contestant who can solve a specific technique on request but freezes on a mixed set. Contest-mode practice without topic-focus produces a contestant who can solve easy problems quickly but never learns the techniques that unlock hard problems. <strong>Both, interleaved, is the only path that works.</strong> A common ratio is 70% topic-focused during the week, 30% contests on weekends.</p>
+<h2 id="the-four-phases-mastery-criteria-not-timeboxes">The Four Phases: Mastery Criteria, Not Timeboxes<a class="headerlink" href="#the-four-phases-mastery-criteria-not-timeboxes" title="Permanent link">&para;</a></h2>
+<p>The original roadmap suggested "1–4 weeks" per phase. That advice is almost always wrong, because the phase duration depends entirely on prior programming background: a computer-science student can clear Phase 1 in a week; a total beginner may need three months. The right structure is a set of <strong>mastery criteria</strong> you can honestly test yourself against.</p>
+<h3 id="phase-1-fundamentals">Phase 1 — Fundamentals<a class="headerlink" href="#phase-1-fundamentals" title="Permanent link">&para;</a></h3>
+<p><strong>Mastery criteria (all must be true):</strong></p>
+<ul>
+<li>You can solve any problem in CSES "Introductory Problems" in <strong>under 15 minutes</strong>, with <strong>zero WAs</strong> on the first submission. There are 22 problems in that section; if you can go through them in a week with no failed submissions, you have mastered Phase 1.</li>
+<li>You can implement a loop with <code>for (int i = 0; i &lt; n; ++i)</code> without thinking, and you never make off-by-one errors at boundaries (<code>i &lt; n</code> vs <code>i &lt;= n</code>, empty input, <code>n = 1</code>).</li>
+<li>You know that <code>10^5</code> is not <code>100000</code> and never write it in code.</li>
+<li>You can read 300 words of problem statement and correctly identify the input format, output format, and edge cases.</li>
+</ul>
+<p><strong>Typical time to mastery:</strong> 1–2 weeks for someone with prior programming experience, 6–12 weeks for a true beginner. Do not rush; the cost of shaky fundamentals is a permanent ceiling of ~1200 Codeforces.</p>
+<p><strong>Problems</strong> (each teaches a specific reflex):</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Teaches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1068">CSES — Weird Algorithm</a></td>
+<td>Simulation, the <code>while (n != 1)</code> loop</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1083">CSES — Missing Number</a></td>
+<td>Sum of arithmetic sequence, reading large inputs efficiently</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1069">CSES — Repetitions</a></td>
+<td>Sequential scan, running counter</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1094">CSES — Increasing Array</a></td>
+<td>Greedy from left to right, <strong>overflow</strong></td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1070">CSES — Permutations</a></td>
+<td>Constructive thinking, the case-analysis discipline</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1092">CSES — Two Sets</a></td>
+<td>Parity reasoning, sum divisibility, <strong>overflow in sums of 10^5 elements</strong></td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/4/A">Codeforces 4A — Watermelon</a></td>
+<td>Reading comprehension, edge cases (<code>w = 2</code> cannot be split)</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/71/A">Codeforces 71A — Way Too Long Words</a></td>
+<td>String handling, <code>s.front()</code> / <code>s.back()</code></td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/231/A">Codeforces 231A — Team</a></td>
+<td>Counting with a condition</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-2-arrays-sorting-and-searching">Phase 2 — Arrays, Sorting, and Searching<a class="headerlink" href="#phase-2-arrays-sorting-and-searching" title="Permanent link">&para;</a></h3>
+<p><strong>Mastery criteria:</strong></p>
+<ul>
+<li>You can solve any problem in CSES "Sorting and Searching" in <strong>under 30 minutes</strong>.</li>
+<li>You can implement <code>sort</code> with a custom comparator, <code>lower_bound</code>, <code>upper_bound</code>, and the <code>sort + unique + erase</code> deduplication without looking them up.</li>
+<li>You can convert a problem statement into a <strong>sorted array + binary search</strong> or <strong>prefix sums + range query</strong> in your head before writing code.</li>
+<li>You have solved at least 3 Codeforces Div. 2 A or B problems with <strong>0 WAs</strong> on first submission.</li>
+</ul>
+<p><strong>Typical time:</strong> 2–4 weeks.</p>
+<p><strong>Problems:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Teaches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1621">CSES — Distinct Numbers</a></td>
+<td><code>sort + unique + erase</code>, and the "count distinct" reflex</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1084">CSES — Apartments</a></td>
+<td>Two-pointer on two sorted arrays</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1090">CSES — Ferris Wheel</a></td>
+<td>Greedy with two pointers</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1754">CSES — Concert Tickets</a></td>
+<td><code>multiset</code> with <code>upper_bound</code> + <code>erase(iterator)</code> — the classic multiset pitfall</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1643">CSES — Maximum Subarray Sum</a></td>
+<td>Kadane's algorithm; the difference between <span class="arithmatex">$O(n^2)$</span> naive and <span class="arithmatex">$O(n)$</span> solution</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1640">CSES — Two Sum</a></td>
+<td><strong>Not</strong> LeetCode's Two Sum — this is pair-sum: sort + two pointers, or map lookup</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1141">CSES — Playlist</a></td>
+<td>Sliding window + map, longest substring without repeating</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/339/B">Codeforces 339B — Xenia and Ringroad</a></td>
+<td>Simulation with modular arithmetic, off-by-one</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/580/A">Codeforces 580A — Kefa and First Steps</a></td>
+<td>Longest increasing consecutive segment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-3-stl-and-data-structures">Phase 3 — STL and Data Structures<a class="headerlink" href="#phase-3-stl-and-data-structures" title="Permanent link">&para;</a></h3>
+<p><strong>Mastery criteria:</strong></p>
+<ul>
+<li>You can solve any problem in CSES "Data Structures" (the 20-ish problems there) in under 45 minutes.</li>
+<li>You have used <code>set</code>, <code>map</code>, <code>priority_queue</code>, <code>deque</code>, and <code>stack</code> each in at least one real problem.</li>
+<li>You know the <strong>complexities of every STL operation you use</strong> without looking them up — especially <code>set::lower_bound</code> vs <code>std::lower_bound</code> on a <code>set</code>.</li>
+<li>You can implement a monotonic stack or monotonic queue from scratch.</li>
+<li>You have solved at least 5 Div. 2 C problems (or equivalent).</li>
+</ul>
+<p><strong>Typical time:</strong> 3–6 weeks.</p>
+<p><strong>Problems:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Teaches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1163">CSES — Traffic Lights</a></td>
+<td><code>set</code> for maintaining positions + <code>multiset</code> for maximum gaps</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1164">CSES — Room Allocation</a></td>
+<td><code>priority_queue</code> with lazy deletion, sorting + greedy</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1645">CSES — Nearest Smaller Values</a></td>
+<td>Monotonic stack — the canonical template</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1076">CSES — Sliding Window Median</a></td>
+<td>Two heaps (one max-heap, one min-heap) + lazy deletion</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1732">CSES — Josephus Problem II</a></td>
+<td>Order statistics on a dynamic set — needs a Fenwick tree after the <code>set</code> TLEs</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/4/C">Codeforces 4C — Registration System</a></td>
+<td><code>map</code>/<code>unordered_map</code> frequency; the <code>operator[]</code> insert-on-read semantics</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/1526/B">Codeforces 1526B — I Hate 1111</a></td>
+<td>Number theory + the observation that a small case suffices</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/1366/A">Codeforces 1366A — Shovels and Swords</a></td>
+<td>Case analysis + the "when greedy fails" reasoning</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-4-basic-algorithms">Phase 4 — Basic Algorithms<a class="headerlink" href="#phase-4-basic-algorithms" title="Permanent link">&para;</a></h3>
+<p>The last phase <strong>before</strong> the "main" CP-Algorithms content (graphs, DP, strings, geometry — covered in later articles of this site).</p>
+<p><strong>Mastery criteria:</strong></p>
+<ul>
+<li>You can solve any problem in CSES "Dynamic Programming" or CSES "Graph Algorithms" that does not require advanced techniques (e.g., no segment trees, no Dijkstra with lazy deletion, no union-find path compression). Basic recursion, memoization, BFS, and DFS suffice.</li>
+<li>You have implemented BFS and DFS both recursively and iteratively.</li>
+<li>You have solved at least 10 Div. 2 C and 2 Div. 2 D problems.</li>
+<li>Your Codeforces rating is at least ~1300 (or you can consistently solve Div. 2 A, B, C).</li>
+</ul>
+<p><strong>Typical time:</strong> 4–8 weeks.</p>
+<p><strong>Problems:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Teaches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1633">CSES — Dice Combinations</a></td>
+<td>The canonical 1D DP; memoization vs iterative</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1634">CSES — Minimizing Coins</a></td>
+<td>Unbounded knapsack, DP with <code>INF</code> sentinel</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1666">CSES — Building Roads</a></td>
+<td>Connected components via DFS; comparing recursive vs iterative</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1667">CSES — Message Route</a></td>
+<td>BFS on a graph with parent pointers for path reconstruction</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1668">CSES — Building Teams</a></td>
+<td>Bipartite checking via BFS; the coloring pattern</td>
+</tr>
+<tr>
+<td><a href="https://cses.fi/problemset/task/1680">CSES — Longest Flight Route</a></td>
+<td>Topological sort + DP on DAG (longest path)</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/1611/E1">Codeforces 1611E1 — Escape The Maze (easy)</a></td>
+<td>BFS on a tree, multi-source propagation</td>
+</tr>
+<tr>
+<td><a href="https://codeforces.com/problemset/problem/1526/C1">Codeforces 1526C1 — Potions (easy)</a></td>
+<td>Greedy with priority queue; contrast with the DP formulation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-move-on">When to move on<a class="headerlink" href="#when-to-move-on" title="Permanent link">&para;</a></h3>
+<p><strong>Do not move to Phase N+1 until you can honestly check every box in Phase N.</strong> The cost of moving early is that Phase N+1 problems are built on Phase N fluency; if you're still looking up <code>lower_bound</code> while solving a DP problem, you'll spend twice as long on each problem and never finish.</p>
+<p>The one exception: if you've been stuck on a specific box for two weeks and you're not making progress, <strong>move on anyway</strong> and come back to it later. Sometimes a perspective from later material clarifies the earlier concept.</p>
+<h2 id="how-to-pick-problems">How to Pick Problems<a class="headerlink" href="#how-to-pick-problems" title="Permanent link">&para;</a></h2>
+<p>Random problem selection is inefficient. Three systematic approaches:</p>
+<h3 id="constraint-based-selection">Constraint-based selection<a class="headerlink" href="#constraint-based-selection" title="Permanent link">&para;</a></h3>
+<p>Read the constraints first, reverse-engineer the intended complexity, then pick the technique:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Likely technique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">$n \le 20$</span></td>
+<td>Brute force / bitmask DP / permutation enumeration</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 100$</span>, <span class="arithmatex">$m \le 100$</span></td>
+<td>Floyd–Warshall, <span class="arithmatex">$O(n^3)$</span> DP, small graph algorithms</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 2000$</span></td>
+<td><span class="arithmatex">$O(n^2)$</span> DP or <span class="arithmatex">$O(n^2 \log n)$</span> with care</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^5$</span></td>
+<td><span class="arithmatex">$O(n \log n)$</span>: sorting, binary search, segment tree, Fenwick, heap</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^6$</span></td>
+<td><span class="arithmatex">$O(n)$</span>: prefix sums, two pointers, monotonic stack</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^9$</span></td>
+<td><span class="arithmatex">$O(\log n)$</span> or <span class="arithmatex">$O(\sqrt{n})$</span>: number theory, matrix exponentiation</td>
+</tr>
+<tr>
+<td><span class="arithmatex">$n \le 10^{18}$</span></td>
+<td><span class="arithmatex">$O(\log n)$</span>: binary lifting, fast exponentiation, digit DP</td>
+</tr>
+</tbody>
+</table>
+<p>This table is not a lookup — it's a set of hints. Some <span class="arithmatex">$n \le 10^5$</span> problems are solved by <span class="arithmatex">$O(n)$</span> and some by <span class="arithmatex">$O(n \sqrt{n})$</span>. But when you're stuck, "what does the constraint tell me?" is usually enough to break the block.</p>
+<h3 id="topic-based-selection">Topic-based selection<a class="headerlink" href="#topic-based-selection" title="Permanent link">&para;</a></h3>
+<p>Pick a technique, then find 5–10 problems where it's the intended solution. Sources:</p>
+<ul>
+<li>The "Practice Problems" sections at the bottom of each CP-Algorithms article.</li>
+<li>CSES Problem Set sections (each is a topic).</li>
+<li>USACO Guide sections (each has 5–15 practice problems rated by difficulty).</li>
+</ul>
+<h3 id="rating-based-selection">Rating-based selection<a class="headerlink" href="#rating-based-selection" title="Permanent link">&para;</a></h3>
+<p>Pick a rating band <strong>± 200 above your current rating</strong>, and solve only problems in that band. Below the band, you're not learning. Above the band, you're stuck and frustrated. The band is where growth happens.</p>
+<p>For Codeforces, if your rating is <span class="arithmatex">$R$</span>, the band is <span class="arithmatex">$[R - 100, R + 200]$</span>. For CSES, the section's "Easy" problems are below the band; the "Hard" problems are above; pick the "Normal" ones.</p>
+<h3 id="do-not-do-this">Do not do this<a class="headerlink" href="#do-not-do-this" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Don't solve 100 problems at your exact rating.</strong> You need the challenge of <span class="arithmatex">$R + 200$</span> to grow.</li>
+<li><strong>Don't random-select from the full problem archive.</strong> This produces a mix of too-easy and too-hard problems, and you don't know which is which until you start.</li>
+<li><strong>Don't solve 100 problems you already know how to do.</strong> If you can look at a problem and immediately write the solution, it's a speed drill (useful occasionally) but not practice.</li>
+<li><strong>Don't solve problems you don't understand the statement of.</strong> If reading the problem twice doesn't tell you what's being asked, the problem is above your reading level, not your coding level.</li>
+</ul>
+<h2 id="the-upsolve-loop-the-highest-roi-habit">The Upsolve Loop — the Highest-ROI Habit<a class="headerlink" href="#the-upsolve-loop-the-highest-roi-habit" title="Permanent link">&para;</a></h2>
+<p>The single activity with the highest return on investment is <strong>upsolving</strong>: after a contest (or after failing a problem in practice), <strong>solve the problems you couldn't solve during the contest</strong>. This is where actual skill comes from. The contest is the diagnostic; the upsolve is the treatment.</p>
+<h3 id="the-four-step-loop">The four-step loop<a class="headerlink" href="#the-four-step-loop" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Understand the idea</strong> — read the editorial (or someone else's solution) until you can explain the approach to someone else in plain words. <strong>Do not look at code yet.</strong></li>
+<li><strong>Implement from memory</strong> — close the editorial. Open a blank file. Write the solution. If you can't remember the approach, that's the gap; re-read the editorial's <em>idea</em> section, not the code.</li>
+<li><strong>Debug and verify</strong> — submit. If WA, debug with edge cases. If TLE, think about complexity.</li>
+<li><strong>Read the optimal solution</strong> — after AC, look at the top 5 submissions on Codeforces for that problem. See if there's a cleaner, shorter, or faster way. Often there is.</li>
+</ol>
+<p>The critical step is <strong>step 2</strong>. Reading an editorial and then copying the code produces zero skill. Closing the editorial and re-deriving the solution is what transfers the idea into your working memory.</p>
+<h3 id="when-to-look-at-the-editorial">When to look at the editorial<a class="headerlink" href="#when-to-look-at-the-editorial" title="Permanent link">&para;</a></h3>
+<p>The "30–60 minutes" rule from most tutorials is too rigid. The right time depends on the problem's difficulty relative to your rating:</p>
+<table>
+<thead>
+<tr>
+<th>Problem rating vs. your rating</th>
+<th>Time before editorial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Below your rating</td>
+<td><strong>10 minutes.</strong> You should solve these unaided. If you can't, you have a gap in fundamentals that requires targeted practice, not more time on this problem.</td>
+</tr>
+<tr>
+<td>At your rating</td>
+<td><strong>20–30 minutes.</strong> This is your learning zone. Struggle is productive, but not for an hour.</td>
+</tr>
+<tr>
+<td>100–200 above your rating</td>
+<td><strong>45–60 minutes.</strong> Some struggle is expected; after an hour, look at a hint (not the full solution), then try for another 15 minutes.</td>
+</tr>
+<tr>
+<td>300+ above your rating</td>
+<td><strong>10 minutes to read the problem, then skip.</strong> These problems are for later. Save the link and come back when you're ready.</td>
+</tr>
+</tbody>
+</table>
+<p>The point of the time limit is not to be strict but to <strong>avoid grinding on problems you're not equipped to solve</strong>. A problem that's 400 points above your rating teaches you nothing because you can't internalize the solution's idea — it's too far from what you know. Save it, get stronger, come back.</p>
+<h2 id="stress-testing-the-debugging-method-that-actually-works">Stress Testing — the Debugging Method That Actually Works<a class="headerlink" href="#stress-testing-the-debugging-method-that-actually-works" title="Permanent link">&para;</a></h2>
+<p>Once you can implement a solution quickly, the bottleneck becomes <strong>debugging</strong>. The most effective technique is <strong>stress testing</strong>: generate random small inputs, compare your solution against a brute-force reference, and find the smallest input that produces a mismatch.</p>
+<h3 id="the-four-component-model">The four-component model<a class="headerlink" href="#the-four-component-model" title="Permanent link">&para;</a></h3>
+<p>Every stress test has four files:</p>
+<ol>
+<li><strong><code>gen.cpp</code></strong> — generates a random input (small <span class="arithmatex">$n$</span>, random values within the problem's constraints).</li>
+<li><strong><code>brute.cpp</code></strong> — a correct but inefficient solution (usually <span class="arithmatex">$O(n^2)$</span> or <span class="arithmatex">$O(2^n)$</span>, fine for <span class="arithmatex">$n \le 10$</span>).</li>
+<li><strong><code>sol.cpp</code></strong> — your solution, compiled with <code>-D_GLIBCXX_DEBUG -fsanitize=address,undefined</code>.</li>
+<li><strong><code>stress.sh</code></strong> — a shell loop that generates an input, runs both programs, and reports the first mismatch.</li>
+</ol>
+<h3 id="the-script">The script<a class="headerlink" href="#the-script" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># stress.sh — run from a directory containing gen, brute, sol</span>
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1000</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>./gen<span class="w"> </span>&gt;<span class="w"> </span>input.txt
+<span class="w">    </span>./brute<span class="w"> </span>&lt;<span class="w"> </span>input.txt<span class="w"> </span>&gt;<span class="w"> </span>out_brute.txt
+<span class="w">    </span>./sol<span class="w">   </span>&lt;<span class="w"> </span>input.txt<span class="w"> </span>&gt;<span class="w"> </span>out_sol.txt
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>diff<span class="w"> </span>-q<span class="w"> </span>out_brute.txt<span class="w"> </span>out_sol.txt<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Mismatch on iteration </span><span class="nv">$i</span><span class="s2">"</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Input:"</span>
+<span class="w">        </span>cat<span class="w"> </span>input.txt
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Brute:"</span>
+<span class="w">        </span>cat<span class="w"> </span>out_brute.txt
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Solution:"</span>
+<span class="w">        </span>cat<span class="w"> </span>out_sol.txt
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">100</span><span class="k">))</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Passed </span><span class="nv">$i</span><span class="s2"> iterations"</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"All 1000 iterations passed"</span>
+</code></pre></div>
+<p>Compile the three programs with:</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-o<span class="w"> </span>gen<span class="w">   </span>gen.cpp
+g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-o<span class="w"> </span>brute<span class="w"> </span>brute.cpp
+g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-fsanitize<span class="o">=</span>address,undefined<span class="w"> </span>-D_GLIBCXX_DEBUG<span class="w"> </span>-o<span class="w"> </span>sol<span class="w"> </span>sol.cpp
+</code></pre></div>
+<p>The <code>-fsanitize</code> and <code>_GLIBCXX_DEBUG</code> flags make out-of-bounds and undefined behavior fail loudly and immediately, instead of silently producing wrong answers or crashing hours later. They slow the solution by 2–5×, but you're stress testing small inputs anyway, so the slowdown doesn't matter.</p>
+<h3 id="when-stress-testing-helps">When stress testing helps<a class="headerlink" href="#when-stress-testing-helps" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>WA on a test but you don't know why.</strong> Almost every time.</li>
+<li><strong>Suspected edge-case bug.</strong> The generator can be designed to produce edge cases (empty, <code>n = 1</code>, all-equal, already-sorted, adversarial patterns).</li>
+<li><strong>Comparing two algorithms</strong> — one you wrote and one you trust.</li>
+</ul>
+<h3 id="when-stress-testing-doesnt-help">When stress testing doesn't help<a class="headerlink" href="#when-stress-testing-doesnt-help" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>TLE.</strong> Stress testing uses small inputs; complexity bugs won't show up. Analyze the algorithm or use the benchmark table from <a href="algorithmic-complexity.html">Algorithmic Complexity</a>.</li>
+<li><strong>Problem statement misunderstanding.</strong> If your brute force implements the same wrong interpretation as your solution, both will "agree" and you'll never find the bug. Read the statement again carefully before stress testing.</li>
+<li><strong>Very large inputs.</strong> Generate large test cases separately with a different script; the four-component loop is for small inputs only.</li>
+</ul>
+<h2 id="virtual-contests-and-contest-strategy">Virtual Contests and Contest Strategy<a class="headerlink" href="#virtual-contests-and-contest-strategy" title="Permanent link">&para;</a></h2>
+<p>A <strong>virtual contest</strong> is a replay of a past Codeforces contest under the original 2-hour time limit. You register as if you were participating live, you can see the standings of the original participants, and you get the same feedback loop: which problems were easy (many solves), which were hard (few), and where you should spend your time.</p>
+<p>Virtual contests teach three things that regular practice cannot:</p>
+<ol>
+<li><strong>Reading a mixed problem set quickly</strong> — the ability to skim a problem statement and estimate its difficulty is a skill that transfers directly to real contests.</li>
+<li><strong>Time allocation under pressure</strong> — you learn what it feels like to be 40 minutes into a contest with 2 WAs and no AC.</li>
+<li><strong>The emotional experience of contest day</strong> — code that works at home bugs out at 2 PM on Saturday; you learn to stay calm under that specific stress.</li>
+</ol>
+<h3 id="contest-day-strategy">Contest-day strategy<a class="headerlink" href="#contest-day-strategy" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>First 5 minutes:</strong> read <strong>all</strong> problems A–D. Do not start coding until you know the whole set. The problems are roughly sorted by difficulty, but not always.</li>
+<li><strong>Next 20–30 minutes:</strong> solve A and B. These should be near-instant.</li>
+<li><strong>Next 30–45 minutes:</strong> solve C. This is your learning zone; C is where most people improve.</li>
+<li><strong>Next 60 minutes:</strong> attempt D. If you can't make progress in 20–30 minutes, <strong>submit a partial</strong> (if the problem allows) or <strong>stop and upsolve</strong>.</li>
+<li><strong>Last 10 minutes:</strong> re-check your submissions — did you read the output format correctly? Does your solution handle <code>n = 1</code>?</li>
+</ul>
+<p>The biggest mistake beginners make is <strong>spending the whole contest on C</strong>. If C is genuinely beyond you, submitting nothing on D means you lose the chance to upsolve D later with a clear head. <strong>Solve fewer, learn more.</strong></p>
+<h3 id="speed-drills">Speed drills<a class="headerlink" href="#speed-drills" title="Permanent link">&para;</a></h3>
+<p>Occasionally (once per week), do a <strong>speed drill</strong>: take a problem you already know how to solve (e.g., a Div. 2 A from last week), and implement it from scratch in <strong>under 10 minutes with zero WA</strong>. The goal is not problem-solving; it's <strong>coding muscle memory</strong> for the STL idioms, the fast I/O template, and the edge-case reflexes. CP is partly a typing contest — if you can't type the solution as fast as you can think it, you lose points on speed alone.</p>
+<h2 id="rating-calibration">Rating Calibration<a class="headerlink" href="#rating-calibration" title="Permanent link">&para;</a></h2>
+<p>Codeforces ratings are the lingua franca of competitive programming. Here's what they actually mean:</p>
+<table>
+<thead>
+<tr>
+<th>CF Rating</th>
+<th>Name</th>
+<th>Can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unrated</td>
+<td>—</td>
+<td>Solving CSES Introductory problems</td>
+</tr>
+<tr>
+<td>800–1000</td>
+<td>Newbie</td>
+<td>Solve Div. 2 A reliably; basic loops and conditionals</td>
+</tr>
+<tr>
+<td>1000–1200</td>
+<td>Newbie</td>
+<td>Solve Div. 2 A–B; string manipulation, simple sorting</td>
+</tr>
+<tr>
+<td>1200–1400</td>
+<td>Pupil</td>
+<td>Solve Div. 2 B–C; basic prefix sums, two pointers</td>
+</tr>
+<tr>
+<td>1400–1600</td>
+<td>Specialist</td>
+<td>Solve Div. 2 C; basic DP, BFS/DFS on trees</td>
+</tr>
+<tr>
+<td>1600–1800</td>
+<td>Expert</td>
+<td>Solve Div. 2 D occasionally; segment trees, unions, basic DP on graphs</td>
+</tr>
+<tr>
+<td>1800–2000</td>
+<td>Expert</td>
+<td>Solve Div. 2 D reliably; most standard algorithms</td>
+</tr>
+<tr>
+<td>2000–2200</td>
+<td>Candidate Master</td>
+<td>Solve Div. 1 B; advanced DP, clever implementations</td>
+</tr>
+<tr>
+<td>2200–2400</td>
+<td>Master</td>
+<td>Solve Div. 1 C; full algorithmic toolkit</td>
+</tr>
+<tr>
+<td>2400+</td>
+<td>Grandmaster</td>
+<td>Solve Div. 1 D; the top ~1% of competitive programmers</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>plateau at 1600–1800</strong> is real and well-documented. Most people who get to Pupil reach Specialist quickly, then get stuck for months or years. The reason is almost always that they are doing the wrong kind of practice: solving more Div. 2 C problems they already can solve, rather than deliberately practicing harder techniques.</p>
+<p><strong>Breaking the plateau requires:</strong></p>
+<ul>
+<li>Moving from "solve problems" to "study techniques" — the D and E problems of Div. 2 require specific algorithms (segment trees with lazy propagation, combinatorial DP on graphs, etc.) that you will not spontaneously invent.</li>
+<li>Upsolving every D and E from every contest you participate in.</li>
+<li>Reading other people's solutions and <strong>understanding them fully</strong> before moving on.</li>
+<li>Accepting that some problems are simply beyond you for now and moving on without shame.</li>
+</ul>
+<h3 id="cross-platform-mapping-approximate">Cross-platform mapping (approximate)<a class="headerlink" href="#cross-platform-mapping-approximate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Codeforces</th>
+<th>AtCoder</th>
+<th>CSES difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>800–1000</td>
+<td>ABC A–B</td>
+<td>Introductory</td>
+</tr>
+<tr>
+<td>1200–1400</td>
+<td>ABC C–D</td>
+<td>Sorting and Searching, easy problems</td>
+</tr>
+<tr>
+<td>1400–1600</td>
+<td>ABC D</td>
+<td>Sorting and Searching, medium problems</td>
+</tr>
+<tr>
+<td>1600–1800</td>
+<td>ABC E</td>
+<td>Data Structures</td>
+</tr>
+<tr>
+<td>1800–2000</td>
+<td>ABC F</td>
+<td>Graph Algorithms, Dynamic Programming</td>
+</tr>
+</tbody>
+</table>
+<p>The mapping is approximate — AtCoder problems are often conceptually harder than their Codeforces counterparts at the same nominal rating, and CSES problems are often simpler than they look. Use this table as a starting point, not a guarantee.</p>
+<h2 id="judges-compared">Judges Compared<a class="headerlink" href="#judges-compared" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Judge</th>
+<th>Best for</th>
+<th>Problem quality</th>
+<th>Community</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://cses.fi/problemset/">CSES</a></strong></td>
+<td>Topic-by-topic practice</td>
+<td>Excellent — clean statements, clear constraints</td>
+<td>Small (it's a static problem set)</td>
+<td>Phase 1–4, every phase</td>
+</tr>
+<tr>
+<td><strong><a href="https://codeforces.com/">Codeforces</a></strong></td>
+<td>Contests, mixed practice</td>
+<td>Very good, occasional weak statements</td>
+<td>Largest and most active</td>
+<td>Weekly, throughout</td>
+</tr>
+<tr>
+<td><strong><a href="https://atcoder.jp/">AtCoder</a></strong></td>
+<td>Well-structured contests</td>
+<td>Excellent, especially for learning</td>
+<td>Active</td>
+<td>Weekly (ABC on Saturdays)</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.codechef.com/">CodeChef</a></strong></td>
+<td>Long contests, consistency</td>
+<td>Good, sometimes variable</td>
+<td>Active</td>
+<td>Optional — useful for sustained practice</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.spoj.com/">SPOJ</a></strong></td>
+<td>Classical algorithms</td>
+<td>Variable — many old problems with poor statements</td>
+<td>Slower, older</td>
+<td>For specific classical problems</td>
+</tr>
+<tr>
+<td><strong><a href="https://usaco.guide/">USACO Guide</a></strong></td>
+<td>Structured learning</td>
+<td>Very good, curated</td>
+<td>Small but helpful</td>
+<td>When you want a "textbook + practice" combination</td>
+</tr>
+<tr>
+<td><strong>LeetCode</strong></td>
+<td>Interview prep, <strong>not</strong> CP</td>
+<td>Good for interviews, not for CP</td>
+<td>Large</td>
+<td>Avoid for CP-specific practice</td>
+</tr>
+</tbody>
+</table>
+<p>The single most important judge choice is <strong>Codeforces for contests, CSES for topics</strong>. Everything else is supplementary.</p>
+<h2 id="common-mistakes-that-cost-rating">Common Mistakes That Cost Rating<a class="headerlink" href="#common-mistakes-that-cost-rating" title="Permanent link">&para;</a></h2>
+<p>A checklist of the failures you will actually make:</p>
+<ol>
+<li><strong>Not reading the problem statement carefully.</strong> This is the #1 source of WAs across all levels. Before coding, write down: input format, output format, edge cases, and one worked example by hand. <strong>Do not skim.</strong></li>
+<li><strong>Ignoring the constraints.</strong> <span class="arithmatex">$n \le 10^5$</span> means <span class="arithmatex">$O(n \log n)$</span> is required. If you start coding <span class="arithmatex">$O(n^2)$</span>, you will TLE, and you'll have wasted 30 minutes.</li>
+<li><strong>Coding before designing.</strong> If you open the file before you know what to write, you will code the wrong thing and have to start over. <strong>Design on paper first</strong>, for 5 minutes.</li>
+<li><strong>Not testing on the sample.</strong> Always run the sample cases before submitting. Even if you're confident.</li>
+<li><strong>Not testing edge cases.</strong> <code>n = 1</code>, all-equal input, already-sorted input, negative numbers, empty output. Every one of these has caused a WA for someone.</li>
+<li><strong>Skipping upsolve.</strong> Solving a problem in a contest is 30% of the learning; upsolving what you missed is the other 70%.</li>
+<li><strong>Looking at the editorial too early.</strong> Reading an editorial after 10 minutes trains you to expect the answer to appear. Reading it after 45 minutes trains you to actually think.</li>
+<li><strong>Looking at the editorial too late.</strong> Grinding on a problem 400 points above your rating for 2 hours is not "productive struggle"; it's wasted time.</li>
+<li><strong>Not reading other people's code.</strong> After AC, look at the top 5 submissions. There's always something to learn.</li>
+<li><strong>Ignoring the "purple problem" phenomenon.</strong> Some problems at 1800–2000 have weird, unimplementable solutions. Skip them; not every problem teaches you something useful.</li>
+<li><strong>Skipping implementations.</strong> Reading a solution and understanding it is not the same as implementing it. You need the typing practice.</li>
+<li><strong>Practicing only one technique.</strong> Doing 100 prefix-sum problems doesn't make you a better competitive programmer; it makes you a prefix-sum specialist. Rotate topics.</li>
+<li><strong>Practicing only contests.</strong> Contests don't teach new techniques; they only test existing ones. If you never read a new technique, you'll never learn one.</li>
+<li><strong>Comparing to others too much.</strong> Rating is relative. Your progress is absolute. Track your own problem-solving rate over time.</li>
+<li><strong>Not sleeping before contests.</strong> A tired brain loses 200–300 rating points. Real.</li>
+<li><strong>Assuming TLE means "code too slow".</strong> TLE can also mean "wrong algorithm" (an <span class="arithmatex">$O(n^2)$</span> where <span class="arithmatex">$O(n)$</span> is needed) or "wrong I/O" (<code>cin</code> without <code>sync_with_stdio(false)</code> on 10^6 inputs). Diagnose before optimizing.</li>
+<li><strong>Submitting without compiling locally.</strong> A trivial error — a missing <code>;</code>, a typo in a variable name — will get rejected. Compile, run the sample, <em>then</em> submit.</li>
+<li><strong>Not learning from failure.</strong> If you look at the editorial and then close it, you learned nothing. If you read it, understand it, close it, re-implement it, <em>then</em> submit — you learned it.</li>
+<li><strong>Overfitting to your own bugs.</strong> If a solution WAs on test 5, don't just patch test 5. Understand what test 5 represents; the bug affects other inputs too.</li>
+<li><strong>Forgetting the <code>-O2</code> flag locally.</strong> Your code TLEs on the judge but runs in 1 second on your machine. Compile with <code>-O2</code> locally to match the judge.</li>
+</ol>
+<h2 id="recommended-learning-path">Recommended Learning Path<a class="headerlink" href="#recommended-learning-path" title="Permanent link">&para;</a></h2>
+<p>A realistic timeline, calibrated for someone who has ~1–2 hours per day:</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Finish the C++ course, complete CSES "Introductory Problems"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CSES "Sorting and Searching", start Div. 3 virtual contests</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>CSES "Data Structures", weekly Div. 2 and Div. 3 virtuals</td>
+</tr>
+<tr>
+<td>5–6</td>
+<td>CSES "Dynamic Programming" and "Graph Algorithms", start real contests</td>
+</tr>
+<tr>
+<td>7–12</td>
+<td>Start the "main" CP-Algorithms content (graphs, trees, strings, geometry), participate in every contest you can</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>"main" CP-Algorithms content</strong> in this course is covered in later articles; this article focused on the prerequisite path. Once you have solid Phase 4 mastery, the graph algorithms, dynamic programming, strings, and geometry sections are within reach.</p>
+<p>The single most important habit to build in the first year is <strong>upsolving</strong>. It will feel like a chore. It is the only thing that works.</p>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="https://cses.fi/book/book.pdf">Competitive Programmer's Handbook</a></strong> — free, concise, covers the core topics. The chapters on DP, graph algorithms, and range queries are especially good.</li>
+<li><strong><a href="https://usaco.guide/">USACO Guide</a></strong> — the best-structured roadmap for competitive programming. Every topic has a difficulty rating, curated problems, and short explanations.</li>
+<li><strong><a href="https://codeforces.com/edu/course/2">Codeforces EDU</a></strong> — video + text courses on specific techniques, with built-in practice.</li>
+<li><strong><a href="https://cp-algorithms.com/">CP-Algorithms</a></strong> — this very site. The theory is dense; combine with CSES practice.</li>
+<li><strong><a href="https://atcoder.jp/contests/">AtCoder Editorials</a></strong> — high-quality, well-illustrated explanations. Often clearer than Codeforces editorials.</li>
+<li><strong><a href="https://cses.fi/problemset/">CSES Problem Set</a></strong> — the best topic-by-topic practice set. Use this as your primary practice resource.</li>
+</ul>
+<h2 id="pitfalls-checklist">Pitfalls Checklist<a class="headerlink" href="#pitfalls-checklist" title="Permanent link">&para;</a></h2>
+<p>A summary of the mistakes that cost the most:</p>
+<ol>
+<li>Practicing without upsolving.</li>
+<li>Practicing only one technique.</li>
+<li>Looking at editorials too early or too late.</li>
+<li>Not stress testing WA solutions.</li>
+<li>Not reading constraints before coding.</li>
+<li>Not compiling with <code>-O2</code> locally.</li>
+<li>Not testing edge cases.</li>
+<li>Not looking at other people's solutions after AC.</li>
+<li>Grinding on a problem far above your level.</li>
+<li>Solving easy problems instead of challenging ones.</li>
+<li>Ignoring the plateau at 1600–1800.</li>
+<li>Comparing your rating to others instead of your past self.</li>
+<li>Not participating in real contests.</li>
+<li>Avoiding virtual contests.</li>
+<li>Not using the <code>-D_GLIBCXX_DEBUG</code> flag while debugging.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Two modes of practice: topic-focused (CSES) and contest-mode (Codeforces / AtCoder virtuals).</strong> Both are required; neither alone works.</li>
+<li><strong>The four phases are mastery criteria, not timeboxes.</strong> Move on when you can solve the phase's problem set in a set time with no WAs, not on a calendar.</li>
+<li><strong>The upsolve loop is the highest-ROI activity.</strong> After every contest, solve the problems you couldn't solve in the contest, from memory, without looking at code.</li>
+<li><strong>Stress testing finds WA bugs that no amount of staring finds.</strong> Generate small random inputs, compare against brute force.</li>
+<li><strong>Virtual contests teach what regular practice cannot:</strong> reading a mixed set under time pressure, allocating time, and staying calm.</li>
+<li><strong>Rating calibration is real.</strong> 1400 is Specialist; 1600 is Expert; 1800 is the plateau. Know where you are and what you need to reach the next level.</li>
+<li><strong>Codeforces for contests, CSES for topics.</strong> Use the right tool for the right job.</li>
+<li><strong>Common mistakes are predictable and avoidable.</strong> Read the statement carefully, test edge cases, compile with <code>-O2</code>, and never skip upsolve.</li>
+</ul>
+<h2 id="practice-problems-one-per-technique">Practice Problems (one per technique)<a class="headerlink" href="#practice-problems-one-per-technique" title="Permanent link">&para;</a></h2>
+<p>A reference set — one representative problem for each fundamental technique. If you can solve all of these unaided, you have a solid Phase 4 foundation.</p>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simulation + overflow</td>
+<td><a href="https://cses.fi/problemset/task/1094">CSES — Increasing Array</a></td>
+</tr>
+<tr>
+<td>Constructive / case analysis</td>
+<td><a href="https://cses.fi/problemset/task/1070">CSES — Permutations</a></td>
+</tr>
+<tr>
+<td>Greedy + sorting</td>
+<td><a href="https://cses.fi/problemset/task/1090">CSES — Ferris Wheel</a></td>
+</tr>
+<tr>
+<td>Two pointers</td>
+<td><a href="https://cses.fi/problemset/task/1084">CSES — Apartments</a></td>
+</tr>
+<tr>
+<td>Sliding window + map</td>
+<td><a href="https://cses.fi/problemset/task/1141">CSES — Playlist</a></td>
+</tr>
+<tr>
+<td>Prefix sums</td>
+<td><a href="https://cses.fi/problemset/task/1660">CSES — Subarray Sums I</a></td>
+</tr>
+<tr>
+<td>Binary search on the answer</td>
+<td><a href="https://cses.fi/problemset/task/1620">CSES — Factory Machines</a></td>
+</tr>
+<tr>
+<td>Sorting + binary search</td>
+<td><a href="https://cses.fi/problemset/task/1640">CSES — Sum of Two Values</a></td>
+</tr>
+<tr>
+<td>Monotonic stack</td>
+<td><a href="https://cses.fi/problemset/task/1645">CSES — Nearest Smaller Values</a></td>
+</tr>
+<tr>
+<td>Priority queue + greedy</td>
+<td><a href="https://cses.fi/problemset/task/1164">CSES — Room Allocation</a></td>
+</tr>
+<tr>
+<td>Order statistics</td>
+<td><a href="https://cses.fi/problemset/task/1732">CSES — Josephus Problem II</a></td>
+</tr>
+<tr>
+<td>DP (1D)</td>
+<td><a href="https://cses.fi/problemset/task/1633">CSES — Dice Combinations</a></td>
+</tr>
+<tr>
+<td>DP (knapsack)</td>
+<td><a href="https://cses.fi/problemset/task/1634">CSES — Minimizing Coins</a></td>
+</tr>
+<tr>
+<td>BFS on a graph</td>
+<td><a href="https://cses.fi/problemset/task/1667">CSES — Message Route</a></td>
+</tr>
+<tr>
+<td>DFS + connected components</td>
+<td><a href="https://cses.fi/problemset/task/1666">CSES — Building Roads</a></td>
+</tr>
+<tr>
+<td>Bipartite check</td>
+<td><a href="https://cses.fi/problemset/task/1668">CSES — Building Teams</a></td>
+</tr>
+<tr>
+<td>Topological sort + DP</td>
+<td><a href="https://cses.fi/problemset/task/1680">CSES — Longest Flight Route</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="https://cses.fi/book/book.pdf">Competitive Programmer's Handbook</a></strong> — Antti Laaksonen. The standard reference; chapters 1–5 cover the fundamentals in this article's scope.</li>
+<li><strong><a href="https://usaco.guide/">USACO Guide</a></strong> — the best-structured roadmap for competitive programming, with per-topic difficulty ratings.</li>
+<li><strong><a href="https://cp-algorithms.com/">CP-Algorithms — Practice Problems</a></strong> — this site; each article's "Practice Problems" section extends the roadmap above.</li>
+<li><strong><a href="https://codeforces.com/contests">Codeforces — Virtual Contests</a></strong> — the standard technique for contest-mode practice without waiting for a real contest.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=y_ShxWrU4nY">Errichto — How to Practice Competitive Programming</a></strong> — a widely-recommended video on the meta-skills described in this article.</li>
+</ul>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>You've now covered the fundamentals of C++ for competitive programming. The <strong>main algorithmic content</strong> — graph algorithms, dynamic programming, strings, geometry, advanced data structures — is in the other sections of this site. Work through them topic by topic, and apply the practice techniques from this article to each.</p>
+<p>The single most important habit, repeated once more: <strong>upsolve everything</strong>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

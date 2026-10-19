@@ -1,0 +1,1080 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="io-and-data-types.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Introduction to C++ - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to C++
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introduction.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is C++?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-c-for-competitive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why C++ for Competitive Programming?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why C++ for Competitive Programming?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-with-other-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison with other languages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-c-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up a C++ Environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up a C++ Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-compiler-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended compiler flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-standard-header-to-include" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which standard header to include?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-competitive-programming-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Competitive Programming Template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-first-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your First Program
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Your First Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-and-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiling and Running
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-endl-vs-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. endl vs "\n"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-signed-integer-overflow-is-undefined-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Signed integer overflow is undefined behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mixing-cincout-with-scanfprintf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mixing cin/cout with scanf/printf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-recursion-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Recursion depth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-vectoroperator-does-not-bounds-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. vector::operator[] does not bounds-check
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Locally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print-macro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Print macro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitizers-and-stress-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sanitizers and stress testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="io-and-data-types.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduction-to-c">Introduction to C++<a class="headerlink" href="#introduction-to-c" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before starting this course, you should be comfortable with:</p>
+<ul>
+<li>Basic programming constructs (variables, loops, conditionals, functions) in <em>some</em> language.</li>
+<li>Using a terminal to compile and run programs.</li>
+<li>Solving (or at least reading) simple algorithmic problems on an online judge.</li>
+</ul>
+<p>This course assumes you can already program and focuses on <em>competitive programming</em> with C++. If you have never written code before, start with a general programming tutorial.</p>
+<h2 id="what-is-c">What is C++?<a class="headerlink" href="#what-is-c" title="Permanent link">&para;</a></h2>
+<p>C++ is a general-purpose, compiled, statically-typed language created by Bjarne Stroustrup as an extension of C. It supports procedural, object-oriented, and generic paradigms, and is standardized by ISO. The standards relevant for competitive programming are <strong>C++17</strong> (widely supported) and <strong>C++20</strong> (supported on modern judges). Anything older than C++17 is best avoided today.</p>
+<h2 id="why-c-for-competitive-programming">Why C++ for Competitive Programming?<a class="headerlink" href="#why-c-for-competitive-programming" title="Permanent link">&para;</a></h2>
+<p>Competitive programming requires solving algorithmic problems under strict time and memory limits. C++ dominates for several reasons:</p>
+<ul>
+<li><strong>Execution speed.</strong> As a compiled language, C++ produces highly optimized native code. In practice, equivalent <span class="arithmatex">$O(n \log n)$</span> solutions in C++ often run <strong>10–50× faster</strong> than in Python, and 1.5–3× faster than in Java. On many problems with tight limits, C++ passes where Python is guaranteed to TLE.</li>
+<li><strong>Memory efficiency.</strong> Fine-grained control over allocation and object layout. Problems routinely cap memory at 256 MB or 512 MB; STL containers have far smaller overhead than Python's.</li>
+<li><strong>Standard Template Library (STL).</strong> Efficient containers (<code>vector</code>, <code>set</code>, <code>map</code>, <code>unordered_map</code>, <code>priority_queue</code>) and algorithms (<code>sort</code>, <code>lower_bound</code>, <code>next_permutation</code>, etc.) drastically reduce implementation time.</li>
+<li><strong>Universal judge support.</strong> Every major judge (Codeforces, AtCoder, CSES, CodeChef, SPOJ, UVa, TopCoder) supports GCC with modern standards and <code>-O2</code>.</li>
+<li><strong>Low-level and high-level features.</strong> Readable high-level code, with hand-optimization reserved for the critical 5%.</li>
+</ul>
+<h3 id="comparison-with-other-languages">Comparison with other languages<a class="headerlink" href="#comparison-with-other-languages" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Speed vs C++</th>
+<th>STL equivalent</th>
+<th>Role in CP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C++</td>
+<td>1× (reference)</td>
+<td>Rich (STL)</td>
+<td>Dominant</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>~2–3× slower</td>
+<td><code>java.util.*</code></td>
+<td>Second most popular</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>~20–50× slower</td>
+<td>Built-in, slow</td>
+<td>Prototyping, easy problems</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>~1–1.5×</td>
+<td>Moderate</td>
+<td>Growing, less common</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Rule of thumb.</strong> If a problem expects an <span class="arithmatex">$O(n \log n)$</span> C++ solution in 1 s at <span class="arithmatex">$n = 2 \cdot 10^5$</span>, an <span class="arithmatex">$O(n \log n)$</span> Python solution will often take 5–10 s and TLE. Language choice matters.</p>
+</blockquote>
+<h2 id="setting-up-a-c-environment">Setting Up a C++ Environment<a class="headerlink" href="#setting-up-a-c-environment" title="Permanent link">&para;</a></h2>
+<p>The reference compiler is <strong>GCC</strong> (<code>g++</code>). Almost every judge uses it, so always test locally with <code>g++</code>. Clang works too but differs in warnings and in how it treats some undefined behavior.</p>
+<h3 id="recommended-compiler-flags">Recommended compiler flags<a class="headerlink" href="#recommended-compiler-flags" title="Permanent link">&para;</a></h3>
+<p>For <strong>submission</strong> (what judges effectively do):</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-o<span class="w"> </span>program<span class="w"> </span>program.cpp
+</code></pre></div>
+<p>For <strong>debugging locally</strong> (never submit these binaries):</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-g<span class="w"> </span>-fsanitize<span class="o">=</span>address,undefined<span class="w"> </span>-D_GLIBCXX_DEBUG<span class="w"> </span>-o<span class="w"> </span>program<span class="w"> </span>program.cpp
+</code></pre></div>
+<ul>
+<li><code>-std=c++17</code> — Enable C++17. Most judges support it; some support C++20. Don't rely on C++20 features unless the judge explicitly advertises them.</li>
+<li><code>-O2</code> — Optimization. This approximates what judges use. <strong>Always test with <code>-O2</code></strong>: undefined behavior (out-of-bounds stack access, signed overflow) can behave differently under optimization, and performance changes dramatically.</li>
+<li><code>-Wall -Wextra</code> — Warnings. Take them seriously; they catch real bugs.</li>
+<li><code>-g</code> — Debug symbols. Required for sanitizers to produce useful traces.</li>
+<li><code>-fsanitize=address,undefined</code> — Runtime detection of memory errors and undefined behavior. ~2–10× slower; use only while debugging.</li>
+<li><code>-D_GLIBCXX_DEBUG</code> — Turns some silent STL bugs (e.g., out-of-bounds <code>vector::operator[]</code>) into runtime errors. Also slow.</li>
+</ul>
+<blockquote>
+<p><strong>Pitfall.</strong> Debug builds can hide or expose bugs that the judge build does not. Always time your solution with the exact submission flags.</p>
+</blockquote>
+<h3 id="which-standard-header-to-include">Which standard header to include?<a class="headerlink" href="#which-standard-header-to-include" title="Permanent link">&para;</a></h3>
+<p>Two viable styles:</p>
+<ol>
+<li><strong>Explicit includes</strong> — <code>#include &lt;vector&gt;</code>, <code>#include &lt;iostream&gt;</code>, … Portable, slower to write.</li>
+<li><strong><code>#include &lt;bits/stdc++.h&gt;</code></strong> — GCC-specific umbrella header that pulls in nearly the whole standard library. Ubiquitous in competitive programming and supported on virtually every judge. Use it for contests; avoid it in production code.</li>
+</ol>
+<p>For the rest of this course we use <code>&lt;bits/stdc++.h&gt;</code> for brevity.</p>
+<h2 id="the-competitive-programming-template">The Competitive Programming Template<a class="headerlink" href="#the-competitive-programming-template" title="Permanent link">&para;</a></h2>
+<p>Almost every solution starts from a fixed template. Memorize it.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">ll</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">pii</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">vi</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// solution goes here</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Two lines are essential for I/O performance and are explained in the next article:</p>
+<ul>
+<li><code>ios_base::sync_with_stdio(false);</code> — Unsynchronizes C and C++ I/O streams.</li>
+<li><code>cin.tie(nullptr);</code> — Prevents <code>cin</code> from flushing <code>cout</code> before each read.</li>
+</ul>
+<p>Do <strong>not</strong> mix C-style (<code>scanf</code>/<code>printf</code>) and C++-style (<code>cin</code>/<code>cout</code>) I/O after calling <code>sync_with_stdio(false)</code>; doing so is undefined behavior.</p>
+<h2 id="your-first-program">Your First Program<a class="headerlink" href="#your-first-program" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Welcome to the C++ course for Competitive Programming!</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="explanation">Explanation<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>#include &lt;iostream&gt;</code> — Provides <code>cin</code> and <code>cout</code>. In real solutions we use <code>&lt;bits/stdc++.h&gt;</code> instead.</li>
+<li><code>using namespace std;</code> — Brings <code>std::</code> into scope. Convenient in CP; discouraged in large codebases because it pollutes the namespace. It is standard practice on judges.</li>
+<li><code>int main() { ... }</code> — Program entry point.</li>
+<li><code>cout &lt;&lt; ... &lt;&lt; "\n";</code> — Writes to standard output. Prefer <code>"\n"</code> over <code>endl</code>; see the pitfall section.</li>
+<li><code>return 0;</code> — Success exit code.</li>
+</ol>
+<h2 id="compiling-and-running">Compiling and Running<a class="headerlink" href="#compiling-and-running" title="Permanent link">&para;</a></h2>
+<p>Assuming the file is <code>program.cpp</code>:</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-O2<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-o<span class="w"> </span>program<span class="w"> </span>program.cpp
+./program
+</code></pre></div>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>These trip up beginners constantly. Each one is worth memorizing.</p>
+<h3 id="1-endl-vs-n">1. <code>endl</code> vs <code>"\n"</code><a class="headerlink" href="#1-endl-vs-n" title="Permanent link">&para;</a></h3>
+<p><code>endl</code> inserts a newline <strong>and flushes the stream</strong>. Flushing on every line is catastrophic on output-heavy problems — a solution that would otherwise pass can TLE by a factor of 5–10×. <strong>Always use <code>"\n"</code>.</strong> <code>cout &lt;&lt; '\n'</code> is even marginally faster than <code>"\n"</code> since it's a character, not a C-string.</p>
+<h3 id="2-signed-integer-overflow-is-undefined-behavior">2. Signed integer overflow is undefined behavior<a class="headerlink" href="#2-signed-integer-overflow-is-undefined-behavior" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">   </span><span class="c1">// UB; with -O2 the compiler may assume this never happens</span>
+</code></pre></div>
+<p>Use <code>long long</code> (<code>ll</code>) when the product of two <code>int</code>s can exceed <span class="arithmatex">$2^{31}-1 \approx 2.15 \cdot 10^9$</span>, and cast at least one operand:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">   </span><span class="c1">// correct</span>
+</code></pre></div>
+<p>For values beyond <span class="arithmatex">$2^{63}-1$</span>, use <code>__int128</code> (GCC-only) or big-integer emulation.</p>
+<h3 id="3-mixing-cincout-with-scanfprintf">3. Mixing <code>cin</code>/<code>cout</code> with <code>scanf</code>/<code>printf</code><a class="headerlink" href="#3-mixing-cincout-with-scanfprintf" title="Permanent link">&para;</a></h3>
+<p>After <code>ios_base::sync_with_stdio(false)</code>, using both families is undefined behavior. Pick one — either is fine as long as you're consistent.</p>
+<h3 id="4-recursion-depth">4. Recursion depth<a class="headerlink" href="#4-recursion-depth" title="Permanent link">&para;</a></h3>
+<p>The default stack is typically <strong>8 MB</strong>. Recursive functions with deep recursion (e.g., DFS on a path of length <span class="arithmatex">$10^6$</span>) overflow it and crash — often as a <em>stack overflow</em>, sometimes as a <strong>wrong answer</strong> under <code>-O2</code>. Remedies:</p>
+<ul>
+<li>Increase the stack in your shell: <code>ulimit -s unlimited</code> (local only).</li>
+<li>Allocate large arrays <strong>globally</strong> (static storage), not on the stack.</li>
+<li>Convert deep recursion to an explicit stack or iterative DP.</li>
+</ul>
+<h3 id="5-vectoroperator-does-not-bounds-check">5. <code>vector::operator[]</code> does not bounds-check<a class="headerlink" href="#5-vectoroperator-does-not-bounds-check" title="Permanent link">&para;</a></h3>
+<p><code>v[i]</code> with <code>i &gt;= v.size()</code> is undefined behavior. Only use <code>v.at(i)</code> when you want a runtime error (e.g., during debugging). Similarly, <code>array[n]</code> on a fixed-size array is UB.</p>
+<h2 id="debugging-locally">Debugging Locally<a class="headerlink" href="#debugging-locally" title="Permanent link">&para;</a></h2>
+<p>Two habits that save enormous time:</p>
+<h3 id="print-macro">Print macro<a class="headerlink" href="#print-macro" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define dbg(x) cerr &lt;&lt; #x &lt;&lt; " = " &lt;&lt; (x) &lt;&lt; '\n'</span>
+</code></pre></div>
+<p><code>cerr</code> is not tied to <code>cout</code>, so it won't interleave awkwardly, and you can disable it before submission with a single <code>#define</code>.</p>
+<h3 id="sanitizers-and-stress-testing">Sanitizers and stress testing<a class="headerlink" href="#sanitizers-and-stress-testing" title="Permanent link">&para;</a></h3>
+<p>Compile with <code>-fsanitize=address,undefined</code> to catch memory errors and UB during practice. Combine with <strong>stress testing</strong> (generate random small inputs, compare against a brute force) to catch logical bugs before the judge does. Stress testing is covered later in this course.</p>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>C++ is the dominant CP language thanks to speed and STL. Always compile with <code>-O2</code> when timing.</li>
+<li>Use <code>&lt;bits/stdc++.h&gt;</code> and the standard template.</li>
+<li><code>"\n"</code> over <code>endl</code>; unbuffer <code>cin</code>/<code>cout</code>; never mix C and C++ I/O after <code>sync_with_stdio(false)</code>.</li>
+<li>Beware signed integer overflow, shallow stack depth, and <code>vector::operator[]</code> without bounds checks.</li>
+<li>Debug with sanitizers; submit with the judge's flags.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://codeforces.com/problemset/problem/4/A">Codeforces 4A — Watermelon</a> — warm-up.</li>
+<li><a href="https://cses.fi/problemset/task/1068">CSES — Weird Algorithm</a> — loop + output speed.</li>
+<li><a href="https://cses.fi/problemset/task/1094">CSES — Increasing Array</a> — watch for overflow on large sums.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://isocpp.org/std/the-standard">ISO C++ Standard (C++17)</a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">GCC manual — Optimize options</a></li>
+<li><a href="https://clang.llvm.org/docs/AddressSanitizer.html">AddressSanitizer documentation</a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="io-and-data-types.html">Input/Output and Data Types</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

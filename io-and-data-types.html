@@ -1,0 +1,1420 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="introduction.html">
+      
+      
+        <link rel="next" href="conditionals-and-loops.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>I/O and Data Types - C++ Course (PR 1728 preview)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inputoutput-and-data-types" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-header__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Course (PR 1728 preview)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              I/O and Data Types
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="C++ Course (PR 1728 preview)" class="md-nav__button md-logo" aria-label="C++ Course (PR 1728 preview)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Course (PR 1728 preview)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Course for Competitive Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="io-and-data-types.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-io-for-competitive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast I/O for Competitive Programming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fast I/O for Competitive Programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-one-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each one does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-critical-pitfall-do-not-mix-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The critical pitfall: do not mix families
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endl-vs-n-vs-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        endl vs "\n" vs '\n'
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-cin-with-fast-io-is-still-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When cin with fast I/O is still not enough
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Input
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-cin-parses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How cin &gt;&gt; parses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-until-eof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading until EOF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-a-whole-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading a whole line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-characters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading characters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chaining
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting-floating-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formatting floating point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-integers-stored-in-double" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large integers stored in double
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-types-whats-guaranteed-vs-whats-typical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integer types — what's guaranteed vs what's typical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed-width-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed-width types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-overflow-is-undefined-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed overflow is undefined behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-types-wrap-around-and-mixed-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsigned types — wrap-around and mixed comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#size_t-the-size-return-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        size_t — the .size() return type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__int128-beyond-64-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __int128 — beyond 64 bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Floating point types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char-signedness-is-implementation-defined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        char — signedness is implementation-defined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bool
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Conversions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type Conversions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implicit-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implicit conversions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication-overflow-before-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplication overflow before casting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static_cast-vs-c-style-cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        static_cast vs C-style cast
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Topic
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conditionals-and-loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditionals and Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arrays-and-vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays and Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions-and-recursion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions and Recursion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stl-basics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STL Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="algorithmic-complexity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithmic Complexity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice-and-problems.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practice and Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="inputoutput-and-data-types">Input/Output and Data Types<a class="headerlink" href="#inputoutput-and-data-types" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="intro-to-cpp.md">Introduction to C++</a> — compilation, the CP template, <code>-O2</code>, and why <code>"\n"</code> beats <code>endl</code>.</li>
+<li>Comfort with the terminal to compile and run programs.</li>
+</ul>
+<p>This article is the second in the course. It assumes the standard CP template from the previous article:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="fast-io-for-competitive-programming">Fast I/O for Competitive Programming<a class="headerlink" href="#fast-io-for-competitive-programming" title="Permanent link">&para;</a></h2>
+<p>The default <code>cin</code>/<code>cout</code> is <strong>synchronized with C's <code>stdio</code></strong> (<code>scanf</code>/<code>printf</code>) so that both families can be freely mixed. This synchronization runs on every I/O operation and is a measurable bottleneck when input or output is large (commonly <span class="arithmatex">$10^5$</span>–<span class="arithmatex">$10^6$</span> numbers in CP).</p>
+<p>Two calls disable it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="what-each-one-does">What each one does<a class="headerlink" href="#what-each-one-does" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>sync_with_stdio(false)</code></strong> — Removes the synchronization layer. After this, <code>cin</code> reads directly from the C++ stream buffer without checking that <code>stdio</code> is consistent, making reads significantly faster (often 3–5×).</li>
+<li><strong><code>cin.tie(nullptr)</code></strong> — By default <code>cin</code> is <em>tied</em> to <code>cout</code>, meaning <code>cout</code> is flushed before every <code>cin</code> read. On a program that interleaves reads and writes, this causes gratuitous flushes. Untying removes them.</li>
+</ul>
+<h3 id="the-critical-pitfall-do-not-mix-families">The critical pitfall: do not mix families<a class="headerlink" href="#the-critical-pitfall-do-not-mix-families" title="Permanent link">&para;</a></h3>
+<p>After <code>sync_with_stdio(false)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"hello</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w">   </span><span class="c1">// UNDEFINED BEHAVIOR</span>
+</code></pre></div>
+<p>Output order between <code>cout</code> and <code>printf</code> is no longer guaranteed. If you disable sync, <strong>use only <code>cin</code>/<code>cout</code></strong>, or <strong>only <code>scanf</code>/<code>printf</code></strong>, for the rest of the program.</p>
+<p>Similarly, <code>cin.tie(nullptr)</code> means you must call <code>cout.flush()</code> explicitly if you need flushing — <strong>critical for interactive problems</strong>. Interactive problems require flushing after each query:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"? "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="n">cout</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span><span class="w">                    </span><span class="c1">// mandatory in interactive mode</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">response</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">response</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="endl-vs-n-vs-n"><code>endl</code> vs <code>"\n"</code> vs <code>'\n'</code><a class="headerlink" href="#endl-vs-n-vs-n" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Type written</th>
+<th>Flush</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endl</code></td>
+<td><code>char</code> + <code>flush()</code></td>
+<td><strong>Yes</strong> — avoid</td>
+</tr>
+<tr>
+<td><code>"\n"</code></td>
+<td><code>const char*</code> (calls <code>strlen</code>)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>'\n'</code></td>
+<td><code>char</code></td>
+<td>No — marginal speedup</td>
+</tr>
+</tbody>
+</table>
+<p>On output-heavy problems (e.g., <span class="arithmatex">$10^6$</span> lines), <code>endl</code> can cause <strong>5–10× slowdown</strong> and guaranteed TLE. Use <code>'\n'</code>. Use <code>endl</code> only when you <em>intend</em> to flush (i.e., interactive problems or before crashing).</p>
+<h3 id="when-cin-with-fast-io-is-still-not-enough">When <code>cin</code> with fast I/O is still not enough<a class="headerlink" href="#when-cin-with-fast-io-is-still-not-enough" title="Permanent link">&para;</a></h3>
+<p>For extremely tight limits (e.g., <span class="arithmatex">$10^7$</span> integers), a <strong>custom <code>fread</code>-based reader</strong> is 2–4× faster than <code>cin</code> even with sync disabled. It's rarely needed on modern judges but worth knowing:</p>
+<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BUF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">BUF</span><span class="p">];</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="nf">rc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fread</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">BUF</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">readInt</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rc</span><span class="p">()))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="sc">'0'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="sc">'9'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'-'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rc</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rc</span><span class="p">()))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="sc">'0'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">'9'</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rc</span><span class="p">())</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">'0'</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Warning.</strong> Mixing this with <code>cin</code>/<code>cout</code> is undefined behavior. Use it only in programs that read <em>exclusively</em> through <code>io::rc</code> and write through <code>printf</code> or a similar raw output.</p>
+</blockquote>
+<h2 id="reading-input">Reading Input<a class="headerlink" href="#reading-input" title="Permanent link">&para;</a></h2>
+<h3 id="how-cin-parses">How <code>cin &gt;&gt;</code> parses<a class="headerlink" href="#how-cin-parses" title="Permanent link">&para;</a></h3>
+<p><code>cin &gt;&gt; x</code> <strong>skips leading whitespace</strong> (spaces, tabs, newlines) and reads until the next whitespace. This means:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="c1">// input "   3\n\n    42   " works identically to "3 42"</span>
+</code></pre></div>
+<ul>
+<li>Multi-line input does <strong>not</strong> require any special handling — <code>cin &gt;&gt;</code> treats <code>\n</code> as whitespace.</li>
+<li>For strings, <code>cin &gt;&gt; s</code> reads up to the next whitespace. To read a whole line with spaces, use <code>getline</code>.</li>
+</ul>
+<h3 id="reading-until-eof">Reading until EOF<a class="headerlink" href="#reading-until-eof" title="Permanent link">&para;</a></h3>
+<p>A common judge format: read an unknown number of values until the end of the input.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// process x</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>cin &gt;&gt; x</code> evaluates to the stream itself, which converts to <code>false</code> if the stream is in a fail state (EOF or a format error). Equivalent with <code>scanf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><code>scanf</code> returns the number of items successfully assigned, so <code>== 1</code> (or <code>!= EOF</code>) is the idiomatic check.</p>
+<h3 id="reading-a-whole-line">Reading a whole line<a class="headerlink" href="#reading-a-whole-line" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w">   </span><span class="c1">// reads up to and including '\n', discards the '\n'</span>
+</code></pre></div>
+<p><strong>Classic pitfall.</strong> <code>cin &gt;&gt;</code> leaves the trailing newline in the buffer. A subsequent <code>getline</code> reads an <em>empty</em> string and returns immediately:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span><span class="w">       </span><span class="c1">// BUG: reads empty string (the leftover '\n')</span>
+</code></pre></div>
+<p>Fixes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">(</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">streamsize</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="sc">'\n'</span><span class="p">);</span>
+<span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</code></pre></div>
+<p>or, more idiomatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">ws</span><span class="p">;</span><span class="w">             </span><span class="c1">// skip all leading whitespace, including '\n'</span>
+<span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="reading-characters">Reading characters<a class="headerlink" href="#reading-characters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span><span class="w">         </span><span class="c1">// fast; from &lt;cstdio&gt;</span>
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w">         </span><span class="c1">// slow; from &lt;iostream&gt;</span>
+</code></pre></div>
+<p>For single-character input in tight loops (grid problems), <code>getchar()</code> (or <code>getchar_unlocked()</code> on GCC) is the fastest option.</p>
+<h2 id="writing-output">Writing Output<a class="headerlink" href="#writing-output" title="Permanent link">&para;</a></h2>
+<h3 id="chaining">Chaining<a class="headerlink" href="#chaining" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Sum: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+</code></pre></div>
+<p><code>&lt;&lt;</code> returns the stream, so it chains naturally. <code>'\n'</code> (a <code>char</code>) is marginally faster than <code>"\n"</code> (a C-string) because the <code>char</code> overload doesn't call <code>strlen</code>.</p>
+<h3 id="formatting-floating-point">Formatting floating point<a class="headerlink" href="#formatting-floating-point" title="Permanent link">&para;</a></h3>
+<p>By default, <code>cout</code> may print doubles in <strong>scientific notation</strong> (e.g., <code>1e+06</code>), which is a frequent WA cause. Force fixed-point with <code>fixed</code> and set precision:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0.3000000000</span>
+</code></pre></div>
+<p><code>fixed</code> and <code>setprecision</code> are <strong>sticky</strong> — they affect all subsequent writes to <code>cout</code> until reset (<code>cout &lt;&lt; defaultfloat;</code>).</p>
+<p>Alternatively, use <code>printf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">"%.10f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ans</span><span class="p">);</span>
+</code></pre></div>
+<p>But only if you <em>never</em> called <code>sync_with_stdio(false)</code> <strong>and</strong> use <code>printf</code> for all output.</p>
+<h3 id="large-integers-stored-in-double">Large integers stored in <code>double</code><a class="headerlink" href="#large-integers-stored-in-double" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123456789012345</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span><span class="w">   </span><span class="c1">// 1.23456789012345e+14 — scientific notation!</span>
+</code></pre></div>
+<p>This is another reason to use <code>fixed</code>. But note: <code>double</code> can exactly represent integers only up to <span class="arithmatex">$2^{53} \approx 9 \cdot 10^{15}$</span>. Beyond that, precision is silently lost. <strong>Never use <code>double</code> to store large integer counts.</strong></p>
+<h2 id="data-types">Data Types<a class="headerlink" href="#data-types" title="Permanent link">&para;</a></h2>
+<p>Choosing the right type is the single most common source of <strong>silent wrong answers</strong>. Overflow, truncation, and sign errors rarely crash — they just produce plausible-looking wrong values.</p>
+<h3 id="integer-types-whats-guaranteed-vs-whats-typical">Integer types — what's guaranteed vs what's typical<a class="headerlink" href="#integer-types-whats-guaranteed-vs-whats-typical" title="Permanent link">&para;</a></h3>
+<p>The C++ standard only guarantees <em>minimum</em> ranges. On all modern judges (<code>g++</code> on Linux x86-64):</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Guaranteed minimum</th>
+<th>On judges</th>
+<th>Range on judges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>short</code></td>
+<td>16 bits</td>
+<td>16 bits</td>
+<td><span class="arithmatex">$[-2^{15}, 2^{15}-1]$</span></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>16 bits</td>
+<td><strong>32 bits</strong></td>
+<td><span class="arithmatex">$[-2^{31}, 2^{31}-1] \approx [-2.1\cdot10^9, 2.1\cdot10^9]$</span></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>32 bits</td>
+<td><strong>64 bits on Linux</strong>, 32 on Windows</td>
+<td>— (avoid)</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>64 bits</td>
+<td>64 bits</td>
+<td><span class="arithmatex">$[-2^{63}, 2^{63}-1] \approx [-9.2\cdot10^{18}, 9.2\cdot10^{18}]$</span></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td>—</td>
+<td>64 bits unsigned</td>
+<td><span class="arithmatex">$[0, 2^{64}-1]$</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Portability pitfall.</strong> <code>long</code> is 32-bit on Windows and 64-bit on Linux. Judges run Linux, so <code>long</code> behaves like <code>long long</code> <em>there</em>, but a solution developed on Windows with <code>long</code> will behave differently. <strong>Never use <code>long</code> in competitive code</strong> — use <code>int</code> or <code>long long</code>.</p>
+</blockquote>
+<h3 id="fixed-width-types">Fixed-width types<a class="headerlink" href="#fixed-width-types" title="Permanent link">&para;</a></h3>
+<p>For maximum portability and explicit width, use <code>&lt;cstdint&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">       </span><span class="c1">// always 32-bit signed</span>
+<span class="kt">int64_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">       </span><span class="c1">// always 64-bit signed</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w">      </span><span class="c1">// always 32-bit unsigned</span>
+</code></pre></div>
+<p>CP code often prefers <code>using ll = long long;</code> for brevity.</p>
+<h3 id="signed-overflow-is-undefined-behavior">Signed overflow is undefined behavior<a class="headerlink" href="#signed-overflow-is-undefined-behavior" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">    </span><span class="c1">// UB — signed overflow</span>
+</code></pre></div>
+<p>With <code>-O2</code>, the compiler is allowed to <strong>assume this never happens</strong>, and may produce code that misbehaves in ways you cannot debug from the source:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* compiler may eliminate this branch entirely */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>There are two correct options:</p>
+<ol>
+<li><strong>Use <code>long long</code></strong> whenever a sum or product of <code>int</code>s can exceed <span class="arithmatex">$2.1 \cdot 10^9$</span>.</li>
+<li><strong>Use <code>unsigned</code></strong> if you accept the modular wrap-around semantics (see below) — rarely the right choice in CP.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">;</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">    </span><span class="c1">// correct; promotes before multiply</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">         </span><span class="c1">// idiomatic short form</span>
+</code></pre></div>
+<h3 id="unsigned-types-wrap-around-and-mixed-comparison">Unsigned types — wrap-around and mixed comparison<a class="headerlink" href="#unsigned-types-wrap-around-and-mixed-comparison" title="Permanent link">&para;</a></h3>
+<p><code>unsigned</code> arithmetic wraps modulo <span class="arithmatex">$2^N$</span> — no UB, but often not what you want:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// 4294967295, not -1</span>
+</code></pre></div>
+<p>Worse, <strong>comparisons between signed and unsigned convert the signed operand to unsigned</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* FALSE! n is converted to a huge unsigned value */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>This is the source of countless real bugs. Practical rule: <strong>avoid <code>unsigned</code> in CP</strong>, except for bitmask tricks and hash computations where wrap-around is desired.</p>
+<h3 id="size_t-the-size-return-type"><code>size_t</code> — the <code>.size()</code> return type<a class="headerlink" href="#size_t-the-size-return-type" title="Permanent link">&para;</a></h3>
+<p>All STL <code>.size()</code> methods return <code>size_t</code> (unsigned). Direct comparisons with <code>int</code> are the canonical trigger of the pitfall above. Two safe idioms:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1">// explicit cast</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">         </span><span class="c1">// use size_t throughout</span>
+</code></pre></div>
+<p>And never write:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// BUG: infinite loop if v is empty</span>
+</code></pre></div>
+<p>because <code>(int)0 - 1 = -1</code>, then <code>-1 &lt;= huge</code> is false only by luck; with <code>size_t</code>, <code>0 - 1 = SIZE_MAX</code> → infinite loop.</p>
+<h3 id="__int128-beyond-64-bits"><code>__int128</code> — beyond 64 bits<a class="headerlink" href="#__int128-beyond-64-bits" title="Permanent link">&para;</a></h3>
+<p>GCC provides a 128-bit integer for values exceeding <code>long long</code> (e.g., multiplying two <span class="arithmatex">$10^{18}$</span> values, or RSA-like problems):</p>
+<div class="highlight"><pre><span></span><code><span class="kt">__int128</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">__int128</span><span class="p">)</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">   </span><span class="c1">// a, b are long long</span>
+</code></pre></div>
+<p>There is <strong>no <code>cin &gt;&gt;</code> overload</strong> for <code>__int128</code>. Read and print manually:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// read</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">;</span><span class="w">   </span><span class="c1">// hi * 2^64 + lo ... custom parsing</span>
+<span class="c1">// print</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print128</span><span class="p">(</span><span class="kt">__int128</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">'0'</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">'-'</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="kt">char</span><span class="p">(</span><span class="sc">'0'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">reverse</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Non-portable (GCC/Clang only; not on MSVC), but every judge uses GCC.</p>
+<h3 id="floating-point-types">Floating point types<a class="headerlink" href="#floating-point-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bits</th>
+<th>Decimal precision</th>
+<th>Use in CP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>32</td>
+<td>~6–7 digits</td>
+<td>Almost never — insufficient</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>64</td>
+<td>~15–17 digits</td>
+<td>Standard for geometry, probability, real answers</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>80–128 (platform)</td>
+<td>~18–21 digits</td>
+<td>High-precision geometry, cumulative sums</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Pitfall.</strong> <code>double</code> cannot represent most decimal fractions exactly — <code>0.1 + 0.2 != 0.3</code>. <strong>Never compare doubles with <code>==</code>.</strong> Use an epsilon:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">EPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">EPS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* a ≈ b */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>For values spanning many orders of magnitude, use a <em>relative</em> tolerance:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">EPS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* a ≈ b */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Pitfall.</strong> In geometry, summing <span class="arithmatex">$10^6$</span> doubles each ~<span class="arithmatex">$10^{-3}$</span> can lose ~3 decimal digits of precision to accumulated rounding. If the problem demands high precision, use <code>long double</code>. If it's borderline, Kahan summation can help, but the correct fix is usually to restructure the computation.</p>
+</blockquote>
+<h3 id="char-signedness-is-implementation-defined"><code>char</code> — signedness is implementation-defined<a class="headerlink" href="#char-signedness-is-implementation-defined" title="Permanent link">&para;</a></h3>
+<p>Whether plain <code>char</code> is signed or unsigned is <strong>implementation-defined</strong>. On x86-64 Linux judges, <code>char</code> is <em>signed</em>, meaning <code>char c = 200;</code> actually stores <code>-56</code>. This matters when:</p>
+<ul>
+<li>Passing <code>char</code> to <code>&lt;cctype&gt;</code> functions:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isalpha</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w">               </span><span class="c1">// UB if c is negative!</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isalpha</span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="p">)</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// correct</span>
+</code></pre></div>
+<ul>
+<li>Indexing with character values as integers: <code>int idx = c - 'a';</code> is fine because ASCII ranges are contiguous, but <code>c - '0'</code> combined with <code>isdigit</code> has the same signedness trap.</li>
+</ul>
+<h3 id="bool"><code>bool</code><a class="headerlink" href="#bool" title="Permanent link">&para;</a></h3>
+<p><code>bool</code> is 1 byte on virtually all platforms. <code>vector&lt;bool&gt;</code> is a <strong>specialization</strong> packed into bits — its elements are not real <code>bool&amp;</code> references, <code>&amp;v[i]</code> does not compile, and concurrent modification of adjacent elements is data-race-prone. Use <code>vector&lt;char&gt;</code> or <code>bitset</code> when you need an array of booleans with normal semantics.</p>
+<h2 id="type-conversions">Type Conversions<a class="headerlink" href="#type-conversions" title="Permanent link">&para;</a></h2>
+<h3 id="implicit-conversions">Implicit conversions<a class="headerlink" href="#implicit-conversions" title="Permanent link">&para;</a></h3>
+<p>C++ converts types silently. Most are harmless, but <strong>narrowing</strong> (large → small) truncates:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3'000'000'000</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">              </span><span class="c1">// implementation-defined (wraps to a negative number on GCC)</span>
+</code></pre></div>
+<p>Curly-brace initialization rejects narrowing at compile time:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">{</span><span class="mi">1'000'000'000</span><span class="p">};</span><span class="w">   </span><span class="c1">// OK</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">{</span><span class="mi">3'000'000'000</span><span class="p">};</span><span class="w">   </span><span class="c1">// compile error: narrowing — good, catches the bug early</span>
+</code></pre></div>
+<p>Use <code>{}</code> initialization for constants; it turns silent bugs into compile errors.</p>
+<h3 id="multiplication-overflow-before-casting">Multiplication overflow before casting<a class="headerlink" href="#multiplication-overflow-before-casting" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">;</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">   </span><span class="c1">// CORRECT: cast before multiply</span>
+<span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// WRONG: overflow happens as int first</span>
+</code></pre></div>
+<p>The rule: <strong>cast one operand <em>before</em> the operation, not the result</strong>.</p>
+<h3 id="static_cast-vs-c-style-cast"><code>static_cast</code> vs C-style cast<a class="headerlink" href="#static_cast-vs-c-style-cast" title="Permanent link">&para;</a></h3>
+<p>Prefer <code>static_cast&lt;T&gt;(x)</code> in modern code:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">some_double</span><span class="p">);</span>
+</code></pre></div>
+<p>C-style <code>(int)</code> still works but is more permissive and harder to search for. In competitive code, either is acceptable; in learning code, use <code>static_cast</code>.</p>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<p>Common idioms for the "infinity" value used in shortest paths, DP initialization, etc.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'000</span><span class="p">;</span><span class="w">               </span><span class="c1">// fits in int</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">LINF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1'000'000'000'000'000'000L</span><span class="n">L</span><span class="p">;</span><span class="w"> </span><span class="c1">// fits in ll</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MOD</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'007</span><span class="p">;</span><span class="w">               </span><span class="c1">// prime, common in problems</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Pitfall.</strong> Adding two <code>INF</code>s overflows an <code>int</code>: <code>INF + INF = 2e9</code> fits, but <code>INF + INF + INF</code> overflows. Common trick: initialize with <code>INF / 2</code> or <code>INF / 3</code> so that <code>2 * INF</code> and <code>INF + x</code> never overflow. Alternatively, use <code>LINF</code> for all DP values and let the compiler's 64-bit arithmetic absorb the sum.</p>
+</blockquote>
+<p>For compile-time constants, prefer <code>constexpr</code> (C++11+) over <code>const</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200'005</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MOD</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1'000'000'007</span><span class="p">;</span>
+</code></pre></div>
+<p><code>constexpr</code> guarantees the value is computed at compile time. <code>const</code> only guarantees "not modified".</p>
+<h2 id="common-pitfalls">Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<p>A checklist to review whenever a solution gets WA or TLE:</p>
+<ol>
+<li><strong><code>endl</code> instead of <code>'\n'</code></strong> — the #1 cause of TLE on output-heavy problems.</li>
+<li><strong><code>ios_base::sync_with_stdio(false)</code> without <code>cin.tie(nullptr)</code></strong> — half the speedup lost.</li>
+<li><strong>Mixing <code>printf</code>/<code>scanf</code> with <code>cin</code>/<code>cout</code> after disabling sync</strong> — undefined behavior, garbled output.</li>
+<li><strong><code>int</code> overflow</strong> — sums of <span class="arithmatex">$10^9 + 10^9$</span>, products of <span class="arithmatex">$10^5 \cdot 10^5$</span>, factorials above <span class="arithmatex">$12!$</span>, etc. Use <code>long long</code>.</li>
+<li><strong><code>(long long)(a * b)</code> instead of <code>(long long)a * b</code></strong> — the multiplication overflows before the cast.</li>
+<li><strong><code>unsigned</code> comparison</strong> — <code>int n = -1; n &lt; v.size()</code> is false.</li>
+<li><strong><code>v.size() - 1</code> on an empty vector</strong> — wraps to <code>SIZE_MAX</code>.</li>
+<li><strong><code>getline</code> after <code>cin &gt;&gt;</code></strong> — reads the leftover newline; use <code>cin &gt;&gt; ws</code>.</li>
+<li><strong>Double <code>==</code> comparison</strong> — always use epsilon.</li>
+<li><strong>Printing doubles without <code>fixed</code></strong> — scientific notation causes WA.</li>
+<li><strong>Storing <code>long long</code> counts in <code>double</code></strong> — silent precision loss above <span class="arithmatex">$2^{53}$</span>.</li>
+<li><strong><code>isalpha(c)</code> with negative <code>char</code></strong> — cast to <code>unsigned char</code> first.</li>
+<li><strong><code>vector&lt;bool&gt;</code> misuse</strong> — not a normal container; <code>&amp;v[i]</code> fails.</li>
+<li><strong><code>long</code> on Windows vs Linux</strong> — use <code>long long</code> for 64-bit values.</li>
+</ol>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Always include <code>ios_base::sync_with_stdio(false); cin.tie(nullptr);</code> <strong>and</strong> use <code>'\n'</code>, never <code>endl</code>.</li>
+<li>After disabling sync, use <strong>either</strong> <code>cin</code>/<code>cout</code> <strong>or</strong> <code>scanf</code>/<code>printf</code> — never both.</li>
+<li>Use <code>long long</code> for any value that can exceed <span class="arithmatex">$2.1 \cdot 10^9$</span>; cast <strong>before</strong> multiplying.</li>
+<li>Never compare doubles with <code>==</code>; use <code>abs(a - b) &lt; EPS</code>.</li>
+<li>Never use <code>unsigned</code> or <code>long</code> in competitive code; use <code>int</code>, <code>long long</code>, and <code>size_t</code> (only for <code>.size()</code>).</li>
+<li>Use <code>constexpr</code> for constants; <code>INF = 1e9</code>, <code>LINF = 1e18</code>, and be careful summing them.</li>
+<li>Watch for <code>getline</code> after <code>cin &gt;&gt;</code>; use <code>cin &gt;&gt; ws</code> to skip leftover newlines.</li>
+<li>Format doubles with <code>fixed &lt;&lt; setprecision(10)</code> or <code>printf("%.10f")</code>.</li>
+</ul>
+<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://cses.fi/problemset/task/1068">CSES — Weird Algorithm</a> — basic loop + output speed (try it with <code>endl</code> vs <code>'\n'</code> and compare).</li>
+<li><a href="https://cses.fi/problemset/task/1622">CSES — Missing Number</a> — sum of <span class="arithmatex">$10^6$</span> integers near <span class="arithmatex">$10^6$</span>; sum fits in <code>long long</code> but is close enough to test your instinct.</li>
+<li><a href="https://cses.fi/problemset/task/1069">CSES — Repetitions</a> — string reading, <code>char</code> handling.</li>
+<li><a href="https://codeforces.com/problemset/problem/158/A">Codeforces 158A — Next Round</a> — basic input, 1-based indexing.</li>
+<li><a href="https://codeforces.com/problemset/problem/71/A">Codeforces 71A — Way Too Long Words</a> — string input, conditional output.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/io/ios_base/sync_with_stdio">cppreference — <code>std::ios_base::sync_with_stdio</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/types">cppreference — Fundamental types</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/numeric/fenv">cppreference — Floating-point environment</a></li>
+<li><a href="https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html">GCC — <code>__int128</code> and other extensions</a></li>
+</ul>
+<h2 id="next-topic">Next Topic<a class="headerlink" href="#next-topic" title="Permanent link">&para;</a></h2>
+<p><a href="conditionals-and-loops.html">Conditionals and Loops</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["toc.integrate", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
